@@ -1,2 +1,2 @@
-# sharedbox-common
-Esse projeto tem algumas funcionalidades básicas de validações e serviços.
+# SharedBox Common
+Este projeto consiste em falicitar algumas funcionalidades básicas de validações e serviços.
