@@ -1,0 +1,12 @@
+br\com\sharedbox\common\documents\DocumentUtils.class
+br\com\sharedbox\common\security\Token.class
+br\com\sharedbox\common\messages\MessageType.class
+br\com\sharedbox\common\security\Cryptography.class
+br\com\sharedbox\common\messages\Message.class
+br\com\sharedbox\common\ResponseValues.class
+br\com\sharedbox\common\utils\StringUtils.class
+br\com\sharedbox\common\documents\br\Cnh.class
+br\com\sharedbox\common\documents\br\Cnpj.class
+br\com\sharedbox\common\documents\DocumentBase.class
+br\com\sharedbox\common\documents\br\Cpf.class
+br\com\sharedbox\common\security\SBJwt.class
