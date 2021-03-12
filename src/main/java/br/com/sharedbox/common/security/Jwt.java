@@ -5,6 +5,6 @@ package br.com.sharedbox.common.security;
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
  */
-public class SBJwt {
+public class Jwt {
 
 }

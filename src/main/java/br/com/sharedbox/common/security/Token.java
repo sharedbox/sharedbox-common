@@ -51,6 +51,45 @@ public class Token {
 				+ ", \"systemBuild\": \"SharedBox\", " 
 				+ ", \"bynary: " + value.getBytes() + " }";
 		
-		return Cryptography.encrypt(header) + "-" + Cryptography.encrypt(value) ;
+		return Cryptography.encrypt(header) + "." + Cryptography.encrypt(value) ;
+	}
+	
+	/**
+	 * 
+	 * @param value
+	 * @return
+	 * @throws Exception 
+	 */
+	public static String reader(String value) throws Exception {
+		if(value == null) {
+			return "";
+		}
+		
+		String[] values = value.split("\\.");
+		if (values.length == 2 ) {
+			return Cryptography.decrypt(values[1]);
+		}
+		
+		return "";
+	}
+	
+	/**
+	 * 
+	 * @param value
+	 * @return
+	 * @throws Exception 
+	 */
+	public static String[] readerValues(String value) throws Exception {
+		if(value == null) {
+			return null;
+		}
+		
+		String[] values = value.split(".");
+		if (values.length == 2 ) {
+			values[0] = Cryptography.decrypt(values[0]);
+			values[1] = Cryptography.decrypt(values[1]);
+		}
+		
+		return null;
 	}
 }

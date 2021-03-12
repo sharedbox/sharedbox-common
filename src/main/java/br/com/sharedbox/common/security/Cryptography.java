@@ -37,8 +37,8 @@ public class Cryptography {
 	public static String encrypt(String value) throws Exception {
 		Cipher c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
 	    c.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(sharedkey, "DESede"), new IvParameterSpec(sharedvector));
-	    byte[] encrypted = c.doFinal(value.getBytes("UTF-8"));
-	    return Base64.getEncoder().encodeToString(encrypted);
+	    byte[] encrypted = c.doFinal(value.getBytes("UTF-32"));
+	    return Base64.getEncoder().encodeToString(encrypted).replace("/", "-");
 	}
 
 	/**
@@ -48,10 +48,14 @@ public class Cryptography {
 	 * @throws Exception
 	 */
 	public static String decrypt(String value) throws Exception {
+		if(value != null) {
+			value = value.replace("-", "/");
+		}
+			
 		Cipher c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
 	    c.init(Cipher.DECRYPT_MODE, new SecretKeySpec(sharedkey, "DESede"), new IvParameterSpec(sharedvector));
 	    byte[] decrypted = c.doFinal(Base64.getDecoder().decode(value));
-	    return new String(decrypted, "UTF-8");
+	    return new String(decrypted, "UTF-32");
 	}
 	
 	/**

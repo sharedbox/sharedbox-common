@@ -8,7 +8,7 @@ import br.com.sharedbox.common.messages.MessageType;
 
 /**
  * This class contain return values
- * @author Rafael Costi
+ * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
  *
  */
@@ -30,7 +30,7 @@ public class ResponseValues <T> {
 	 */
 	public void setValue(T value) {
 		this.value = value;
-	}
+	}	
 
 	/**
 	 * Messages
