@@ -10,7 +10,6 @@ br\com\sharedbox\common\utils\DateTimeUtils.class
 br\com\sharedbox\common\messages\Message.class
 br\com\sharedbox\common\QRCode.class
 br\com\sharedbox\common\utils\StringUtils.class
-br\com\sharedbox\common\http\HttpCodes.class
 br\com\sharedbox\common\documents\DocumentBase.class
 br\com\sharedbox\common\documents\br\Cpf.class
 br\com\sharedbox\common\security\Jwt.class
