@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.springframework.lang.Nullable;
+
 /**
  * String utils
  * @author Rafael Costi <rafaelcosti@outlook.com>
@@ -48,5 +50,26 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 			throw new RuntimeException(e);
 		}
         return response;
+	}
+	
+	/**
+	 *
+	 */
+	public static String trimTrailingCharacter(String str, char trailingCharacter) {
+		if (!hasLength(str)) {
+			return str;
+		}
+		int eIx = str.length() - 1;
+		while (eIx >= 0 && trailingCharacter == str.charAt(eIx)) {
+			eIx--;
+		}
+		return str.substring(0, eIx + 1);
+	}
+	
+	/**
+	 *
+	 */
+	public static boolean hasLength(@Nullable String str) {
+		return (str != null && !str.isEmpty());
 	}
 }
