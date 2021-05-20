@@ -11,7 +11,7 @@ public class Message {
 	 * Constructor
 	 */
 	public Message() {
-		this("", 0, MessageType.Default, null);
+		this("", "", MessageType.Default, null);
 	}
 
 	/**
@@ -19,7 +19,7 @@ public class Message {
 	 * @param description
 	 */
 	public Message(String description) {
-		this(description, 0, MessageType.Default, null);
+		this(description, "", MessageType.Default, null);
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class Message {
 	 * @param description
 	 * @param code
 	 */
-	public Message(String description, int code) {
+	public Message(String description, String code) {
 		this(description, code, MessageType.Default, null);
 	}
 
@@ -37,22 +37,14 @@ public class Message {
 	 * @param code
 	 * @param messageType
 	 */
-	public Message(String description, int code, MessageType messageType) {
+	public Message(String description, String code, MessageType messageType) {
 		this(description, code, messageType, null);
 	}
 	
 	/**
 	 * Constructor
-	 * @param code
 	 */
-	public Message(int code) {
-		this("", code, MessageType.Default, null);
-	}
-	
-	/**
-	 * Constructor
-	 */
-	public Message(int code, MessageType messageType) {
+	public Message(String code, MessageType messageType) {
 		this("", code, messageType, null);
 	}
 
@@ -61,7 +53,7 @@ public class Message {
 	 * @param messageType
 	 */
 	public Message(MessageType messageType) {
-		this("", 0, messageType, null);
+		this("", "", messageType, null);
 	}
 
 	/**
@@ -70,7 +62,7 @@ public class Message {
 	 */
 	public Message(Exception exception) {
 		this(exception.getMessage()
-				, MessageType.Exception.getCode()
+				, Byte.toString(MessageType.Exception.getCode())
 				, MessageType.Exception
 				, exception);
 	}
@@ -82,7 +74,7 @@ public class Message {
 	 * @param messageType
 	 * @param exception
 	 */
-	public Message(String description, int code, MessageType messageType, Exception exception) {
+	public Message(String description, String code, MessageType messageType, Exception exception) {
 		this.description = description;
 		this.code = code;
 		this.messageType = messageType;
@@ -111,19 +103,19 @@ public class Message {
 	/**
 	 * Message code
 	 */
-	private int code;
+	private String code;
 
 	/**
 	 * @return the code
 	 */
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
 	/**
 	 * @param code the code to set
 	 */
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
