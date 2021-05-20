@@ -35,19 +35,19 @@ public class ResponseValues <T> {
 	/**
 	 * Messages
 	 */
-	private Map<Integer, Message> messages;
+	private Map<String, Message> messages;
 	
 	/**
 	 * @return the messages
 	 */
-	public Map<Integer, Message> getMessages() {
+	public Map<String, Message> getMessages() {
 		return messages;
 	}
 
 	/**
 	 * @param messages the messages to set
 	 */
-	public void setMessages(Map<Integer, Message> messages) {
+	public void setMessages(Map<String, Message> messages) {
 		this.messages = messages;
 	}
 
@@ -55,8 +55,8 @@ public class ResponseValues <T> {
 	 * Get messages by message type
 	 * @return
 	 */
-	public Map<Integer, Message> getMessagesByType(MessageType messageType) {
-		Map<Integer, Message> response = new HashMap<Integer, Message>();
+	public Map<String, Message> getMessagesByType(MessageType messageType) {
+		Map<String, Message> response = new HashMap<String, Message>();
 		
 		if(this.messages == null) {
 			return response; 
@@ -79,7 +79,7 @@ public class ResponseValues <T> {
 	 */
 	public void addMessage(Message message) {
 		if (this.messages == null) {
-			this.messages = new HashMap<Integer, Message>(); 
+			this.messages = new HashMap<String, Message>(); 
 		}
 		
 		this.messages.put(message.getCode(), message);
