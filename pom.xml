@@ -66,19 +66,6 @@
       <version>6.0.0.Alpha7</version>
     </dependency>
     
-    <!-- Log4j -->
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>${log4j.version}</version>
-    </dependency>
-		
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j-impl</artifactId>
-      <version>${log4j.version}</version>
-    </dependency>
-    
     <!-- Javax -->
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -98,12 +85,32 @@
       <artifactId>javax.servlet.jsp.jstl-api</artifactId>
       <version>1.2.2</version>
     </dependency>
+    
+    <!-- Log4j -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+		
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
 
     <!-- Maven -->
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-model</artifactId>
       <version>3.3.9</version>
+    </dependency>
+    
+    <!-- MySql -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.24</version>
     </dependency>
     
     <!-- Spring -->    
@@ -179,7 +186,7 @@
       <artifactId>spring-boot-autoconfigure</artifactId>
       <version>2.4.5</version>
     </dependency>
-        
+
     <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>

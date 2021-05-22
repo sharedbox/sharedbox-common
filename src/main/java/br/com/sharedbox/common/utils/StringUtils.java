@@ -4,8 +4,6 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import org.springframework.lang.Nullable;
-
 /**
  * String utils
  * @author Rafael Costi <rafaelcosti@outlook.com>
@@ -69,7 +67,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	/**
 	 *
 	 */
-	public static boolean hasLength(@Nullable String str) {
+	public static boolean hasLength(String str) {
 		return (str != null && !str.isEmpty());
 	}
 }
