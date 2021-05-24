@@ -23,4 +23,18 @@ public class DateTimeUtils {
 		LocalDate ld = LocalDate.parse("01/" + date, formatter);
 		return ld;
 	}
+
+	/**
+	 * <p>
+	 * Convert String format MM/dd/yyyy to LocalDate
+	 * </p>
+	 *  
+	 * @param dateStr
+	 * @return date
+	 */
+	public static LocalDate stringMMddyyyyToLocalDate(String date) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		LocalDate ld = LocalDate.parse(date, formatter);
+		return ld;
+	}
 }
