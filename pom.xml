@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.com.sharedbox</groupId>
   <artifactId>sharedbox-common</artifactId>
-  <version>0.0.1</version>
+  <version>0.1.0</version>
   <name>sharedbox-common</name>
   <description>sharedbox-common</description>
   <packaging>jar</packaging>
@@ -18,8 +18,10 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Spring -->
     <srping.version>5.3.3</srping.version>
-    <srping.data.version>2.5.0</srping.data.version>
+    <srping.data.version>2.4.3</srping.data.version>
     <spring.security.version>5.4.6</spring.security.version>
+    <!-- Hibernate -->
+    <hibernate.version>5.4.28.Final</hibernate.version>
     <!-- Log4j -->
     <log4j.version>2.14.1</log4j.version>
   </properties>
@@ -61,9 +63,9 @@
     
     <!-- Hibernate -->
     <dependency>
-      <groupId>org.hibernate.orm</groupId>
+      <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>6.0.0.Alpha7</version>
+      <version>${hibernate.version}</version>
     </dependency>
     
     <!-- Javax -->
