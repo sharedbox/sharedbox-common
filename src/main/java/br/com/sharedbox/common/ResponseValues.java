@@ -92,4 +92,12 @@ public class ResponseValues <T> {
 	public boolean hasMessageError() {
 		return !getMessagesByType(MessageType.Error).isEmpty();
 	}
+
+	/**
+	 * Check if has value on property
+	 * @return
+	 */
+	public boolean hasValue() {
+		return value != null && value.hashCode() > 0;
+	}
 }
