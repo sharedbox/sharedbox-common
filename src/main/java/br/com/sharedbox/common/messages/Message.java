@@ -1,5 +1,7 @@
 package br.com.sharedbox.common.messages;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * This enum contain message type 
  * @author Rafael Costi <rafaelcosti@outlook.com>
@@ -141,6 +143,7 @@ public class Message {
 	/**
 	 * Exception
 	 */
+	@JsonIgnore
 	private Exception exception;
 
 	/**
