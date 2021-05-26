@@ -3,6 +3,7 @@ package br.com.sharedbox.common.utils;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 /**
  * String utils
@@ -69,5 +70,29 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 */
 	public static boolean hasLength(String str) {
 		return (str != null && !str.isEmpty());
+	}
+
+	/**
+	 * Create a new uuid
+	 * @return
+	 */
+	public static String newUUID() {
+		return UUID.randomUUID().toString();
+	}
+
+	/**
+	 * Create a new uuid from string
+	 * @return
+	 */
+	public static String newUUIDByString(String str) {
+		return UUID.fromString(str).toString();
+	}
+
+	/**
+	 * Create a new uuid by bytes
+	 * @return
+	 */
+	public static String newUUIDFromBytes(byte[] bt) {
+		return UUID.nameUUIDFromBytes(bt).toString();
 	}
 }
