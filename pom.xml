@@ -33,10 +33,29 @@
   
   <developers>
     <developer>
+      <id>rafael.costi</id>
       <name>Rafael Costi Roque</name>
       <email>rafaelcosti@outlook.com</email>
+      <roles>
+        <role>Owner</role>
+        <role>Committer</role>
+      </roles>
     </developer>
   </developers>  
+  
+  <scm>
+    <url>https://github.com/sharedbox/sharedbox-common/</url>
+    <connection>scm:git:https://github.com/sharedbox/sharedbox-common.git</connection>
+    <developerConnection>scm:git:git@github.com/sharedbox/sharedbox-common.git</developerConnection>
+  </scm>
+  
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   
   <dependencies>
     <!-- Junit -->
