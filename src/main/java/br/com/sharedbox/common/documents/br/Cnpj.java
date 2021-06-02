@@ -9,6 +9,7 @@ import br.com.sharedbox.common.documents.DocumentUtils;
 
 /**
  * Validate CNPJ (Brazilian business document)
+ * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 0.0.1
  */
@@ -39,7 +40,6 @@ public class Cnpj extends DocumentBase implements DocumentUtils {
 
 	@Override
 	public boolean validate(Object value) {
-		// Todo colocar pad left
 		if(value == null) {
 			return false;			
 		}

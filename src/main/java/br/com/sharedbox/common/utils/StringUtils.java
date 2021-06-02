@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
+import javax.swing.text.MaskFormatter;
+
 /**
  * String utils
  * @author Rafael Costi <rafaelcosti@outlook.com>
@@ -94,5 +96,14 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 */
 	public static String newUUIDFromBytes(byte[] bt) {
 		return UUID.nameUUIDFromBytes(bt).toString();
+	}
+	
+	/**
+	 * Create mask format on value
+	 * @return
+	 * @throws Exception 
+	 */
+	public static String maskFormat(String mask, String value) throws Exception {
+		return new MaskFormatter(mask).valueToString(value);
 	}
 }

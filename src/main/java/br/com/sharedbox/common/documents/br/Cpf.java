@@ -9,6 +9,7 @@ import br.com.sharedbox.common.documents.DocumentUtils;
 
 /**
  * Validate CPF (Brazilian personal document)
+ * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 0.0.1
  */

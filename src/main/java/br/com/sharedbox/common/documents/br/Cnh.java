@@ -5,6 +5,7 @@ import br.com.sharedbox.common.documents.DocumentUtils;
 
 /**
  * Validate CNH (Brazilian driver's license)
+ * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 0.0.1
  */

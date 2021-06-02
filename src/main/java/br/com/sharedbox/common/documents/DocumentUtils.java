@@ -17,7 +17,7 @@ public interface DocumentUtils {
 	 * @param value
 	 * @return String
 	 */
-	String format(String value);
+	String format(String value) throws Exception;
 	
 	/**
 	 * 
