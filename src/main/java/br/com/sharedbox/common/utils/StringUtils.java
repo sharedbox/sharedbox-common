@@ -120,6 +120,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @return
 	 */
 	public static String onlyNumbers(String value) {
-		return value.replaceAll("[0-9]+", "");
+		if(isEmpty(value)) {
+			return "0";
+		}
+		return value.replaceAll("[^a-zA-Z]", "");
 	}
 }
