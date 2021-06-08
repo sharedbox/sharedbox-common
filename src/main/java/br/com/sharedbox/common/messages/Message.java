@@ -3,10 +3,10 @@ package br.com.sharedbox.common.messages;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * This enum contain message type 
+ * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0 
- *
+ * @since 01/01/2021
  */
 public class Message {
 	/**
@@ -14,59 +14,6 @@ public class Message {
 	 */
 	public Message() {
 		this("", "", MessageType.Default, null);
-	}
-
-	/**
-	 * Constructor
-	 * @param description
-	 */
-	public Message(String description) {
-		this(description, "", MessageType.Default, null);
-	}
-
-	/**
-	 * Constructor
-	 * @param description
-	 * @param code
-	 */
-	public Message(String description, String code) {
-		this(description, code, MessageType.Default, null);
-	}
-
-	/**
-	 * Constructor
-	 * @param description
-	 * @param code
-	 * @param messageType
-	 */
-	public Message(String description, String code, MessageType messageType) {
-		this(description, code, messageType, null);
-	}
-	
-	/**
-	 * Constructor
-	 */
-	public Message(String code, MessageType messageType) {
-		this("", code, messageType, null);
-	}
-
-	/**
-	 * Constructor
-	 * @param messageType
-	 */
-	public Message(MessageType messageType) {
-		this("", "", messageType, null);
-	}
-
-	/**
-	 * Constructor
-	 * @param exception
-	 */
-	public Message(Exception exception) {
-		this(exception.getMessage()
-				, Byte.toString(MessageType.Exception.getCode())
-				, MessageType.Exception
-				, exception);
 	}
 	
 	/**
