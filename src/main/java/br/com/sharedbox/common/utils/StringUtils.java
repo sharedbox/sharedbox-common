@@ -106,4 +106,12 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	public static String maskFormat(String mask, String value) throws Exception {
 		return new MaskFormatter(mask).valueToString(value);
 	}
+	
+	/**
+	 * Remove special character
+	 * @return
+	 */
+	public static String removeSpecialCharacter(String value) {
+		return value.replaceAll("[^a-zA-Z0-9]", "");
+	}
 }
