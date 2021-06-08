@@ -10,6 +10,7 @@ public enum MessageType {
 	Default((byte)9999),
 	Error((byte)1),
 	Exception((byte)-1),
+	Info((byte)3),
 	Success((byte)0),
 	Warning((byte)2);
 	
