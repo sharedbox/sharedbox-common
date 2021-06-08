@@ -114,4 +114,12 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	public static String removeSpecialCharacter(String value) {
 		return value.replaceAll("[^a-zA-Z0-9]", "");
 	}
+
+	/**
+	 * Only numbers
+	 * @return
+	 */
+	public static String onlyNumbers(String value) {
+		return value.replaceAll("[0-9]+", "");
+	}
 }
