@@ -123,6 +123,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		if(isEmpty(value)) {
 			return "0";
 		}
-		return value.replaceAll("[^a-zA-Z]", "");
+		return value.replaceAll("[^0-9]", "");
 	}
 }
