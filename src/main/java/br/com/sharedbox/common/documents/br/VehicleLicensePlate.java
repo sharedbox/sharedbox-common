@@ -66,7 +66,7 @@ public class VehicleLicensePlate extends DocumentBase implements DocumentUtils {
 			return false;
 		}
 		
-		value = value.toString().replace("-", "");
+		value = value.toString().replace("-", "").toUpperCase();
 		Pattern pat = Pattern.compile (this.licensePlateRegexValidator);
         Matcher mat = pat.matcher(value.toString());
         if (!mat.matches()) {
