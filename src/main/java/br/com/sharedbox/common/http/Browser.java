@@ -1,6 +1,6 @@
 package br.com.sharedbox.common.http;
 
-import org.apache.commons.lang3.StringUtils;
+import br.com.sharedbox.common.utils.StringUtils;
 
 /**
  * Browser list
