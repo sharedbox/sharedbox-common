@@ -9,8 +9,10 @@ import javax.swing.text.MaskFormatter;
 
 /**
  * String utils
+ * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
+ * @since 06/08/2021
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	/**
@@ -124,5 +126,13 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 			return "0";
 		}
 		return value.replaceAll("[^0-9]", "");
+	}
+
+	/**
+	 * Convert json String to Object
+	 * @return
+	 */
+	public static <T> T  convertToObject(String obj, Class<T> to) {
+		return ObjectUtils.convertToClassModel(obj, to);
 	}
 }
