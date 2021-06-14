@@ -1,5 +1,6 @@
 package br.com.sharedbox.common.utils;
 
+import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -129,10 +130,18 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	}
 
 	/**
-	 * Convert json String to Object
+	 * Convert JSON String to Object
 	 * @return
 	 */
 	public static <T> T  convertToObject(String obj, Class<T> to) {
 		return ObjectUtils.convertToClassModel(obj, to);
 	}
+
+	/**
+	 * Convert JSON String to Object
+	 * @return
+	 */
+	public static <T> T  convertToObject(String obj, Type to) {
+		return ObjectUtils.convertToClassModel(obj, to);
+	} 
 }
