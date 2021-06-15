@@ -2,11 +2,16 @@ package br.com.sharedbox.common.utils;
 
 import java.lang.reflect.Type;
 import java.math.BigInteger;
+import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.text.MaskFormatter;
+
+import org.apache.commons.codec.binary.Hex;
 
 /**
  * String utils
@@ -23,6 +28,26 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		super();
 	}
 
+	/**
+	 * 
+	 * @param secret
+	 * @param input
+	 * @return
+	 */
+	public static String convertToSha1Hex(String secret, String input) {
+	    String check = null;
+	    try {
+	    	Mac sha1_HMAC = Mac.getInstance("HmacSHA1");
+	    	SecretKeySpec secretKey = new SecretKeySpec(secret.getBytes(), "HmacSHA1");
+	    	sha1_HMAC.init(secretKey);
+	    	byte[] hash = sha1_HMAC.doFinal(input.getBytes());
+	    	check = Hex.encodeHexString(hash);
+	    } catch (NoSuchAlgorithmException | InvalidKeyException exception) {
+	    	throw new RuntimeException(exception);
+	    }
+	    return check;
+	}
+	
 	/**
 	 * Convert String to Hash MD5 (default base 64)
 	 * @param value
