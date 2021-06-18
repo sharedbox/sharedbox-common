@@ -22,19 +22,13 @@ public class VehicleLicensePlate extends DocumentBase implements DocumentUtils {
     private String licensePlateRegexValidator = "[A-Z]{3}[0-9][0-9A-Z][0-9]{2}";
     
     /**
-     * 
-     */
-    private String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    /**
      * Generate Mercosul license plate
      * 
      * @return licesePlate
      */
 	public String generateMercosul() {
-		Random random = new Random();
 		char[] plate = generate().toCharArray(); 
-		plate[4] = chars.charAt(random.nextInt(chars.length()));
+		plate[4] = StringUtils.strRandon(1, true).charAt(0);
 		return new StringBuilder().append(plate).toString();
 	}
 
@@ -45,11 +39,8 @@ public class VehicleLicensePlate extends DocumentBase implements DocumentUtils {
      */
 	@Override
 	public String generate() {
-		Random random = new Random();
-		return "" + chars.charAt(random.nextInt(chars.length()))
-				+ chars.charAt(random.nextInt(chars.length())) 
-				+ chars.charAt(random.nextInt(chars.length())) 
-				+ StringUtils.leftPad("0", 4, Integer.toString(random.nextInt(9999)));
+		return "" + StringUtils.strRandon(3, true)
+				+ StringUtils.leftPad("0", 4, Integer.toString(new Random().nextInt(9999)));
 	}
 
 	@Override

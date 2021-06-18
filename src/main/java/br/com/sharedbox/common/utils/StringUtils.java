@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.crypto.Mac;
@@ -169,4 +170,85 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	public static <T> T  convertToObject(String obj, Type to) {
 		return ObjectUtils.convertToClassModel(obj, to);
 	} 
+
+	/**
+	 * Generate random string 
+	 * 
+	 * @param amount character
+	 * @return
+	 */
+	public static String strRandon(int amountChar) {
+		return strRandon(amountChar, false, false, false, false);
+	}
+
+	/**
+	 * Generate random string 
+	 * 
+	 * @param amount character
+	 * @param whith upper
+	 * @return
+	 */
+	public static String strRandon(int amountChar, boolean upper) {
+		return strRandon(amountChar, upper, false, false, false);
+	}
+
+	/**
+	 * Generate random string 
+	 * 
+	 * @param amount character
+	 * @param whith upper
+	 * @param whith lower
+	 * @return
+	 */
+	public static String strRandon(int amountChar, boolean upper, boolean lower) {
+		return strRandon(amountChar, upper, lower, false, false);
+	}
+
+	/**
+	 * Generate random string 
+	 * 
+	 * @param amount character
+	 * @param whith upper
+	 * @param whith lower
+	 * @param whith number
+	 * @return
+	 */
+	public static String strRandon(int amountChar, boolean upper, boolean lower, boolean number) {
+		return strRandon(amountChar, upper, lower, number, false);
+	}
+	
+	/**
+	 * Generate random string 
+	 * 
+	 * @param amount character
+	 * @param whith upper
+	 * @param whith lower
+	 * @param whith number
+	 * @param whith specialChar
+	 * @return
+	 */
+	public static String strRandon(int amountChar, boolean upper, boolean lower, boolean number, boolean specialChar) {
+		String alpha = "abcdefghijklmnopqrstuvwxyz";
+		String numbers = "0123456789";
+		String special = "!@#$%&?£";
+		String strRandom = EMPTY;
+		
+		strRandom = upper ? strRandom = alpha.toUpperCase() : EMPTY;
+		strRandom = lower ? strRandom = strRandom + alpha.toLowerCase() : EMPTY;
+		strRandom = number ? strRandom = strRandom + numbers : EMPTY;
+		strRandom = specialChar ? strRandom = strRandom + special : EMPTY;
+		
+		if (isEmpty(strRandom)) {
+			strRandom = alpha.toUpperCase() + alpha.toLowerCase() + numbers ;
+		}
+		
+		String reponse = EMPTY;
+		Random random = new Random();
+		
+		for (int i = 0; i < amountChar; i++) {
+			reponse = reponse + strRandom.charAt(random.nextInt(strRandom.length()));
+		}
+		
+		return reponse;
+	}
 }
