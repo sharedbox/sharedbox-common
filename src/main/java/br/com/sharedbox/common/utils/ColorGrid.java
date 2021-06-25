@@ -17,6 +17,7 @@ public enum ColorGrid {
 	Green("008000 ", new int[]{0, 128, 0}),
 	Gray("808080", new int[]{128, 128, 128}),
 	Palevioletred("DB7093", new int[]{219, 112, 147}),
+	Purple("800080", new int[]{128, 0, 128}),
 	Red("FF0000", new int[]{255, 0, 0}),
 	Violet("EE82EE", new int[]{238, 130, 238}),
 	Yelow("FFFF00", new int[]{255, 255, 0}),
