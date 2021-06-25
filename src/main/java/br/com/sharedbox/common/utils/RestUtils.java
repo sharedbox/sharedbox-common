@@ -55,33 +55,10 @@ public class RestUtils {
 	public static RestTemplate newInstance(Proxy proxy) throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
 		SSLConnectionSocketFactory sslsf = sslConnection();
 		
-		Registry<ConnectionSocketFactory> socketFactoryRegistry =
-				RegistryBuilder.<ConnectionSocketFactory>create()
-						.register("https", sslsf)
-						.register("http", new PlainConnectionSocketFactory())
-						.build();
-
-		HttpHost httpHost = null;
-		if (proxy != null && (proxy.getPort() > 0 && !StringUtils.isEmpty(proxy.getHost()))) {
-			httpHost = new HttpHost(proxy.getHost(), proxy.getPort());
-		}
-
 		BasicHttpClientConnectionManager connectionManager =
-				new BasicHttpClientConnectionManager(socketFactoryRegistry);
-
-		CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslsf)
-				.setConnectionManager(connectionManager).setProxy(httpHost).build();
-
-		HttpComponentsClientHttpRequestFactory requestFactory =
-				new HttpComponentsClientHttpRequestFactory(httpClient);
-
-		requestFactory.setConnectTimeout(100000);
-		requestFactory.setConnectionRequestTimeout(100000);
-		requestFactory.setReadTimeout(100000);
-
-		RestTemplate response = new RestTemplate(requestFactory);
-
-		return response;
+				new BasicHttpClientConnectionManager(newSocketFactoryRegistry(sslsf));
+		
+		return new RestTemplate(newClientHttpRequestFactory(proxy, sslsf, connectionManager));
 	}
 
 	/**
@@ -95,5 +72,49 @@ public class RestUtils {
 		TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
 		SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
 		return new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+	}
+	
+	/**
+	 * 
+	 * @param sslsf
+	 * @return
+	 */
+	private static Registry<ConnectionSocketFactory> newSocketFactoryRegistry(SSLConnectionSocketFactory sslsf) {
+		return RegistryBuilder.<ConnectionSocketFactory>create()
+				.register("https", sslsf)
+				.register("http", new PlainConnectionSocketFactory())
+				.build();
+	}
+	
+	/**
+	 * 
+	 * @param proxy
+	 * @param sslsf
+	 * @param connectionManager
+	 * @return
+	 */
+	private static HttpComponentsClientHttpRequestFactory newClientHttpRequestFactory(Proxy proxy
+			, SSLConnectionSocketFactory sslsf
+			, BasicHttpClientConnectionManager connectionManager) {
+		
+		HttpHost httpHost = null;
+		if (proxy != null && (proxy.getPort() > 0 && !StringUtils.isEmpty(proxy.getHost()))) {
+			httpHost = new HttpHost(proxy.getHost(), proxy.getPort());
+		}
+		
+		CloseableHttpClient httpClient = HttpClients.custom()
+				.setSSLSocketFactory(sslsf)
+				.setConnectionManager(connectionManager)
+				.setProxy(httpHost)
+				.build();
+
+		HttpComponentsClientHttpRequestFactory requestFactory =
+				new HttpComponentsClientHttpRequestFactory(httpClient);
+
+		requestFactory.setConnectTimeout(100000);
+		requestFactory.setConnectionRequestTimeout(100000);
+		requestFactory.setReadTimeout(100000);
+		
+		return requestFactory;
 	}
 }
