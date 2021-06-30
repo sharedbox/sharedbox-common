@@ -45,7 +45,15 @@ public class VehicleLicensePlate extends DocumentBase implements DocumentUtils {
 
 	@Override
 	public String format(String value) throws Exception {
-		return StringUtils.maskFormat("###-####", value);
+		if(StringUtils.isEmpty(value)) {
+			return "AAA-0000";
+		}
+		
+		if (value.length() < 7) {
+			value = StringUtils.leftPad("A", 7, value);
+		}
+		
+		return value.substring(0, 3) + "-" + value.substring(3, (value.length()));
 	}
 
 	/**

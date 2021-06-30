@@ -133,7 +133,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @throws Exception 
 	 */
 	public static String maskFormat(String mask, String value) throws Exception {
-		return new MaskFormatter(mask).valueToString(value);
+		MaskFormatter mf = new MaskFormatter(mask);
+        mf.setValueContainsLiteralCharacters(false);
+		return mf.valueToString(value);
 	}
 	
 	/**
@@ -234,9 +236,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		String strRandom = EMPTY;
 		
 		strRandom = upper ? strRandom = alpha.toUpperCase() : EMPTY;
-		strRandom = lower ? strRandom = strRandom + alpha.toLowerCase() : EMPTY;
-		strRandom = number ? strRandom = strRandom + numbers : EMPTY;
-		strRandom = specialChar ? strRandom = strRandom + special : EMPTY;
+		strRandom = lower ? strRandom = strRandom + alpha.toLowerCase() : strRandom + EMPTY;
+		strRandom = number ? strRandom = strRandom + numbers : strRandom + EMPTY;
+		strRandom = specialChar ? strRandom = strRandom + special : strRandom + EMPTY;
 		
 		if (isEmpty(strRandom)) {
 			strRandom = alpha.toUpperCase() + alpha.toLowerCase() + numbers ;

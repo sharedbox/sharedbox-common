@@ -76,14 +76,6 @@
   </licenses>
   
   <dependencies>
-    <!-- Junit -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
-    </dependency>
-
     <!-- Apache -->
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -187,6 +179,22 @@
       <version>${javax.servlet.xml.soap.api}</version>
     </dependency>
     
+    <!-- Junit -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.8.0-M1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- Mockito -->
+    <dependency>
+    <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>3.11.2</version>
+      <scope>test</scope>
+    </dependency>
+
     <!-- MySql -->
     <dependency>
       <groupId>mysql</groupId>
