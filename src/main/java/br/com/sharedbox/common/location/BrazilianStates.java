@@ -1,4 +1,4 @@
-package br.com.sharedbox.common.utils;
+package br.com.sharedbox.common.location;
 
 /**
  * Contain all Brazilian states

@@ -143,7 +143,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @return
 	 */
 	public static String removeSpecialCharacter(String value) {
-		return value.replaceAll("[^a-zA-Z0-9]", "");
+		return value.replaceAll("[^a-zA-Z0-9 ]", "");
 	}
 
 	/**
@@ -252,5 +252,23 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		}
 		
 		return reponse;
+	}
+	
+	/**
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static String removeEqualChars(String value) {
+		return value.replaceAll("(([A-Za-z])(\\2)+)", "$2");
+	}
+	
+	/**
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static String removeEqualCharsNumbers(String value) {
+		return value.replace("(([A-Za-z0-9])(\2)+)", "");
 	}
 }
