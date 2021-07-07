@@ -46,6 +46,15 @@ public enum Browser {
 	 * @param string
 	 * @return
 	 */
+	public static Browser getByNameOrCode(int value) {
+		return getByNameOrCode(Integer.toString(value));
+	}
+
+	/**
+	 * 
+	 * @param string
+	 * @return
+	 */
 	public static Browser getByNameOrCode(String value) {
 		if (StringUtils.isEmpty(value)) {
 			return NotFound;

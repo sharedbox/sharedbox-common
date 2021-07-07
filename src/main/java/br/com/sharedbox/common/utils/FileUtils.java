@@ -21,7 +21,7 @@ public class FileUtils extends org.apache.commons.io.IOUtils {
 	 * @return
 	 * @throws IOException 
 	 */
-	public String[] readAllLines(String path) throws IOException {
+	public static String[] readAllLines(String path) throws IOException {
 		return readAllLines(new File(path));
 	}
 	
@@ -30,7 +30,7 @@ public class FileUtils extends org.apache.commons.io.IOUtils {
 	 * @return
 	 * @throws IOException 
 	 */
-	public String[] readAllLines(File path) throws IOException {
+	public static String[] readAllLines(File path) throws IOException {
 		return readAllLines(path.toPath());
 	}
 	
@@ -39,9 +39,9 @@ public class FileUtils extends org.apache.commons.io.IOUtils {
 	 * @return
 	 * @throws IOException 
 	 */
-	public String[] readAllLines(Path path) throws IOException {
+	public static String[] readAllLines(Path path) throws IOException {
 		List<String> lines = new ArrayList<String>();
-		return Files.readAllLines(path, StandardCharsets.UTF_8)
-				.toArray(new String[lines.size()]);
+		lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+		return lines.toArray(new String[lines.size()]);
 	}
 }

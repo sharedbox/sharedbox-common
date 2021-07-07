@@ -14,7 +14,7 @@ import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
-import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContexts;
@@ -97,23 +97,21 @@ public class RestUtils {
 			, SSLConnectionSocketFactory sslsf
 			, BasicHttpClientConnectionManager connectionManager) {
 		
-		HttpHost httpHost = null;
+		HttpClientBuilder hcb = HttpClients.custom()
+				.setSSLSocketFactory(sslsf)
+				.setConnectionManager(connectionManager);
+		
 		if (proxy != null && (proxy.getPort() > 0 && !StringUtils.isEmpty(proxy.getHost()))) {
-			httpHost = new HttpHost(proxy.getHost(), proxy.getPort());
+			HttpHost httpHost = new HttpHost(proxy.getHost(), proxy.getPort());
+			hcb = hcb.setProxy(httpHost);
 		}
 		
-		CloseableHttpClient httpClient = HttpClients.custom()
-				.setSSLSocketFactory(sslsf)
-				.setConnectionManager(connectionManager)
-				.setProxy(httpHost)
-				.build();
-
 		HttpComponentsClientHttpRequestFactory requestFactory =
-				new HttpComponentsClientHttpRequestFactory(httpClient);
+				new HttpComponentsClientHttpRequestFactory(hcb.build());
 
-		requestFactory.setConnectTimeout(100000);
-		requestFactory.setConnectionRequestTimeout(100000);
-		requestFactory.setReadTimeout(100000);
+		requestFactory.setConnectTimeout(10000);
+		requestFactory.setConnectionRequestTimeout(10000);
+		requestFactory.setReadTimeout(50000);
 		
 		return requestFactory;
 	}

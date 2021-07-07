@@ -14,7 +14,7 @@ import br.com.sharedbox.common.utils.StringUtils;
  */
 public class Phonetizer {
 	/**
-	 * 
+	 * Execute Brazilian phoneticize by default
 	 * @return
 	 */
 	public static String execute(String phrase) throws IllegalArgumentException {
