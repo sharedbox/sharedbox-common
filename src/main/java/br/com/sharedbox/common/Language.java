@@ -17,12 +17,13 @@ public enum Language {
 	EnNz("en-nz"),
 	EnUs("en-us"),
 	EsEs("es-es"),
-	Esmx("es-mx"),
-	Esar("es-ar"),
-	Escl("es-cl"),
-	Espy("es-py"),
-	Esuy("es-uy"),
+	EsMx("es-mx"),
+	EsAr("es-ar"),
+	EsCl("es-cl"),
+	EsPy("es-py"),
+	EsUy("es-uy"),
 	PtBr("pt-br"),
+	PtPT("pt-pt"),
 	NotFound("");
 	
 	/**
