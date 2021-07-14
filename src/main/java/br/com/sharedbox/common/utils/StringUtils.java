@@ -2,9 +2,7 @@ package br.com.sharedbox.common.utils;
 
 import java.lang.reflect.Type;
 import java.math.BigInteger;
-import java.security.InvalidKeyException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.UUID;
 
@@ -35,17 +33,14 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param input
 	 * @return
 	 */
-	public static String convertToSha1Hex(String secret, String input) {
+	public static String convertToSha1Hex(String secret, String input) throws Exception {
 	    String check = null;
-	    try {
-	    	Mac sha1_HMAC = Mac.getInstance("HmacSHA1");
-	    	SecretKeySpec secretKey = new SecretKeySpec(secret.getBytes(), "HmacSHA1");
-	    	sha1_HMAC.init(secretKey);
-	    	byte[] hash = sha1_HMAC.doFinal(input.getBytes());
-	    	check = Hex.encodeHexString(hash);
-	    } catch (NoSuchAlgorithmException | InvalidKeyException exception) {
-	    	throw new RuntimeException(exception);
-	    }
+	    Mac sha1_HMAC = Mac.getInstance("HmacSHA1");
+	    SecretKeySpec secretKey = new SecretKeySpec(secret.getBytes(), "HmacSHA1");
+	    sha1_HMAC.init(secretKey);
+	    byte[] hash = sha1_HMAC.doFinal(input.getBytes());
+	    check = Hex.encodeHexString(hash);
+	    
 	    return check;
 	}
 	
@@ -53,8 +48,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * Convert String to Hash MD5 (default base 64)
 	 * @param value
 	 * @return MD5
+	 * @throws Exception 
 	 */
-	public static String convertToMD5(String value) {
+	public static String convertToMD5(String value) throws Exception {
 		return convertToMD5(value, 64);
 	}
 	
@@ -62,23 +58,22 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * Convert String to Hash MD5
 	 * @param value
 	 * @return MD5
+	 * @throws Exception 
 	 */
-	public static String convertToMD5(String value, int base) {
+	public static String convertToMD5(String value, int base) throws Exception {
 		String response = EMPTY;
-        try {
-			MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] messageDigest = md.digest(value.getBytes()); 
-            BigInteger number = new BigInteger(1, messageDigest); 
+   
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		byte[] messageDigest = md.digest(value.getBytes()); 
+		BigInteger number = new BigInteger(1, messageDigest); 
 
-        	response = number.toString(base); 
-            if (base == 16) {
-                while (response.length() < 32) { 
-                	response = "0" + response; 
-                } 
-            }
-		} catch (NoSuchAlgorithmException e) {
-			throw new RuntimeException(e);
+		response = number.toString(base); 
+		if (base == 16) {
+			while (response.length() < 32) { 
+				response = "0" + response; 
+			} 
 		}
+	
         return response;
 	}
 	
@@ -269,6 +264,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @return
 	 */
 	public static String removeEqualCharsNumbers(String value) {
-		return value.replace("(([A-Za-z0-9])(\2)+)", "");
+		return value.replaceAll("(([0-9])(\\2)+)", "$2");
 	}
 }

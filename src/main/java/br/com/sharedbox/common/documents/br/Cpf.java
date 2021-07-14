@@ -1,6 +1,5 @@
 package br.com.sharedbox.common.documents.br;
 
-import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -57,43 +56,45 @@ public class Cpf extends DocumentBase implements DocumentUtils {
         }
 		
         char dig10, dig11;
+        
         int sm, i, r, num, verify;
-        try {
-            sm = 0;
-            verify = 10;
-            for (i=0; i<9; i++) {
-	            num = (int)(value.toString().charAt(i) - 48);
-	            sm = sm + (num * verify);
-	            verify = verify - 1;
-            }
-            r = 11 - (sm % 11);
-            if ((r == 10) || (r == 11)) {
-                dig10 = '0';
-            } else {
-            	dig10 = (char)(r + 48);
-            }
-            sm = 0;
-            verify = 11;
-            for(i=0; i<10; i++) {
-            	num = (int)(value.toString().charAt(i) - 48);
-            	sm = sm + (num * verify);
-            	verify = verify - 1;
-            }
+        sm = 0;
+        verify = 10;
+        
+        for (i=0; i<9; i++) {
+        	num = (int)(value.toString().charAt(i) - 48);
+        	sm = sm + (num * verify);
+        	verify = verify - 1;
+        }
+        
+        r = 11 - (sm % 11);
+        if ((r == 10) || (r == 11)) {
+        	dig10 = '0';
+        } else {
+        	dig10 = (char)(r + 48);
+        }
 
-            r = 11 - (sm % 11);
-            if ((r == 10) || (r == 11)) {
-                 dig11 = '0';
-            }  else {
-            	dig11 = (char)(r + 48);
-            }
+        sm = 0;
+        verify = 11;
+        
+        for(i=0; i<10; i++) {
+        	num = (int)(value.toString().charAt(i) - 48);
+        	sm = sm + (num * verify);
+        	verify = verify - 1;
+        }
 
-            if ((dig10 == value.toString().charAt(9)) 
-            		&& (dig11 == value.toString().charAt(10))) {
-                 return(true);
-            }
-        } catch (InputMismatchException ex) {
-        	return(false);
-        }    
-		return true;
+        r = 11 - (sm % 11);
+        if ((r == 10) || (r == 11)) {
+        	dig11 = '0';
+        }  else {
+        	dig11 = (char)(r + 48);
+        }
+
+        if ((dig10 == value.toString().charAt(9)) 
+        		&& (dig11 == value.toString().charAt(10))) {
+        	return true;
+        }
+		
+        return false;
 	}
 }

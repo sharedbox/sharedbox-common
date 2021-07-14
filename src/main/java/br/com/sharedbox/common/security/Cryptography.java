@@ -35,6 +35,10 @@ public class Cryptography {
 	 * @throws Exception
 	 */
 	public static String encrypt(String value) throws Exception {
+		if(value == null) {
+			throw new IllegalArgumentException("Value is null");
+		}
+		
 		Cipher c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
 	    c.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(sharedkey, "DESede"), new IvParameterSpec(sharedvector));
 	    byte[] encrypted = c.doFinal(value.getBytes("UTF-32"));
@@ -48,10 +52,12 @@ public class Cryptography {
 	 * @throws Exception
 	 */
 	public static String decrypt(String value) throws Exception {
-		if(value != null) {
-			value = value.replace("-", "/");
+		if(value == null) {
+			throw new IllegalArgumentException("Value is null");
 		}
 			
+		value = value.replace("-", "/");
+		
 		Cipher c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
 	    c.init(Cipher.DECRYPT_MODE, new SecretKeySpec(sharedkey, "DESede"), new IvParameterSpec(sharedvector));
 	    byte[] decrypted = c.doFinal(Base64.getDecoder().decode(value));

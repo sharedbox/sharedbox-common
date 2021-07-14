@@ -1,4 +1,4 @@
-package br.com.sharedbox.common.test.documents.br;
+package br.com.sharedbox.common.documents.br.test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

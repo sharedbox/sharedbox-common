@@ -31,12 +31,24 @@ public class Phonetizer {
 		if (StringUtils.isEmpty(phrase)) {
 			throw new IllegalArgumentException("Phoneticize error. The argument is null or empty");
 		}
+		
+		if(lang == null) {
+			lang = Language.PtBr;
+		}
 
 		phrase = phrase.toUpperCase();
+		switch (lang) {
+			case PtBr: 
+				phrase = phrase.replace("&", "E");
+				break;
+				
+			default:
+		}
+		
 		phrase = Normalizer.normalize(phrase, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 		phrase = StringUtils.removeSpecialCharacter(phrase).toUpperCase();
 
-		if (lang == null || lang == Language.PtBr) {
+		if (lang == Language.PtBr) {
 			return phoneticizePtBr(phrase);
 		}
 
@@ -49,7 +61,7 @@ public class Phonetizer {
 	 * @return
 	 */
 	private static String phoneticizePtBr(String phrase) {
-		List<String> words = Replacements.brWordsNumbers(phrase);
+		List<String> words = new Replacements().brWordsNumbers(phrase);
 
 		char[] phonemeAux = new char[256];
 		char[] phonemeWrk = new char[256];
@@ -70,21 +82,9 @@ public class Phonetizer {
 
 			if (words.get(position).length() == 1) {
 				phonemeWrk[0] = phonemeCmp[0];
-
-				if (phonemeCmp[0] == '_') {
-					phonemeWrk[0] = ' ';
-				} else {
-					if ((phonemeCmp[0] == 'E') || (phonemeCmp[0] == '&') || (phonemeCmp[0] == 'I')) {
-						phonemeWrk[0] = 'i';
-					}
-				}
 			} else {
 				for (i = 0; i < words.get(position).length(); i++) {
-					if (phonemeCmp[i] == '_') {
-						phoneme[i] = 'Y';
-					} else if (phonemeCmp[i] == '&') {
-						phoneme[i] = 'i';
-					} else if ((phonemeCmp[i] == 'E') || (phonemeCmp[i] == 'Y') ||
+					if ((phonemeCmp[i] == 'E') || (phonemeCmp[i] == 'Y') ||
 							(phonemeCmp[i] == 'I')) {
 						phoneme[i] = 'i';
 					} else if ((phonemeCmp[i] == 'O') || (phonemeCmp[i] == 'U')) {
@@ -188,16 +188,18 @@ public class Phonetizer {
 											}
 										}
 									}
-								} else if (x == 1) {
-									phonemeWrk[j] = 'K';
-									j++;
-									i++;
-									break;
-								}  else if (j > 0) {
-									if (phonemeWrk[j - 1] == 's') {
-										j--;
+									
+									if (x == 1) {
+										phonemeWrk[j] = 'K';
+										j++;
+										i++;
+										break;
+									}  else if (j > 0) {
+										if (phonemeWrk[j - 1] == 's') {
+											j--;
+										}
 									}
-								}
+								} 
 								phonemeWrk[j] = 'X';
 								mutePhoneme = 1;
 								i++;
@@ -472,17 +474,6 @@ public class Phonetizer {
 										j++;
 										break;
 									} 
-								}
-
-								if (phonemeAux[i + 1] == 's') {
-									if (phonemeAux[i + 2] != ' ') {
-										copyPhoneme = 1;
-										i++;
-										break;
-									} else {
-										phonemeAux[i + 1] = ' ';
-										break;
-									}
 								}
 
 								if (i == 0) {

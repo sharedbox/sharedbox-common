@@ -1,4 +1,4 @@
-package br.com.sharedbox.common.test.http;
+package br.com.sharedbox.common.http.test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

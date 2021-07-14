@@ -20,7 +20,7 @@ class Replacements {
 	 * @param phrase
 	 * @return
 	 */
-	public static List<String> brWordsNumbers(String phrase) {
+	public List<String> brWordsNumbers(String phrase) {
 		List<String> words = new ArrayList<String>(Arrays.asList(phrase.split(" ")));
 		Map<String, String> letterReplacements = getBrLetterReplacements();
 		Map<String, String> numberReplacements = getBrNumberReplacements();
@@ -40,11 +40,7 @@ class Replacements {
 						sum = 1000;
 					} else {
 						sum = sum * 1000;
-						try {
-							words.remove(i);	
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+						words.remove(i);
 						i--;
 					}
 				}  else {
@@ -75,7 +71,7 @@ class Replacements {
 		}
 		
 		if(sum != 0){
-			words.set(words.size()-1, "" + sum);
+			words.set(words.size() - 1, "" + sum);
 		}
 		
 		return words;

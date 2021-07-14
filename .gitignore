@@ -1,15 +1,23 @@
-target/
 bin/
+target/
 .apt_generated
+*.class
+/*.class
 .classpath
 .factorypath
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse
+
+### STS ###
 .project
-.settings/
 .settings
 .springBeans
 .sts4-cache
-*.class
-
 
 ### IntelliJ IDEA ###
 .idea
