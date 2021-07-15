@@ -1,4 +1,4 @@
-package br.com.sharedbox.common.phonetization.test;
+package br.com.sharedbox.common.phonetization;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -7,16 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import br.com.sharedbox.common.Language;
-import br.com.sharedbox.common.phonetization.Phonetizer;
 
-/**
- * Call test of Phonetizer class
- * 
- * @author Rafael Costi [rafaelcosti@outlook.com]
- * @version 1.0.0
- * @since 07/14/2021
- */
-public class PhonetizerTest {
+class PhonetizerTest {
 	
 	private final String PHRASE_TEST = "Mil nome e sobrenome fonetico para teste glii _ umi glaa . E muito mais. dois mil reais. "
 			+ "Uma CPU com velocidade de clock de 3,2 GHz executa 3,2 bilhões de ciclos por segundo. (As velocidades de CPUs mais "
