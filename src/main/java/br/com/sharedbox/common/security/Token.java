@@ -2,6 +2,8 @@ package br.com.sharedbox.common.security;
 
 import java.time.LocalDateTime;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * This class contain encrypt and decrypt    
  * @author Rafael Costi <rafaelcosti@outlook.com>
@@ -20,7 +22,7 @@ public class Token {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String generate() throws Exception {		
+	public static String generate() throws Exception {	
 		return generate(null);
 	}
 	
@@ -44,12 +46,26 @@ public class Token {
 		int hash = 0;
 		if (value != null) {
 			hash = value.hashCode();
+		} else {
+			String date = LocalDateTime.now().toString();
+			value = Long.toBinaryString(date.hashCode());
 		}
 		
-		String header = "{ \"date\": '" + LocalDateTime.now()
-				+ ", \"hash:\"" + hash + ", "
-				+ ", \"systemBuild\": \"SharedBox\", " 
-				+ ", \"bynary: " + value.getBytes() + " }";
+		String bynary = StringUtils.EMPTY;
+		boolean first = true;
+		for (byte bt : value.getBytes()) {
+			if(first) {
+				bynary = "" + bt;
+				first = false;
+			} else {
+				bynary = bynary + ":" + bt;
+			}
+		}
+
+		String header = "{ \"date\": '" + LocalDateTime.now().toString()
+				+ ", \"hash\": " + hash 
+				+ ", \"systemBuild\": \"SharedBox\"" 
+				+ ", \"bynary\": \"" + bynary + "\" }";
 		
 		return Cryptography.encrypt(header) + "." + Cryptography.encrypt(value) ;
 	}
@@ -61,16 +77,13 @@ public class Token {
 	 * @throws Exception 
 	 */
 	public static String reader(String value) throws Exception {
-		if(value == null) {
+		String[] values = readerValues(value);
+		
+		if (values == null) {
 			return "";
 		}
 		
-		String[] values = value.split("\\.");
-		if (values.length == 2 ) {
-			return Cryptography.decrypt(values[1]);
-		}
-		
-		return "";
+		return values[1];
 	}
 	
 	/**
@@ -84,10 +97,11 @@ public class Token {
 			return null;
 		}
 		
-		String[] values = value.split(".");
+		String[] values = value.split("\\.");
 		if (values.length == 2 ) {
 			values[0] = Cryptography.decrypt(values[0]);
 			values[1] = Cryptography.decrypt(values[1]);
+			return values;
 		}
 		
 		return null;

@@ -38,6 +38,7 @@ public enum ColorGrid {
 	 */
 	private ColorGrid(String hexadecimal, int[] rgb) {
 		this.hexadecimal = hexadecimal;
+		this.rgb = rgb;
 	}
 	
 	/**

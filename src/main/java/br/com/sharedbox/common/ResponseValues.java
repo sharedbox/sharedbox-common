@@ -63,11 +63,9 @@ public class ResponseValues <T> {
 		}
 		
 		for (Message message : this.messages.values()) {
-			if (message != null) {
-				if (message.getMessageType() != null 
-						&& message.getMessageType() == messageType) {
-					response.put(message.getCode(), message);
-				}				
+			if (message.getMessageType() != null 
+					&& message.getMessageType() == messageType) {
+				response.put(message.getCode(), message);
 			}
 		}
 		return response;
@@ -98,6 +96,6 @@ public class ResponseValues <T> {
 	 * @return
 	 */
 	public boolean hasValue() {
-		return value != null && value.hashCode() > 0;
+		return value != null;
 	}
 }

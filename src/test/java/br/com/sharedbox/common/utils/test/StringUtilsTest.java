@@ -1,5 +1,7 @@
 package br.com.sharedbox.common.utils.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -70,5 +72,32 @@ public class StringUtilsTest {
 	public void removeEqualCharsNumbersTest() {
 		String value = StringUtils.removeEqualCharsNumbers("QQ99WW");
 		assertTrue(value.equals("QQ9WW"));
+	}
+
+	/**
+	 * 
+	 */
+	@Test
+	public void trimTrailingCharacterTest() {
+		assertEquals(StringUtils.trimTrailingCharacter("TEST ", ' '), "TEST");
+		assertNotEquals(StringUtils.trimTrailingCharacter("VOID", ' '), "TEST");
+		assertEquals("", StringUtils.trimTrailingCharacter("", ' '));
+		assertEquals(null, StringUtils.trimTrailingCharacter(null, ' '));
+	}
+
+	/**
+	 * 
+	 */
+	@Test
+	public void newUUIDTest() {
+		assertNotNull(StringUtils.newUUID());
+	}
+
+	/**
+	 * 
+	 */
+	@Test
+	public void newUUIDFromBytesTest() {
+		assertNotNull(StringUtils.newUUIDFromBytes("TEST".getBytes()));
 	}
 }

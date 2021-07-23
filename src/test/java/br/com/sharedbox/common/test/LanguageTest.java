@@ -18,10 +18,10 @@ import br.com.sharedbox.common.Language;
 @ExtendWith(MockitoExtension.class)
 public class LanguageTest {
 	/**
-	 * Validate test method
+	 * Language test
 	 */
 	@Test
-	public void validateTest() {
+	public void languageTest() {
 		Language lang = Language.EnUs;
 
 		assertNotNull(Language.getbyCode(""));

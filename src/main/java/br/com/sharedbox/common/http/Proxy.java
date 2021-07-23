@@ -20,8 +20,8 @@ public class Proxy {
 	 */
 	public Proxy(String host, int port) {
 		super();
-		this.host = host;
-		this.port = port;
+		this.setHost(host);
+		this.setPort(port);
 	}
 	
 	/**
