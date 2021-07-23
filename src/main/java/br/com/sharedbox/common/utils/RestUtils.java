@@ -47,18 +47,33 @@ public class RestUtils {
 	 * Create a new instance at RestTemplate
 	 * 
 	 * @param proxy
-	 * @return RestTemplate 
-	 * @throws KeyStoreException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws KeyManagementException 
+	 * @return
+	 * @throws KeyManagementException
+	 * @throws NoSuchAlgorithmException
+	 * @throws KeyStoreException
 	 */
 	public static RestTemplate newInstance(Proxy proxy) throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+		return newInstance(proxy, 50000);
+	}
+	
+	/**
+	 * Create a new instance at RestTemplate
+	 * 
+	 * @param proxy
+	 * @param defaultTimeout
+	 * @return
+	 * @throws KeyManagementException
+	 * @throws NoSuchAlgorithmException
+	 * @throws KeyStoreException
+	 */
+	public static RestTemplate newInstance(Proxy proxy, int defaultTimeout) 
+			throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
 		SSLConnectionSocketFactory sslsf = sslConnection();
 		
 		BasicHttpClientConnectionManager connectionManager =
 				new BasicHttpClientConnectionManager(newSocketFactoryRegistry(sslsf));
 		
-		return new RestTemplate(newClientHttpRequestFactory(proxy, sslsf, connectionManager));
+		return new RestTemplate(newClientHttpRequestFactory(proxy, sslsf, connectionManager, defaultTimeout));
 	}
 
 	/**
@@ -85,17 +100,18 @@ public class RestUtils {
 				.register("http", new PlainConnectionSocketFactory())
 				.build();
 	}
-	
 	/**
 	 * 
 	 * @param proxy
 	 * @param sslsf
 	 * @param connectionManager
+	 * @param defaultTimeout
 	 * @return
 	 */
 	private static HttpComponentsClientHttpRequestFactory newClientHttpRequestFactory(Proxy proxy
 			, SSLConnectionSocketFactory sslsf
-			, BasicHttpClientConnectionManager connectionManager) {
+			, BasicHttpClientConnectionManager connectionManager
+			, int defaultTimeout) {
 		
 		HttpClientBuilder hcb = HttpClients.custom()
 				.setSSLSocketFactory(sslsf)
@@ -109,9 +125,9 @@ public class RestUtils {
 		HttpComponentsClientHttpRequestFactory requestFactory =
 				new HttpComponentsClientHttpRequestFactory(hcb.build());
 
-		requestFactory.setConnectTimeout(10000);
-		requestFactory.setConnectionRequestTimeout(10000);
-		requestFactory.setReadTimeout(50000);
+		requestFactory.setConnectTimeout(defaultTimeout);
+		requestFactory.setConnectionRequestTimeout(defaultTimeout);
+		requestFactory.setReadTimeout(defaultTimeout);
 		
 		return requestFactory;
 	}
