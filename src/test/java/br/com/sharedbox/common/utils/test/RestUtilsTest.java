@@ -29,8 +29,10 @@ public class RestUtilsTest {
 	public void newInstanceTest() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
 		assertNotNull(new RestUtils());
 		assertNotNull(RestUtils.newInstance());
+		assertNotNull(RestUtils.newInstance(50000));
 		assertNotNull(RestUtils.newInstance(new Proxy("host.name", 8080)));
 		assertNotNull(RestUtils.newInstance(new Proxy("host.name", 0)));
 		assertNotNull(RestUtils.newInstance(new Proxy(null, 8080)));
+		assertNotNull(RestUtils.newInstance(new Proxy(null, 8080), 50000));
 	}
 }

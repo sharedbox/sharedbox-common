@@ -59,6 +59,19 @@ public class RestUtils {
 	/**
 	 * Create a new instance at RestTemplate
 	 * 
+	 * @param defaultTimeout
+	 * @return
+	 * @throws KeyManagementException
+	 * @throws NoSuchAlgorithmException
+	 * @throws KeyStoreException
+	 */
+	public static RestTemplate newInstance(int defaultTimeout) throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+		return newInstance(null, defaultTimeout);
+	}
+	
+	/**
+	 * Create a new instance at RestTemplate
+	 * 
 	 * @param proxy
 	 * @param defaultTimeout
 	 * @return
