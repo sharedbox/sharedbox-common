@@ -55,6 +55,6 @@ class PhonetizerTest {
 
 		assertNotNull(Phonetizer.execute(PHRASE_TEST));
 		assertNotNull(Phonetizer.execute(null, PHRASE_TEST));
-		assertNotNull(Phonetizer.execute(Language.EnUs, PHRASE_TEST));
+		assertNotNull(Phonetizer.execute(Language.En, PHRASE_TEST));
 	}
 }
