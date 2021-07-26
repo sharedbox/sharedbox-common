@@ -10,20 +10,9 @@ import br.com.sharedbox.common.utils.StringUtils;
  * @since 07/03/2021
  */
 public enum Language {
-	EnAu("en-au"),
-	EnCa("en-ca"),
-	EnGb("en-gb"),
-	EnIe("en-ie"),
-	EnNz("en-nz"),
-	EnUs("en-us"),
-	EsEs("es-es"),
-	EsMx("es-mx"),
-	EsAr("es-ar"),
-	EsCl("es-cl"),
-	EsPy("es-py"),
-	EsUy("es-uy"),
-	PtBr("pt-br"),
-	PtPT("pt-pt"),
+	En("en"),
+	Es("es"),
+	Pt("pt"),
 	NotFound("");
 	
 	/**
