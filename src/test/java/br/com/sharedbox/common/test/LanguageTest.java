@@ -22,7 +22,7 @@ public class LanguageTest {
 	 */
 	@Test
 	public void languageTest() {
-		Language lang = Language.EnUs;
+		Language lang = Language.En;
 
 		assertNotNull(Language.getbyCode(""));
 		assertNotNull(Language.getbyCode("xx-xx"));
