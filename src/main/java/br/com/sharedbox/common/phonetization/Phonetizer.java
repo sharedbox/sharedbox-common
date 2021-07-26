@@ -18,7 +18,7 @@ public class Phonetizer {
 	 * @return
 	 */
 	public static String execute(String phrase) throws IllegalArgumentException {
-		return execute(Language.PtBr, phrase);
+		return execute(Language.Pt, phrase);
 	}
 
 	/**
@@ -33,12 +33,12 @@ public class Phonetizer {
 		}
 		
 		if(lang == null) {
-			lang = Language.PtBr;
+			lang = Language.Pt;
 		}
 
 		phrase = phrase.toUpperCase();
 		switch (lang) {
-			case PtBr: 
+			case Pt: 
 				phrase = phrase.replace("&", "E");
 				break;
 				
@@ -48,7 +48,7 @@ public class Phonetizer {
 		phrase = Normalizer.normalize(phrase, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 		phrase = StringUtils.removeSpecialCharacter(phrase).toUpperCase();
 
-		if (lang == Language.PtBr) {
+		if (lang == Language.Pt) {
 			return phoneticizePtBr(phrase);
 		}
 
