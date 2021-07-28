@@ -52,7 +52,7 @@ public class Phonetizer {
 			return phoneticizePtBr(phrase);
 		}
 
-		return phrase;
+		return "";
 	}
 
 	/**
