@@ -24,10 +24,10 @@ public class Message {
 	 * @param exception
 	 */
 	public Message(String description, String code, MessageType messageType, Exception exception) {
-		this.description = description;
-		this.code = code;
-		this.messageType = messageType;
-		this.exception = exception;
+		this.setDescription(description);
+		this.setCode(code);
+		this.setMessageType(messageType);
+		this.setException(exception);
 	}
 	
 	/**

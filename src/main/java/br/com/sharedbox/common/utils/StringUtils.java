@@ -11,6 +11,7 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.swing.text.MaskFormatter;
 
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.text.WordUtils;
 
 /**
  * String utils
@@ -145,6 +146,17 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * Only numbers
 	 * @return
 	 */
+	public static String removeNumbers(String value) {
+		if(isEmpty(value)) {
+			return "";
+		}
+		return value.replaceAll("[^a-zA-Z]", "");
+	}
+
+	/**
+	 * Only numbers
+	 * @return
+	 */
 	public static String onlyNumbers(String value) {
 		if(isEmpty(value)) {
 			return "0";
@@ -265,5 +277,14 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 */
 	public static String removeEqualCharsNumbers(String value) {
 		return value.replaceAll("(([0-9])(\\2)+)", "$2");
+	}
+	
+	/**
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static String upperCaseFirstChar(String value) {
+		return WordUtils.capitalize(value);
 	}
 }

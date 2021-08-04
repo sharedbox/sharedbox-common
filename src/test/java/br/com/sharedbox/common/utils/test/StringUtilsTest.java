@@ -100,4 +100,13 @@ public class StringUtilsTest {
 	public void newUUIDFromBytesTest() {
 		assertNotNull(StringUtils.newUUIDFromBytes("TEST".getBytes()));
 	}
+		
+	/**
+	 * 
+	 */
+	@Test
+	public void removeNumbersTest() {
+		assertNotNull(StringUtils.removeNumbers(""));
+		assertNotNull(StringUtils.removeNumbers("TEST 1234567890"));
+	}
 }

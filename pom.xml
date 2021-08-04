@@ -17,6 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Apache -->
+    <apache.poi.version>5.0.0</apache.poi.version>
     <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
     <apache.commons.io.version>2.10.0</apache.commons.io.version>
     <apache.commons.text.version>1.9</apache.commons.text.version>
@@ -82,6 +83,18 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>${apache.commons.lang3.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>${apache.poi.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${apache.poi.version}</version>
     </dependency>
     
     <dependency>
@@ -341,7 +354,7 @@
                     <limit>
                       <counter>COMPLEXITY</counter>
                       <value>COVEREDRATIO</value>
-                      <minimum>0.70</minimum>
+                      <minimum>0.80</minimum>
                     </limit>
                   </limits>
                 </rule>

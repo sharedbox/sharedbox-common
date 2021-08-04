@@ -16,7 +16,7 @@ public class Cnpj extends DocumentBase implements DocumentUtils {
 	/**
 	 * 
 	 */
-    private String cnpjRegexValidator = "(?!(\\d)\\1{10})\\d{14}";
+    private String cnpjRegexValidator = "(?!(\\d)\\1{14})\\d{14}";
     
 	/**
 	 * Constructor
@@ -25,18 +25,25 @@ public class Cnpj extends DocumentBase implements DocumentUtils {
 		super();
 	}
 
+	/**
+	 * CNPJ generate
+	 */
 	@Override
 	public String generate() {
-		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
+	/**
+	 * CNPJ format
+	 */
 	@Override
 	public String format(String value) {
-		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
+	/**
+	 * CNPJ validate
+	 */
 	@Override
 	public boolean validate(Object value) {
 		if(value == null) {
@@ -48,6 +55,7 @@ public class Cnpj extends DocumentBase implements DocumentUtils {
         if (!mat.matches()) {
         	return false;
         }
+        
         char dig13, dig14;
         int sm, i, r, num, verify;
 
