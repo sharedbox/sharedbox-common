@@ -24,5 +24,5 @@ public interface DocumentUtils {
 	 * @param value
 	 * @return boolean
 	 */
-	boolean validate(Object value);
+	boolean validate(String value);
 }

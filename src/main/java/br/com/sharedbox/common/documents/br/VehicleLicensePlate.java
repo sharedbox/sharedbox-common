@@ -60,7 +60,7 @@ public class VehicleLicensePlate extends DocumentBase implements DocumentUtils {
 	 * Validate license plate
 	 */
 	@Override
-	public boolean validate(Object value) {
+	public boolean validate(String value) {
 		if(isNull(value)) {
 			return false;
 		}

@@ -24,12 +24,13 @@ public class Cnh extends DocumentBase implements DocumentUtils {
 	}
 
 	@Override
-	public boolean validate(Object value) {
+	public boolean validate(String value) {
 		if(super.isNull(value)) {
 			return false;			
 		}
+		
 		char char1 = value.toString().charAt(0);
-		if (value.toString().replaceAll("\\D+", "").length() != 11
+		if (value.replaceAll("\\D+", "").length() != 11
 				|| String.format("%0" + 11 + "d", 0).replace('0', char1).equals(value.toString())) {
 			return false;
 		}

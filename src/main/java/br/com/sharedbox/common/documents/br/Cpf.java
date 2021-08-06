@@ -43,7 +43,7 @@ public class Cpf extends DocumentBase implements DocumentUtils {
 	 * 
 	 * @param Object 
 	 */
-	public boolean validate(Object value) {
+	public boolean validate(String value) {
 		// Todo colocar pad left
 		if(super.isNull(value)) {
 			return false;			

@@ -45,7 +45,7 @@ public class Cnpj extends DocumentBase implements DocumentUtils {
 	 * CNPJ validate
 	 */
 	@Override
-	public boolean validate(Object value) {
+	public boolean validate(String value) {
 		if(value == null) {
 			return false;			
 		}

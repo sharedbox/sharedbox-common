@@ -1,5 +1,7 @@
 package br.com.sharedbox.common.documents;
 
+import br.com.sharedbox.common.utils.StringUtils;
+
 /**
  * Common validate
  *
@@ -13,7 +15,7 @@ public class DocumentBase {
 	 * @param value
 	 * @return
 	 */
-	public boolean isNull(Object value) {
-		return value == null;
+	public boolean isNull(String value) {
+		return StringUtils.isEmpty(value);
 	}
 }
