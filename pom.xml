@@ -199,6 +199,13 @@
       <version>${javax.servlet.xml.soap.api}</version>
     </dependency>
     
+    <!-- Json -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20210307</version>
+    </dependency>
+    
     <!-- Junit -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>

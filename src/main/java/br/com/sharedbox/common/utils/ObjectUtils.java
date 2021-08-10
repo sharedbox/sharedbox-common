@@ -3,6 +3,8 @@ package br.com.sharedbox.common.utils;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -29,5 +31,14 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 	 */
 	public static <T> T convertToClassModel(Object body, Type type) {
 		return new Gson().fromJson(body.toString(), new TypeToken<List<T>>() {}.getType());
+	}
+	
+	/**
+	 * 
+	 * @param json
+	 * @return
+	 */
+	public static JSONObject convertStringToJson(String json) {
+		return new JSONObject(json);
 	}
 }

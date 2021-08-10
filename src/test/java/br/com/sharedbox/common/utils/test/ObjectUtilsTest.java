@@ -39,6 +39,14 @@ public class ObjectUtilsTest {
 		assertNotNull(ObjectUtils.convertToClassModel(json, new TypeToken<List<ClassTestObject>>(){}.getType()));
 	}
 
+	/**
+	 * 
+	 */
+	@Test
+	void convertStringToJsonTest() {
+		String json = "{ \"value1\": 10, \"value2\": \"Test value\"}";
+		assertNotNull(ObjectUtils.convertStringToJson(json));
+	}
 }
 
 /**
