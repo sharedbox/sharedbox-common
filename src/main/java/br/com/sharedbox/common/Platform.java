@@ -1,4 +1,4 @@
-package br.com.sharedbox.common.security;
+package br.com.sharedbox.common;
 
 public enum Platform {
 	Windows(1),
