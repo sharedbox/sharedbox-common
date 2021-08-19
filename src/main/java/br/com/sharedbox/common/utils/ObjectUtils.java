@@ -5,8 +5,11 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 /**
  * Objec utils
@@ -21,8 +24,7 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 	 * @return model
 	 */
 	public static <T> T convertToClassModel(Object obj, Class<T> to) {
-		Gson gson = new Gson();
-		return (T) gson.fromJson(obj.toString(), to);
+		return (T) new Gson().fromJson(obj.toString(), to);
 	}
 
 	/**
@@ -30,7 +32,7 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 	 * @return model
 	 */
 	public static <T> T convertToClassModel(Object body, Type type) {
-		return new Gson().fromJson(body.toString(), new TypeToken<List<T>>() {}.getType());
+		return new Gson().fromJson(body.toString(), type);
 	}
 	
 	/**
@@ -40,5 +42,25 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 	 */
 	public static JSONObject convertStringToJson(String json) {
 		return new JSONObject(json);
+	}
+	/**
+	 * Convert JSON object to class model
+	 * @return model
+	 * @throws JsonProcessingException 
+	 * @throws JsonMappingException 
+	 */
+	public static <T> T convertToClassModelObjMapper(Object obj, Class<T> to) 
+			throws JsonMappingException, JsonProcessingException {
+		return (T) new ObjectMapper().readValue(obj.toString(), to);
+	}
+
+	/**
+	 * Convert JSON object to class model
+	 * @return model
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> T convertToClassModelListObjMapper(Object body) 
+			throws JsonMappingException, JsonProcessingException {
+		return (T) new ObjectMapper().readValue(body.toString(), new TypeReference<List<T>>(){});
 	}
 }
