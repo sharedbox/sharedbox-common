@@ -8,6 +8,11 @@ import org.junit.jupiter.api.Test;
 
 import br.com.sharedbox.common.Language;
 
+/**
+ * 
+ * @author Rafael Costi
+ *
+ */
 class PhonetizerTest {
 	
 	private final String PHRASE_TEST = "Mil nome e sobrenome fonetico para teste glii _ umi glaa . E muito mais. dois mil reais. "
