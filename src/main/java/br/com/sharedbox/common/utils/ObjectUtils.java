@@ -10,6 +10,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.internal.LinkedTreeMap;
 
 /**
  * Objec utils
@@ -23,16 +25,37 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 	 * Convert JSON object to class model
 	 * @return model
 	 */
-	public static <T> T convertToClassModel(Object obj, Class<T> to) {
+	public static <T> T convertToClassModel(Object source, Class<T> to) {
+		Object obj = null ;
+		if (source instanceof LinkedTreeMap) {
+			obj =  convertLinkedTreeMapToJson((LinkedTreeMap<?, ?>) source);
+		} else {
+			obj = source;
+		}
 		return (T) new Gson().fromJson(obj.toString(), to);
+	}
+	
+	/**
+	 * Convert LinkedTreeMap to JsonObject
+	 * @param map
+	 * @return jsonObject
+	 */
+	public static JsonObject convertLinkedTreeMapToJson(LinkedTreeMap<?, ?> map) {
+		return new Gson().toJsonTree(map).getAsJsonObject();
 	}
 
 	/**
 	 * Convert JSON object to class model
 	 * @return model
 	 */
-	public static <T> T convertToClassModel(Object body, Type type) {
-		return new Gson().fromJson(body.toString(), type);
+	public static <T> T convertToClassModel(Object source, Type type) {
+		Object obj = null ;
+		if (source instanceof LinkedTreeMap) {
+			obj =  convertLinkedTreeMapToJson((LinkedTreeMap<?, ?>) source);
+		} else {
+			obj = source;
+		}
+		return new Gson().fromJson(obj.toString(), type);
 	}
 	
 	/**

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 
 import br.com.sharedbox.common.utils.ObjectUtils;
@@ -33,7 +34,12 @@ public class ObjectUtilsTest {
 	void convertToClassModelTest() {
 		String json = "{ \"value1\": 10, \"value2\": \"Test value\"}";
 		assertNotNull(ObjectUtils.convertToClassModel(json, ClassTestObject.class));
-
+		
+		LinkedTreeMap<String, Object> map = new LinkedTreeMap<String, Object>();
+		map.put("value1", 10);
+		map.put("value2", "Test value");
+		assertNotNull(ObjectUtils.convertToClassModel(map, ClassTestObject.class));
+		
 		json = "[{ \"value1\": 10, \"value2\": \"Test value 2\"},"
 				+ "{ \"value1\": 20, \"value2\": \"Test value 2\"}]";
 		assertNotNull(ObjectUtils.convertToClassModel(json, new TypeToken<List<ClassTestObject>>(){}.getType()));
