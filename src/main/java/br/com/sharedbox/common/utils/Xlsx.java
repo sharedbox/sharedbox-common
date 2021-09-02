@@ -127,10 +127,29 @@ public class Xlsx {
 	}
 	
 	/**
+	 * Remove worksheet
+	 * @param worksheetName
+	 */
+	public void removeWorksheet(String worksheetName) {
+		removeWorksheet(this.workbook.getSheetIndex(worksheetName));
+	}
+	
+	/**
+	 * Remove worksheet
+	 * @param index
+	 */
+	public void removeWorksheet(int index) {
+		this.workbook.removeSheetAt(index);
+	}
+	
+	/**
 	 * Close workbook
 	 * @throws IOException
 	 */
 	public void close() throws IOException {
+		FileOutputStream out = new FileOutputStream(this.file);
+		this.workbook.write(out);
+		out.close();
 		this.workbook.close();
 	}
 }

@@ -1,9 +1,14 @@
 package br.com.sharedbox.common.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -79,5 +84,43 @@ public class FileUtils extends org.apache.commons.io.IOUtils {
 	public static void write(String value, String path, Charset charset) throws IOException {
 		OutputStream ops = new FileOutputStream(path);
 		write(value, ops, charset);
+	}
+
+	/**
+	 * Get file from path
+	 * 
+	 * @param string
+	 * @return
+	 * @throws FileNotFoundException 
+	 * @throws IOException 
+	 * @throws MalformedURLException 
+	 */
+	public static InputStream getFile(String path) throws FileNotFoundException {
+		return getFile(new File(path));
+	}
+
+	/**
+	 * Get file from path
+	 * 
+	 * @param File
+	 * @return
+	 * @throws FileNotFoundException 
+	 * @throws IOException 
+	 * @throws MalformedURLException 
+	 */
+	public static InputStream getFile(File path) throws FileNotFoundException {
+		return new FileInputStream(path);
+	}
+
+	/**
+	 * Get file from url
+	 * 
+	 * @param string
+	 * @return
+	 * @throws IOException 
+	 * @throws MalformedURLException 
+	 */
+	public static InputStream getFileFromUrl(String path) throws MalformedURLException, IOException {
+		return new URL(path).openStream();
 	}
 }

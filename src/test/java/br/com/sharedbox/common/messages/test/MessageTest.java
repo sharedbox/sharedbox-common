@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.Test;
 
 import br.com.sharedbox.common.messages.Message;
+import br.com.sharedbox.common.messages.MessageType;
 
 /**
  * Call test of Message class
@@ -26,5 +27,11 @@ public class MessageTest {
 		assertNotNull(msg.getDescription());
 		assertNull(msg.getException());
 		assertNotNull(msg.getMessageType());
+		assertNotNull(msg.getMessageType().getCode());
+
+		assertNotNull(msg.getMessageType().getCode());
+		assertNotNull(MessageType.getMessageTypeByCode((byte)0));
+		assertNotNull(MessageType.getMessageTypeByCode((byte)2));
+		assertNotNull(MessageType.getMessageTypeByCode((byte)99));
 	}
 }

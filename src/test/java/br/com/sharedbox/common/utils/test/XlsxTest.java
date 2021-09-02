@@ -80,11 +80,12 @@ public class XlsxTest {
 
 		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> xlsx.writeWorksheet(null, null));
 		assertTrue(thrown.getMessage().contains("Rows is null"));
-		
+				
 		thrown = assertThrows(IllegalArgumentException.class, () -> xlsx.writeWorksheet(rows, null));
 		assertTrue(thrown.getMessage().contains("Invalid worksheet name"));
 		assertDoesNotThrow(() -> xlsx.writeWorksheet(rows, worksheetName));
 		assertDoesNotThrow(() -> xlsx.writeWorksheet(rows, "Test name"));
+		assertDoesNotThrow(() -> xlsx.removeWorksheet(worksheetName));
 		assertDoesNotThrow(() -> xlsx.close());
 	}
 }

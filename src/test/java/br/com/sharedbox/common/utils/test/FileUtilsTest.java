@@ -3,7 +3,9 @@ package br.com.sharedbox.common.utils.test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +19,8 @@ import br.com.sharedbox.common.utils.FileUtils;
  * @since 08/04/2021
  */
 public class FileUtilsTest {
+	private final String path = "D:\\SharedBox\\test\\testWrite.txt";
+	
 	/**
 	 * Test constructor class
 	 */
@@ -41,7 +45,27 @@ public class FileUtilsTest {
 	@Test
 	void writeTest() throws IOException{
 		String value = "testWrite";
-		String path = "D:\\SharedBox\\test\\testWrite.txt";
 		assertDoesNotThrow(() -> FileUtils.write(value, path));
+	}
+	
+	/**
+	 * 
+	 * @throws FileNotFoundException 
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
+	@Test
+	void getFileTest() throws FileNotFoundException {
+		assertNotNull(FileUtils.getFile(path));
+	}
+
+	/**
+	 * 
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
+	@Test
+	void getFileFromUrlTest() throws MalformedURLException, IOException {
+		assertNotNull(FileUtils.getFileFromUrl("https://www.gstatic.com/android/market_images/web/play_prism_hlock_2x.png"));
 	}
 }
