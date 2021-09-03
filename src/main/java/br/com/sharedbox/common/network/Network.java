@@ -38,4 +38,24 @@ public class Network {
 		
 		return response;
 	}
+	
+	/**
+	 * Check local host response
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String, String> checkLocalHost() throws Exception {
+		Map<String, String> response = new HashMap<String, String>();
+		
+		if(InetAddress.getLocalHost().isReachable(2000)) {
+			response.put("hostName", InetAddress.getLocalHost().getHostName());
+			response.put("hostAddress", InetAddress.getLocalHost().getHostAddress());
+			response.put("isSiteLocalAddress", InetAddress.getLocalHost().isSiteLocalAddress() ? "true" : "false");
+		} else {
+			response.put("message", "Host does not respond");
+		}
+		
+		return response;
+	}
 }

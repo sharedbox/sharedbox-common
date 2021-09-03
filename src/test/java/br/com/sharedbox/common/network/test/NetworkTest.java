@@ -24,7 +24,6 @@ public class NetworkTest {
 	void NetworkConstructorTest() {
 		assertNotNull(new Network());
 	}
-	
 
 	/**
 	 * Test constructor
@@ -44,6 +43,16 @@ public class NetworkTest {
 		IllegalArgumentException thrownIllegalArgumentException = assertThrows(IllegalArgumentException.class, () -> network.checkHost(null));
 		assertTrue(thrownIllegalArgumentException.getMessage().contains("invalid host"));
 	}
-	
-	
+
+	/**
+	 * Test constructor
+	 * @throws Exception 
+	 */
+	@Test
+	void checkLocalHostTest() throws Exception {
+		Network network = new Network();
+		
+		Map<String, String> host = network.checkLocalHost();
+		assertNotNull(host);
+	}
 }
