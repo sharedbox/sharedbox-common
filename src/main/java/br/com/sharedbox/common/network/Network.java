@@ -20,7 +20,7 @@ public class Network {
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, String> checkHost(String host) throws Exception {
+	public static Map<String, String> checkHost(String host) throws Exception {
 		if(StringUtils.isEmpty(host)) {
 			throw new IllegalArgumentException("invalid host");
 		}
@@ -45,7 +45,7 @@ public class Network {
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, String> checkLocalHost() throws Exception {
+	public static Map<String, String> checkLocalHost() throws Exception {
 		Map<String, String> response = new HashMap<String, String>();
 		
 		if(InetAddress.getLocalHost().isReachable(2000)) {
