@@ -4,7 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.sharedbox.common.documents.DocumentBase;
-import br.com.sharedbox.common.documents.DocumentUtils;
+import br.com.sharedbox.common.documents.IDocument;
+import br.com.sharedbox.common.utils.StringUtils;
 
 /**
  * Validate CPF (Brazilian personal document)
@@ -12,7 +13,24 @@ import br.com.sharedbox.common.documents.DocumentUtils;
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 0.0.1
  */
-public class Cpf extends DocumentBase implements DocumentUtils {
+public class Cpf extends DocumentBase implements IDocument {
+	/**
+	 * Constructor
+	 */
+	public Cpf() {
+		super();
+	}
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param number
+	 */
+	public Cpf(String number) {
+		super(number);
+		super.setNumber(StringUtils.leftPad(super.getNumber(), 11, "0"));
+	}
+	
 	/**
 	 * 
 	 */
@@ -20,37 +38,33 @@ public class Cpf extends DocumentBase implements DocumentUtils {
 
 	/**
 	 * 
-	 * @param String 
-	 * @return String
-	 */
-	public String generate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param String 
 	 * @return String
 	 */
 	@Override
-	public String format(String value) {
-		// TODO Auto-generated method stub
-		return null;
+	public String generate() {
+		return super.getNumber();
 	}
 
 	/**
 	 * 
-	 * @param Object 
+	 * @return String
 	 */
-	public boolean validate(String value) {
-		// Todo colocar pad left
-		if(super.isNull(value)) {
+	@Override
+	public String format() {
+		return super.getNumber();
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public boolean validate() {
+		if(super.isNull(super.getNumber())) {
 			return false;			
 		}
 		
 		Pattern pat = Pattern.compile (this.cpfRegexValidator);
-        Matcher mat = pat.matcher(value.toString());
+        Matcher mat = pat.matcher(super.getNumber().toString());
         if (!mat.matches()) {
         	return false;
         }
@@ -62,7 +76,7 @@ public class Cpf extends DocumentBase implements DocumentUtils {
         verify = 10;
         
         for (i=0; i<9; i++) {
-        	num = (int)(value.toString().charAt(i) - 48);
+        	num = (int)(super.getNumber().charAt(i) - 48);
         	sm = sm + (num * verify);
         	verify = verify - 1;
         }
@@ -78,7 +92,7 @@ public class Cpf extends DocumentBase implements DocumentUtils {
         verify = 11;
         
         for(i=0; i<10; i++) {
-        	num = (int)(value.toString().charAt(i) - 48);
+        	num = (int)(super.getNumber().charAt(i) - 48);
         	sm = sm + (num * verify);
         	verify = verify - 1;
         }
@@ -90,8 +104,8 @@ public class Cpf extends DocumentBase implements DocumentUtils {
         	dig11 = (char)(r + 48);
         }
 
-        if ((dig10 == value.toString().charAt(9)) 
-        		&& (dig11 == value.toString().charAt(10))) {
+        if ((dig10 == super.getNumber().charAt(9)) 
+        		&& (dig11 == super.getNumber().charAt(10))) {
         	return true;
         }
 		

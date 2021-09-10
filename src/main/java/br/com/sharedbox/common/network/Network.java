@@ -14,6 +14,25 @@ import br.com.sharedbox.common.utils.StringUtils;
  */
 public class Network {
 	/**
+	 * 
+	 */
+	public static final String HOST = "host";
+	/**
+	 * 
+	 */
+	public static final String HOST_NAME = "hostName";
+	
+	/**
+	 * 
+	 */
+	public static final String HOST_ADDRESS = "hostAddress";
+	
+	/**
+	 * 
+	 */
+	public static final String IS_SITE_LOCAL_ADDRESS = "isSiteLocalAddress";
+	
+	/**
 	 * Check host response
 	 * 
 	 * @param host
@@ -28,10 +47,10 @@ public class Network {
 		Map<String, String> response = new HashMap<String, String>();
 		
 		if(InetAddress.getByName(host).isReachable(2000)) {
-			response.put("hostName", InetAddress.getByName(host).getHostName());
-			response.put("hostAddress", InetAddress.getByName(host).getHostAddress());
-			response.put("isSiteLocalAddress", InetAddress.getByName(host).isSiteLocalAddress() ? "true" : "false");
-			response.put("host", host);
+			response.put(HOST_NAME, InetAddress.getByName(host).getHostName());
+			response.put(HOST_ADDRESS, InetAddress.getByName(host).getHostAddress());
+			response.put(IS_SITE_LOCAL_ADDRESS, InetAddress.getByName(host).isSiteLocalAddress() ? "true" : "false");
+			response.put(HOST, host);
 		} else {
 			response.put("message", "Host does not respond");
 		}
@@ -45,15 +64,18 @@ public class Network {
 	 * @return
 	 * @throws Exception
 	 */
-	public static Map<String, String> checkLocalHost() throws Exception {
+	public static Map<String, String> checkLocalHost() {
 		Map<String, String> response = new HashMap<String, String>();
 		
-		if(InetAddress.getLocalHost().isReachable(2000)) {
-			response.put("hostName", InetAddress.getLocalHost().getHostName());
-			response.put("hostAddress", InetAddress.getLocalHost().getHostAddress());
-			response.put("isSiteLocalAddress", InetAddress.getLocalHost().isSiteLocalAddress() ? "true" : "false");
-		} else {
-			response.put("message", "Host does not respond");
+		try {
+			if(InetAddress.getLocalHost().isReachable(2000)) {
+				response.put(HOST_NAME, InetAddress.getLocalHost().getHostName());
+				response.put(HOST_ADDRESS, InetAddress.getLocalHost().getHostAddress());
+			} else {
+				response.put("message", "Host does not respond");
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 		
 		return response;

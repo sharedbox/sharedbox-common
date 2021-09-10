@@ -28,8 +28,8 @@ public class CnpjTest {
 	 */
 	@Test
 	void validateTest() {
-		assertFalse(new Cnpj().validate(null));
-		assertTrue(new Cnpj().validate("00000000000191"));
-		assertFalse(new Cnpj().validate("00000A00000191"));
+		assertFalse(new Cnpj(null).validate());
+		assertTrue(new Cnpj("00000000000191").validate());
+		assertFalse(new Cnpj("00000A00000191").validate());
 	}
 }

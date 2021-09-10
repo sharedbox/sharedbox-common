@@ -1,6 +1,7 @@
 package br.com.sharedbox.common.documents.br.test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -23,16 +24,16 @@ public class CpfTest {
 	 */
 	@Test
 	public void validateTest() {
-		Cpf cpf = new Cpf();
-		assertFalse(cpf.validate(null));
-		assertFalse(cpf.validate(""));
-		assertFalse(cpf.validate("%#$%#$%#$%#$%"));
-		assertFalse(cpf.validate("00000000000"));
-		assertTrue(cpf.validate("00000000191"));
-		assertFalse(cpf.validate("00000000198"));
-		assertFalse(cpf.validate("000000001"));
-		assertFalse(cpf.validate("00000000761"));
-		assertFalse(cpf.validate("99999999999"));
-		assertFalse(cpf.validate("00000009120"));
+		assertNotNull(new Cpf());
+		assertFalse(new Cpf(null).validate());
+		assertFalse(new Cpf("").validate());
+		assertFalse(new Cpf("%#$%#$%#$%#$%").validate());
+		assertFalse(new Cpf("00000000000").validate());
+		assertTrue(new Cpf("00000000191").validate());
+		assertFalse(new Cpf("00000000198").validate());
+		assertFalse(new Cpf("000000001").validate());
+		assertFalse(new Cpf("00000000761").validate());
+		assertFalse(new Cpf("99999999999").validate());
+		assertFalse(new Cpf("00000009120").validate());
 	}
 }

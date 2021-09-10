@@ -4,7 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.sharedbox.common.documents.DocumentBase;
-import br.com.sharedbox.common.documents.DocumentUtils;
+import br.com.sharedbox.common.documents.IDocument;
+import br.com.sharedbox.common.utils.StringUtils;
 
 /**
  * Validate CNPJ (Brazilian business document)
@@ -12,46 +13,56 @@ import br.com.sharedbox.common.documents.DocumentUtils;
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 0.0.1
  */
-public class Cnpj extends DocumentBase implements DocumentUtils {
-	/**
-	 * 
-	 */
-    private String cnpjRegexValidator = "(?!(\\d)\\1{14})\\d{14}";
-    
+public class Cnpj extends DocumentBase implements IDocument {
 	/**
 	 * Constructor
 	 */
 	public Cnpj() {
 		super();
 	}
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param number
+	 */
+	public Cnpj(String number) {
+		super(number);
+		super.setNumber(StringUtils.leftPad(super.getNumber(), 14, "0"));
+	}
+	
+	/**
+	 * 
+	 */
+    private String cnpjRegexValidator = "(?!(\\d)\\1{14})\\d{14}";
 
 	/**
 	 * CNPJ generate
 	 */
 	@Override
 	public String generate() {
-		return "";
+		return super.getNumber();
 	}
 
 	/**
 	 * CNPJ format
 	 */
 	@Override
-	public String format(String value) {
-		return "";
+	public String format() {
+		return super.getNumber();
 	}
 
 	/**
 	 * CNPJ validate
 	 */
 	@Override
-	public boolean validate(String value) {
-		if(value == null) {
+	public boolean validate() {
+		if(super.getNumber() == null) {
 			return false;			
 		}
 		
 		Pattern pat = Pattern.compile (this.cnpjRegexValidator);
-        Matcher mat = pat.matcher(value.toString());
+        Matcher mat = pat.matcher(super.getNumber());
         if (!mat.matches()) {
         	return false;
         }
@@ -63,7 +74,7 @@ public class Cnpj extends DocumentBase implements DocumentUtils {
         verify = 2;
         
         for (i=11; i>=0; i--) {
-        	num = (int)(value.toString().charAt(i) - 48);
+        	num = (int)(super.getNumber().charAt(i) - 48);
         	sm = sm + (num * verify);
         	verify = verify + 1;
         	
@@ -84,7 +95,7 @@ public class Cnpj extends DocumentBase implements DocumentUtils {
         verify = 2;
         
         for (i=12; i>=0; i--) {
-        	num = (int)(value.toString().charAt(i)- 48);
+        	num = (int)(super.getNumber().charAt(i)- 48);
         	sm = sm + (num * verify);
         	verify = verify + 1;
         	
@@ -101,7 +112,7 @@ public class Cnpj extends DocumentBase implements DocumentUtils {
         	dig14 = (char)((11-r) + 48);
         }
 
-        if ((dig13 == value.toString().charAt(12)) && (dig14 == value.toString().charAt(13))) {
+        if ((dig13 == super.getNumber().charAt(12)) && (dig14 == super.getNumber().charAt(13))) {
         	return true;
         } 
         	

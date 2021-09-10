@@ -24,16 +24,15 @@ public class VehicleLicensePlateTest {
 	 */
 	@Test
 	public void validateTest() {
-		VehicleLicensePlate vlp = new VehicleLicensePlate();
-		assertFalse(vlp.validate(null));
-		assertFalse(vlp.validate("999-9999"));
-		assertFalse(vlp.validate("999-AAAA"));
-		assertFalse(vlp.validate("AAA-AAAA"));
+		assertFalse(new VehicleLicensePlate(null).validate());
+		assertFalse(new VehicleLicensePlate("999-9999").validate());
+		assertFalse(new VehicleLicensePlate("999-AAAA").validate());
+		assertFalse(new VehicleLicensePlate("AAA-AAAA").validate());
 
 		// Generate test
-		String plate = vlp.generate();
+		String plate = new VehicleLicensePlate().generate();
 		assertNotNull(plate);
-		assertTrue(vlp.validate(plate));
+		assertTrue(new VehicleLicensePlate(plate).validate());
 	}
 	
 	/**
@@ -42,12 +41,11 @@ public class VehicleLicensePlateTest {
 	 */
 	@Test
 	public void formatTest() throws Exception {
-		VehicleLicensePlate vlp = new VehicleLicensePlate();
-		assertNotNull(vlp.format(null));
-		assertNotNull(vlp.format("AA9999"));
+		assertNotNull(new VehicleLicensePlate(null).format());
+		assertNotNull(new VehicleLicensePlate("AA9999").format());
 		
-		String plate = vlp.generateMercosul();
+		String plate = new VehicleLicensePlate().generateMercosul();
 		assertNotNull(plate);
-		assertNotNull(vlp.format(plate));
+		assertNotNull(new VehicleLicensePlate(plate).format());
 	}
 }

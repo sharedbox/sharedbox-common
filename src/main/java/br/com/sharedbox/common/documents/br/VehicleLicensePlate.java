@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.sharedbox.common.documents.DocumentBase;
-import br.com.sharedbox.common.documents.DocumentUtils;
+import br.com.sharedbox.common.documents.IDocument;
 import br.com.sharedbox.common.utils.StringUtils;
 
 /**
@@ -15,7 +15,23 @@ import br.com.sharedbox.common.utils.StringUtils;
  * @version 1.0.0
  * @since 06/01/2021
  */
-public class VehicleLicensePlate extends DocumentBase implements DocumentUtils {
+public class VehicleLicensePlate extends DocumentBase implements IDocument {
+	/**
+	 * Constructor
+	 */
+	public VehicleLicensePlate() {
+		super();
+	}
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param number
+	 */
+	public VehicleLicensePlate(String number) {
+		super(number);
+	}
+	
 	/**
 	 * Regex validation 
 	 */
@@ -44,30 +60,30 @@ public class VehicleLicensePlate extends DocumentBase implements DocumentUtils {
 	}
 
 	@Override
-	public String format(String value) throws Exception {
-		if(StringUtils.isEmpty(value)) {
+	public String format() throws Exception {
+		if(StringUtils.isEmpty(super.getNumber())) {
 			return "AAA-0000";
 		}
 		
-		if (value.length() < 7) {
-			value = StringUtils.leftPad("A", 7, value);
+		if (super.getNumber().length() < 7) {
+			super.setNumber(StringUtils.leftPad("A", 7, super.getNumber()));
 		}
 		
-		return value.substring(0, 3) + "-" + value.substring(3, (value.length()));
+		return super.getNumber().substring(0, 3) + "-" + super.getNumber().substring(3, (super.getNumber().length()));
 	}
 
 	/**
 	 * Validate license plate
 	 */
 	@Override
-	public boolean validate(String value) {
-		if(isNull(value)) {
+	public boolean validate() {
+		if(isNull(super.getNumber())) {
 			return false;
 		}
 		
-		value = value.toString().replace("-", "").toUpperCase();
+		super.setNumber(super.getNumber().toString().replace("-", "").toUpperCase());
 		Pattern pat = Pattern.compile (this.licensePlateRegexValidator);
-        Matcher mat = pat.matcher(value.toString());
+        Matcher mat = pat.matcher(super.getNumber().toString());
         if (!mat.matches()) {
         	return false;
         }

@@ -31,16 +31,14 @@ public class NetworkTest {
 	 */
 	@Test
 	void checkHostTest() throws Exception {
-		Network network = new Network();
-		
-		Map<String, String> host = network.checkHost("185.190.38.1");
+		Map<String, String> host = Network.checkHost("185.190.38.1");
 		assertNotNull(host);
 		
-		host = network.checkHost("122.0.0.70");
+		host = Network.checkHost("122.0.0.70");
 		assertNotNull(host.get("message"));
 		assertEquals("Host does not respond", host.get("message").toString());
 		
-		IllegalArgumentException thrownIllegalArgumentException = assertThrows(IllegalArgumentException.class, () -> network.checkHost(null));
+		IllegalArgumentException thrownIllegalArgumentException = assertThrows(IllegalArgumentException.class, () -> Network.checkHost(null));
 		assertTrue(thrownIllegalArgumentException.getMessage().contains("invalid host"));
 	}
 
@@ -50,9 +48,7 @@ public class NetworkTest {
 	 */
 	@Test
 	void checkLocalHostTest() throws Exception {
-		Network network = new Network();
-		
-		Map<String, String> host = network.checkLocalHost();
+		Map<String, String> host = Network.checkLocalHost();
 		assertNotNull(host);
 	}
 }

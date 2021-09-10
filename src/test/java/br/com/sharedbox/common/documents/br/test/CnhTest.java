@@ -29,12 +29,12 @@ public class CnhTest {
 	 */
 	@Test
 	public void validateTest() {
-		assertTrue(new Cnh().validate("53369516746"));
-		assertFalse(new Cnh().validate("11111111111"));
-		assertFalse(new Cnh().validate("123123"));
-		assertFalse(new Cnh().validate(""));
-		assertFalse(new Cnh().validate("rtyrtyrty78789"));
-		assertFalse(new Cnh().validate("rrrrrrrrrrr"));
+		assertTrue(new Cnh("53369516746").validate());
+		assertFalse(new Cnh("11111111111").validate());
+		assertFalse(new Cnh("123123").validate());
+		assertFalse(new Cnh("").validate());
+		assertFalse(new Cnh("rtyrtyrty78789").validate());
+		assertFalse(new Cnh("rrrrrrrrrrr").validate());
 	}
 
 }
