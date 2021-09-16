@@ -11,6 +11,8 @@ public enum MessageType {
 	Error((byte)1),
 	Exception((byte)-1),
 	Info((byte)3),
+	NoContent((byte)4),
+	PartialContent((byte)5),
 	Success((byte)0),
 	Warning((byte)2);
 	
