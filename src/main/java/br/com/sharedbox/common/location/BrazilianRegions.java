@@ -1,7 +1,7 @@
 package br.com.sharedbox.common.location;
 
 /**
- * Contain all Brazilian states
+ * Contain all Brazilian regions
  * 
  * @author Rafael Costi [rafaelcosti@outlook.com]
  * @version 1.0.0
