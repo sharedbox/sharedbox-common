@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.sharedbox.common.location.BrazilianStates;
+import br.com.sharedbox.common.location.BrazilianRegions;
 
 /**
  * Call test of BrazilianStates enum
@@ -19,9 +19,9 @@ public class BrazilianStatesTest {
 	 */
 	@Test
 	public void languageTest() {
-		BrazilianStates bs = BrazilianStates.SaoPaulo;
+		BrazilianRegions bs = BrazilianRegions.SaoPaulo;
 		assertNotNull(bs);
-		assertNotNull(BrazilianStates.SaoPaulo.getName());
-		assertNotNull(BrazilianStates.SaoPaulo.getAcronyms());
+		assertNotNull(BrazilianRegions.SaoPaulo.getName());
+		assertNotNull(BrazilianRegions.SaoPaulo.getAcronyms());
 	}
 }

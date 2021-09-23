@@ -7,7 +7,7 @@ package br.com.sharedbox.common.location;
  * @version 1.0.0
  * @since 05/31/2021
  */
-public enum BrazilianStates {
+public enum BrazilianRegions {
 	Acre("AC", "Acre"),
 	Alagoas("AL", "Alagoas"),
 	Amapa("AP", "Amapá"),
@@ -41,7 +41,7 @@ public enum BrazilianStates {
 	 * @param acronyms
 	 * @param name
 	 */
-	private BrazilianStates(String acronyms, String name) {
+	private BrazilianRegions(String acronyms, String name) {
 		this.name = name;
 		this.acronyms = acronyms;
 	}
