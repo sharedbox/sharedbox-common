@@ -51,9 +51,15 @@ public class ResponseValuesTest {
 		assertFalse(rv.hasMessageError());
 		
 		Map<String, Message> msg = new HashMap<String, Message>();
+		rv.setMessages(null);
 		msg.put("0000", new Message("Message test", "0000", MessageType.Error, new Exception("Message test")));
+		rv.addMessageAll(msg);
+		
 		rv.setMessages(msg);
 		rv.addMessage(new Message("Message test", "0001", MessageType.Error, new Exception("Message test")));
+
+		msg.put("0002", new Message("Message test", "0002", MessageType.Error, new Exception("Message test")));
+		rv.addMessageAll(msg);
 		
 		assertNotNull(rv.getMessages());
 

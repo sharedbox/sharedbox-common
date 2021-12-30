@@ -7,14 +7,17 @@ import br.com.sharedbox.common.utils.StringUtils;
  *
  * @author Rafael Costi [rafaelcosti@outlook.com]
  * @version 1.0.0
- * @since 06/01/2021
+ * @since 06/01/2021 - Version 1.0.0
  */
-public class DocumentBase {
+public class DocumentBase {	
 	/**
 	 * Constructor
+	 * 
+	 * @param number
 	 */
 	public DocumentBase() {
 		super();
+		this.value = "";
 	}
 	
 	/**
@@ -22,28 +25,21 @@ public class DocumentBase {
 	 * 
 	 * @param number
 	 */
-	public DocumentBase(String number) {
+	public DocumentBase(String value) {
 		super();
-		this.number = number;
+		this.value = value;
 	}
 	
 	/**
-	 * Document number
+	 * Document value
 	 */
-	private String number;
+	private final String value;
 	
 	/**
-	 * @return the number
+	 * @return the value
 	 */
-	public String getNumber() {
-		return number;
-	}
-
-	/**
-	 * @param number the number to set
-	 */
-	public void setNumber(String number) {
-		this.number = number;
+	public String getValue() {
+		return this.value;
 	}
 
 	/**
@@ -51,7 +47,7 @@ public class DocumentBase {
 	 * @param value
 	 * @return
 	 */
-	public boolean isNull(String value) {
-		return StringUtils.isEmpty(value);
+	public boolean isNull() {
+		return StringUtils.isEmpty(this.value);
 	}
 }

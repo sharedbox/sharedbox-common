@@ -12,6 +12,7 @@ import br.com.sharedbox.common.utils.StringUtils;
  * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 0.0.1
+ * @since 12/28/2021 - Version 0.0.1
  */
 public class Cnpj extends DocumentBase implements IDocument {
 	/**
@@ -28,7 +29,6 @@ public class Cnpj extends DocumentBase implements IDocument {
 	 */
 	public Cnpj(String number) {
 		super(number);
-		super.setNumber(StringUtils.leftPad(super.getNumber(), 14, "0"));
 	}
 	
 	/**
@@ -41,7 +41,7 @@ public class Cnpj extends DocumentBase implements IDocument {
 	 */
 	@Override
 	public String generate() {
-		return super.getNumber();
+		return super.getValue();
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class Cnpj extends DocumentBase implements IDocument {
 	 */
 	@Override
 	public String format() {
-		return super.getNumber();
+		return super.getValue();
 	}
 
 	/**
@@ -57,12 +57,13 @@ public class Cnpj extends DocumentBase implements IDocument {
 	 */
 	@Override
 	public boolean validate() {
-		if(super.getNumber() == null) {
-			return false;			
+		if(super.isNull()) {
+			return false;
 		}
 		
-		Pattern pat = Pattern.compile (this.cnpjRegexValidator);
-        Matcher mat = pat.matcher(super.getNumber());
+        final String cnpj = StringUtils.leftPad(super.getValue(), 14, "0");
+        Pattern pattern = Pattern.compile (this.cnpjRegexValidator);
+        Matcher mat = pattern.matcher(cnpj);
         if (!mat.matches()) {
         	return false;
         }
@@ -74,7 +75,7 @@ public class Cnpj extends DocumentBase implements IDocument {
         verify = 2;
         
         for (i=11; i>=0; i--) {
-        	num = (int)(super.getNumber().charAt(i) - 48);
+        	num = (int)(cnpj.charAt(i) - 48);
         	sm = sm + (num * verify);
         	verify = verify + 1;
         	
@@ -95,7 +96,7 @@ public class Cnpj extends DocumentBase implements IDocument {
         verify = 2;
         
         for (i=12; i>=0; i--) {
-        	num = (int)(super.getNumber().charAt(i)- 48);
+        	num = (int)(cnpj.charAt(i)- 48);
         	sm = sm + (num * verify);
         	verify = verify + 1;
         	
@@ -112,7 +113,7 @@ public class Cnpj extends DocumentBase implements IDocument {
         	dig14 = (char)((11-r) + 48);
         }
 
-        if ((dig13 == super.getNumber().charAt(12)) && (dig14 == super.getNumber().charAt(13))) {
+        if ((dig13 == cnpj.charAt(12)) && (dig14 == cnpj.charAt(13))) {
         	return true;
         } 
         	

@@ -8,7 +8,7 @@ import br.com.sharedbox.common.documents.IDocument;
  * 
  * @author Rafael Costi [rafaelcosti@outlook.com]
  * @version 1.0.0
- * @since 06/14/2021
+ * @since 06/14/2021 - Version 0.0.1
  */
 public class VehicleLicense extends DocumentBase implements IDocument {
 	/**
@@ -29,12 +29,12 @@ public class VehicleLicense extends DocumentBase implements IDocument {
 
 	@Override
 	public String generate() {
-		return super.getNumber();
+		return super.getValue();
 	}
 
 	@Override
 	public String format() throws Exception {
-		return super.getNumber();
+		return super.getValue();
 	}
 
 	@Override

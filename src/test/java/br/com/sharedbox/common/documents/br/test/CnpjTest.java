@@ -30,6 +30,10 @@ public class CnpjTest {
 	void validateTest() {
 		assertFalse(new Cnpj(null).validate());
 		assertTrue(new Cnpj("00000000000191").validate());
+		assertFalse(new Cnpj("0000000000761").validate());
+		assertFalse(new Cnpj("761").validate());
+		assertTrue(new Cnpj("191").validate());
 		assertFalse(new Cnpj("00000A00000191").validate());
+		assertFalse(new Cnpj("%#$%#$%#$%#$%").validate());
 	}
 }

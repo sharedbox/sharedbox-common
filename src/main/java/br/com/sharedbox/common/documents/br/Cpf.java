@@ -12,6 +12,7 @@ import br.com.sharedbox.common.utils.StringUtils;
  * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 0.0.1
+ * @since 12/28/2021 - Version 0.0.1
  */
 public class Cpf extends DocumentBase implements IDocument {
 	/**
@@ -28,7 +29,6 @@ public class Cpf extends DocumentBase implements IDocument {
 	 */
 	public Cpf(String number) {
 		super(number);
-		super.setNumber(StringUtils.leftPad(super.getNumber(), 11, "0"));
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class Cpf extends DocumentBase implements IDocument {
 	 */
 	@Override
 	public String generate() {
-		return super.getNumber();
+		return super.getValue();
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class Cpf extends DocumentBase implements IDocument {
 	 */
 	@Override
 	public String format() {
-		return super.getNumber();
+		return super.getValue();
 	}
 
 	/**
@@ -59,12 +59,13 @@ public class Cpf extends DocumentBase implements IDocument {
 	 */
 	@Override
 	public boolean validate() {
-		if(super.isNull(super.getNumber())) {
+		if(super.isNull()) {
 			return false;			
 		}
 		
+		final String cpf = StringUtils.leftPad(super.getValue(), 11, "0");
 		Pattern pat = Pattern.compile (this.cpfRegexValidator);
-        Matcher mat = pat.matcher(super.getNumber().toString());
+        Matcher mat = pat.matcher(cpf);
         if (!mat.matches()) {
         	return false;
         }
@@ -76,7 +77,7 @@ public class Cpf extends DocumentBase implements IDocument {
         verify = 10;
         
         for (i=0; i<9; i++) {
-        	num = (int)(super.getNumber().charAt(i) - 48);
+        	num = (int)(cpf.charAt(i) - 48);
         	sm = sm + (num * verify);
         	verify = verify - 1;
         }
@@ -92,7 +93,7 @@ public class Cpf extends DocumentBase implements IDocument {
         verify = 11;
         
         for(i=0; i<10; i++) {
-        	num = (int)(super.getNumber().charAt(i) - 48);
+        	num = (int)(cpf.charAt(i) - 48);
         	sm = sm + (num * verify);
         	verify = verify - 1;
         }
@@ -104,8 +105,8 @@ public class Cpf extends DocumentBase implements IDocument {
         	dig11 = (char)(r + 48);
         }
 
-        if ((dig10 == super.getNumber().charAt(9)) 
-        		&& (dig11 == super.getNumber().charAt(10))) {
+        if ((dig10 == cpf.charAt(9)) 
+        		&& (dig11 == cpf.charAt(10))) {
         	return true;
         }
 		

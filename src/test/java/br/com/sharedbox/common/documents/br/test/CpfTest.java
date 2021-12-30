@@ -30,6 +30,7 @@ public class CpfTest {
 		assertFalse(new Cpf("%#$%#$%#$%#$%").validate());
 		assertFalse(new Cpf("00000000000").validate());
 		assertTrue(new Cpf("00000000191").validate());
+		assertTrue(new Cpf("191").validate());
 		assertFalse(new Cpf("00000000198").validate());
 		assertFalse(new Cpf("000000001").validate());
 		assertFalse(new Cpf("00000000761").validate());

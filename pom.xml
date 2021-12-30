@@ -121,6 +121,12 @@
       <version>${apache.maven.version}</version>
     </dependency>
     
+    <dependency>
+      <groupId>commons-validator</groupId>
+      <artifactId>commons-validator</artifactId>
+      <version>1.7</version>
+    </dependency>
+    
     <!-- Auth0 -->
     <dependency>
       <groupId>com.auth0</groupId>

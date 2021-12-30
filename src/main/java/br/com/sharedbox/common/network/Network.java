@@ -30,7 +30,28 @@ public class Network {
 	/**
 	 * 
 	 */
+	public static final String HTTP_PREFIX = "http://";
+	
+	/**
+	 * 
+	 */
+	public static final String HTTPS_PREFIX = "https://";
+	
+	/**
+	 * 
+	 */
+	public static final String WWW_PREFIX = "www.";
+	
+	/**
+	 * 
+	 */
 	public static final String IS_SITE_LOCAL_ADDRESS = "isSiteLocalAddress";
+
+	/**
+	 * Maximum length of a full domain name, including separators, and leaving room for the root
+	 * label. See <a href="http://www.ietf.org/rfc/rfc2181.txt">RFC 2181</a> part 11.
+	 */
+	private static final int MAX_HOST_LENGTH = 253;
 	
 	/**
 	 * Check host response
@@ -79,5 +100,43 @@ public class Network {
 		}
 		
 		return response;
+	}
+	
+	/**
+	 * Check exist host name
+	 * 
+	 * @param host
+	 * @return
+	 */
+	public static boolean exist(String host) {
+		try {
+			if (StringUtils.isEmpty(host)) {
+				return false;
+			}
+			
+			if (host.length() > MAX_HOST_LENGTH) {
+				return false;
+			}
+			
+			if (host.endsWith(".")) {
+				return false;
+			}
+			
+			if (host.contains(HTTP_PREFIX) || host.contains(HTTPS_PREFIX)) {
+				host = host.replace(HTTPS_PREFIX, "").replace(HTTP_PREFIX, "");
+			}
+
+			if (host.contains(WWW_PREFIX)) {
+				host = host.replace(WWW_PREFIX, "");
+			}
+			
+			if(InetAddress.getByName(host).getHostAddress()
+						.matches("\\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}\\b")) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

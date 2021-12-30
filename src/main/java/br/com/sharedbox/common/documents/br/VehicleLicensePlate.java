@@ -13,7 +13,7 @@ import br.com.sharedbox.common.utils.StringUtils;
  * 
  * @author Rafael Costi [rafaelcosti@outlook.com]
  * @version 1.0.0
- * @since 06/01/2021
+ * @since 06/01/2021 - Version 0.0.1
  */
 public class VehicleLicensePlate extends DocumentBase implements IDocument {
 	/**
@@ -61,15 +61,17 @@ public class VehicleLicensePlate extends DocumentBase implements IDocument {
 
 	@Override
 	public String format() throws Exception {
-		if(StringUtils.isEmpty(super.getNumber())) {
+		if(super.isNull()) {
 			return "AAA-0000";
 		}
 		
-		if (super.getNumber().length() < 7) {
-			super.setNumber(StringUtils.leftPad("A", 7, super.getNumber()));
+		String licensePlate = super.getValue();
+		
+		if (licensePlate.length() < 7) {
+			licensePlate = StringUtils.leftPad("A", 7, super.getValue());
 		}
 		
-		return super.getNumber().substring(0, 3) + "-" + super.getNumber().substring(3, (super.getNumber().length()));
+		return licensePlate.substring(0, 3) + "-" + licensePlate.substring(3, (licensePlate.length()));
 	}
 
 	/**
@@ -77,13 +79,14 @@ public class VehicleLicensePlate extends DocumentBase implements IDocument {
 	 */
 	@Override
 	public boolean validate() {
-		if(isNull(super.getNumber())) {
+		if(isNull()) {
 			return false;
 		}
 		
-		super.setNumber(super.getNumber().toString().replace("-", "").toUpperCase());
+		String licensePlate = super.getValue().toString().replace("-", "").toUpperCase();
+		
 		Pattern pat = Pattern.compile (this.licensePlateRegexValidator);
-        Matcher mat = pat.matcher(super.getNumber().toString());
+        Matcher mat = pat.matcher(licensePlate);
         if (!mat.matches()) {
         	return false;
         }

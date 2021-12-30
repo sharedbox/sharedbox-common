@@ -50,6 +50,20 @@ public class ResponseValues <T> {
 	public void setMessages(Map<String, Message> messages) {
 		this.messages = messages;
 	}
+	
+	/**
+	 * 
+	 * @param messages
+	 */
+	public void addMessageAll(Map<String, Message> messages) {
+		if (this.messages == null) {
+			this.messages = new HashMap<String, Message>();
+		}
+		
+		for (Message message : messages.values()) {
+			this.messages.put(message.getCode(), message);
+		}		
+	}
 
 	/**
 	 * Get messages by message type
