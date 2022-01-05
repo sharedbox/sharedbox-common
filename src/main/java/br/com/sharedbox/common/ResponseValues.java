@@ -60,9 +60,11 @@ public class ResponseValues <T> {
 			this.messages = new HashMap<String, Message>();
 		}
 		
-		for (Message message : messages.values()) {
-			this.messages.put(message.getCode(), message);
-		}		
+		if (messages != null) {
+			for (Message message : messages.values()) {
+				this.messages.put(message.getCode(), message);
+			}		
+		}
 	}
 
 	/**

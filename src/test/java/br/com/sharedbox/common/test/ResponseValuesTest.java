@@ -59,7 +59,9 @@ public class ResponseValuesTest {
 		rv.addMessage(new Message("Message test", "0001", MessageType.Error, new Exception("Message test")));
 
 		msg.put("0002", new Message("Message test", "0002", MessageType.Error, new Exception("Message test")));
+
 		rv.addMessageAll(msg);
+		rv.addMessageAll(null);
 		
 		assertNotNull(rv.getMessages());
 
