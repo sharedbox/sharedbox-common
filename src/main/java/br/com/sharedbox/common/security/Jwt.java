@@ -1,10 +1,16 @@
 package br.com.sharedbox.common.security;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator.Builder;
+
+import br.com.sharedbox.common.utils.DateTimeUtils;
+import br.com.sharedbox.common.utils.ObjectUtils;
 
 /**
  * This class contain write and read jwt token
@@ -35,7 +41,7 @@ public class Jwt {
 	 * @param claims
 	 * @return token
 	 */
-	public static String generateToken(String secret, String subject, long expiration, JwtAlgorithim algorithm, Map<String, String> claims) {
+	public static String generateToken(String secret, String subject, long expiration, JwtAlgorithim algorithm, Map<String, Object> claims) {
 		return generateToken(secret, subject, expiration, algorithm, claims, null);
 	}
 	
@@ -51,14 +57,56 @@ public class Jwt {
 	 * @return token
 	 */
 	public static String generateToken(String secret, String subject, long expiration, JwtAlgorithim algorithm
-			, Map<String, String> claims, Map<String, Object> headerClaims) {
+			, Map<String, Object> claims, Map<String, Object> headerClaims) {
 		Builder builder = JWT.create()
 					.withSubject(subject)
 					.withExpiresAt(new Date(System.currentTimeMillis() + expiration));
 		
 		if (claims != null) {
 			for (String key : claims.keySet()) {
-				builder = builder.withClaim(key, claims.get(key));
+				if (claims.get(key) != null) {
+					if (ObjectUtils.isString(claims.get(key))) {
+						builder = builder.withClaim(key, claims.get(key).toString());
+					}
+					
+					if (ObjectUtils.isLong(claims.get(key))) {
+						builder = builder.withClaim(key, Long.parseLong(claims.get(key).toString()));
+					}
+					
+					if (ObjectUtils.isByte(claims.get(key)) || ObjectUtils.isInteger(claims.get(key))) {
+						builder = builder.withClaim(key, Integer.parseInt(claims.get(key).toString()));
+					}
+					
+					if (ObjectUtils.isFloat(claims.get(key)) || ObjectUtils.isDouble(claims.get(key))) {
+						builder = builder.withClaim(key, Double.parseDouble(claims.get(key).toString()));
+					}
+					
+					if (ObjectUtils.isBoolean(claims.get(key))) {
+						builder = builder.withClaim(key, Boolean.parseBoolean(claims.get(key).toString()));
+					}
+					
+					if (ObjectUtils.isLocalDate(claims.get(key))) {
+						builder = builder.withClaim(key ,DateTimeUtils.localDateToDate((LocalDate)claims.get(key)));
+					}
+					
+					if (ObjectUtils.isLocalDateTime(claims.get(key))) {
+						builder = builder.withClaim(key , DateTimeUtils.localDateTimeToDate((LocalDateTime)claims.get(key)));
+					}
+					
+					if (ObjectUtils.isDate(claims.get(key))) {
+						builder = builder.withClaim(key, (Date)claims.get(key));
+					}
+					
+					if (ObjectUtils.isList(claims.get(key))) {
+						builder = builder.withClaim(key, Collections.singletonList(claims.get(key)));
+					}
+
+					if (ObjectUtils.isMap(claims.get(key))) {
+						builder = builder.withClaim(key, ObjectUtils.convertObjectToMap(claims.get(key)));
+					}
+				} else {
+					builder = builder.withClaim(key, "");
+				}
 			}
 		}
 		

@@ -3,8 +3,10 @@ package br.com.sharedbox.common.utils;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
+import java.util.Date;
 import java.util.Locale;
 
 import br.com.sharedbox.common.Language;
@@ -165,5 +167,21 @@ public class DateTimeUtils {
 		if (day > 31 || day < 1) {
 			throw new IllegalArgumentException("Invalid day");
 		}
+	}
+
+	/**
+	 * Convert LocalDate to Date
+	 * @param object
+	 */
+	public static Date localDateToDate(LocalDate localDate) {
+		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
+
+	/**
+	 * Convert LocalDateTime to Date
+	 * @param object
+	 */
+	public static Date localDateTimeToDate(LocalDateTime localDateTime) {
+		return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
 	}
 }

@@ -4,13 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
 import br.com.sharedbox.common.security.Jwt;
 import br.com.sharedbox.common.security.JwtAlgorithim;
+import br.com.sharedbox.common.utils.DateTimeUtils;
 
 /**
  * Call test of Jwt class
@@ -34,34 +39,114 @@ public class JwtTest {
 	@Test
 	public void generateTokenTest() {
 		String subject = "SharedBox";
+		String secret = "sharedbox-secret";
+		long expiration = 3000;
+		JwtAlgorithim algorithin = JwtAlgorithim.HS512;
+		String token = "";
+		Map<String, Object> claims = new HashMap<String, Object>();
 		
-		String token = Jwt.generateToken("SECRET_TEST", subject, 6000, JwtAlgorithim.HS512);
+		token = Jwt.generateToken(secret, null, expiration, algorithin);
 		assertNotNull(token);
 		
-		Map<String, String> claims = new HashMap<String, String>();
-		claims.put("user", "sharedbox");
-		claims.put("test", "test");
+		token = Jwt.generateToken(secret, subject, expiration, algorithin);
+		assertNotNull(token);
+		
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, null);
+		assertNotNull(token);
 
+		claims.put("test", null);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", "SharedBox");
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", (byte)1);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", (int)1);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", (long)1);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", (float)1);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", (double)1);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", true);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", DateTimeUtils.localDateToDate(LocalDate.now()));
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", LocalDate.now());
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		claims.put("test", LocalDateTime.now());
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+
+		Map<String, String > map2 = new HashMap<String, String>();
+		map2.put("value", "1");
+		map2.put("value2", "2");
+		map2.put("value3", "3");
+		claims.put("test3", map2);
+		
+		List<String> list = new ArrayList<String>();
+		list.add("value");
+		list.add("value2");
+		list.add("value3");
+		claims.put("list", list);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims);
+		assertNotNull(token);
+		
 		Map<String, Object> claimsHeader = new HashMap<String, Object>();
 		claimsHeader.put("system", "sharedbox");
-		
-		token = Jwt.generateToken("SECRET_TEST", subject, 6000, JwtAlgorithim.HS512, claims);
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims, claimsHeader);
 		assertNotNull(token);
-		
-		token = Jwt.generateToken(null, subject, 6000, JwtAlgorithim.NONE, claims);
-		assertNotNull(token);
-		
-		token = Jwt.generateToken("SECRET_TEST", subject, 6000, JwtAlgorithim.HS512, null, claimsHeader);
-		
-		IllegalArgumentException thrownIllegalArgumentException = assertThrows(IllegalArgumentException.class, 
-				() -> Jwt.generateToken(null, subject, 6000, JwtAlgorithim.HS512));
-		assertTrue(thrownIllegalArgumentException.getMessage().contains("JWT invalid secret"));
 
-		token = Jwt.generateToken("SECRET_TEST", subject, 6000, JwtAlgorithim.HS512, claims, claimsHeader);
+		IllegalArgumentException thrownIllegalArgumentException = assertThrows(IllegalArgumentException.class, 
+				() -> Jwt.generateToken(null, subject, expiration, JwtAlgorithim.HS512, claims, claimsHeader));
+		assertTrue(thrownIllegalArgumentException.getMessage().contains("JWT invalid secret"));
+		
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, null, claimsHeader);
 		assertNotNull(token);
-		token = Jwt.generateToken("SECRET_TEST", subject, 6000, JwtAlgorithim.HS384, claims, claimsHeader);
+		
+		algorithin = JwtAlgorithim.HS384;
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims, claimsHeader);
 		assertNotNull(token);
-		token = Jwt.generateToken("SECRET_TEST", subject, 6000, JwtAlgorithim.HS256, claims, claimsHeader);
+		
+		algorithin = JwtAlgorithim.HS256;
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims, claimsHeader);
 		assertNotNull(token);
+		
+		algorithin = JwtAlgorithim.NONE;
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, claims, claimsHeader);
+		assertNotNull(token);
+
+		token = Jwt.generateToken(null, subject, expiration, algorithin, claims, claimsHeader);
+		assertNotNull(token);
+	}
+	
+	@Test
+	void JwtAlgorithimTest() {
+		JwtAlgorithim algorithin = JwtAlgorithim.HS256;
+		assertNotNull(algorithin.getValue());
+		assertNotNull(algorithin.getDescription());
+		assertTrue(algorithin.isJdkStandard());
+		assertNotNull(algorithin.getFamilyName());
+		assertNotNull(algorithin.getJcaName());
 	}
 }

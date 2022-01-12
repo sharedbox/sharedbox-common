@@ -100,4 +100,39 @@ public enum JwtAlgorithim {
     	
     	return algorithm;
     }
+
+	/**
+	 * @return the value
+	 */
+	public String getValue() {
+		return value;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @return the jdkStandard
+	 */
+	public boolean isJdkStandard() {
+		return jdkStandard;
+	}
+
+	/**
+	 * @return the familyName
+	 */
+	public String getFamilyName() {
+		return familyName;
+	}
+
+	/**
+	 * @return the jcaName
+	 */
+	public String getJcaName() {
+		return jcaName;
+	}
 }
