@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator.Builder;
+import com.auth0.jwt.interfaces.Claim;
 
 import br.com.sharedbox.common.utils.DateTimeUtils;
 import br.com.sharedbox.common.utils.ObjectUtils;
@@ -115,5 +116,24 @@ public class Jwt {
 		}
 			
 		return builder.sign(algorithm.getAlgorithim(secret));
+	}
+	
+	/**
+	 * 
+	 * @param token
+	 * @return
+	 */
+	public static Map<String, Claim> getClaims(String token) {
+		return JWT.decode(token).getClaims();
+	}
+	
+	/**
+	 * 
+	 * @param token
+	 * @param key
+	 * @return
+	 */
+	public static Object getHeaderItem(String token, String key) {
+		return JWT.decode(token).getHeaderClaim(key).as(Object.class);
 	}
 }

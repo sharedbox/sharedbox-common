@@ -140,6 +140,25 @@ public class JwtTest {
 		assertNotNull(token);
 	}
 	
+	/**
+	 * 
+	 */
+	@Test
+	void headerItemTest() {
+		String subject = "SharedBox";
+		String secret = "sharedbox-secret";
+		long expiration = 3000;
+		JwtAlgorithim algorithin = JwtAlgorithim.HS512;
+		String token = "";
+
+		Map<String, Object> claimsHeader = new HashMap<String, Object>();
+		claimsHeader.put("system", "sharedbox");
+		token = Jwt.generateToken(secret, subject, expiration, algorithin, null, claimsHeader);
+		
+		Object itemHeader = Jwt.getHeaderItem(token, "system");
+		assertNotNull(itemHeader);
+	}
+	
 	@Test
 	void JwtAlgorithimTest() {
 		JwtAlgorithim algorithin = JwtAlgorithim.HS256;

@@ -34,15 +34,19 @@ public class Cryptography {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String encrypt(String value) throws Exception {
+	public static String encrypt(String value) {
 		if(value == null) {
 			throw new IllegalArgumentException("Value is null");
 		}
 		
-		Cipher c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
-	    c.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(sharedkey, "DESede"), new IvParameterSpec(sharedvector));
-	    byte[] encrypted = c.doFinal(value.getBytes("UTF-32"));
-	    return Base64.getEncoder().encodeToString(encrypted).replace("/", "-");
+		try {
+			Cipher c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
+		    c.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(sharedkey, "DESede"), new IvParameterSpec(sharedvector));
+		    byte[] encrypted = c.doFinal(value.getBytes("UTF-32"));
+		    return Base64.getEncoder().encodeToString(encrypted).replace("/", "-");
+		} catch (Exception e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**

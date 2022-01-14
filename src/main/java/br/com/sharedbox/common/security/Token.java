@@ -22,7 +22,7 @@ public class Token {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String generate() throws Exception {	
+	public static String generate()  {	
 		return generate(null);
 	}
 	
@@ -32,7 +32,7 @@ public class Token {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String generate(long value) throws Exception {
+	public static String generate(long value)  {
 		return generate(Long.toBinaryString(value));
 	}
 	
@@ -42,7 +42,7 @@ public class Token {
 	 * @return
 	 * @throws Exception 
 	 */
-	public static String generate(String value) throws Exception {
+	public static String generate(String value)  {
 		int hash = 0;
 		if (value != null) {
 			hash = value.hashCode();
