@@ -65,7 +65,7 @@ public class RestUtils {
 	 * @throws NoSuchAlgorithmException
 	 * @throws KeyStoreException
 	 */
-	public static RestTemplate newInstance(int defaultTimeout) throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+	public static RestTemplate newInstance(int defaultTimeout) {
 		return newInstance(null, defaultTimeout);
 	}
 	
