@@ -39,7 +39,7 @@ public class RestUtils {
 	 * @throws NoSuchAlgorithmException 
 	 * @throws KeyManagementException 
 	 */
-	public static RestTemplate newInstance() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+	public static RestTemplate newInstance() {
 		return newInstance(null);
 	}
 	
@@ -52,7 +52,7 @@ public class RestUtils {
 	 * @throws NoSuchAlgorithmException
 	 * @throws KeyStoreException
 	 */
-	public static RestTemplate newInstance(Proxy proxy) throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+	public static RestTemplate newInstance(Proxy proxy) {
 		return newInstance(proxy, 50000);
 	}
 	
@@ -79,8 +79,7 @@ public class RestUtils {
 	 * @throws NoSuchAlgorithmException
 	 * @throws KeyStoreException
 	 */
-	public static RestTemplate newInstance(Proxy proxy, int defaultTimeout) 
-			throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+	public static RestTemplate newInstance(Proxy proxy, int defaultTimeout) {
 		SSLConnectionSocketFactory sslsf = sslConnection();
 		
 		BasicHttpClientConnectionManager connectionManager =
@@ -96,10 +95,14 @@ public class RestUtils {
 	 * @throws NoSuchAlgorithmException
 	 * @throws KeyStoreException
 	 */
-	private static SSLConnectionSocketFactory sslConnection() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
-		SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
-		return new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+	private static SSLConnectionSocketFactory sslConnection() {
+		try {
+			TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
+			SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
+			return new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+		} catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	/**
