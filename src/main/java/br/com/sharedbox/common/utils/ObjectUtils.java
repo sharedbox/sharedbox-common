@@ -1,5 +1,6 @@
 package br.com.sharedbox.common.utils;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Objec utils
@@ -225,5 +227,24 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 	 */
 	public static boolean isMap(Object object) {
 		return object == null ? false : object instanceof Map<?, ?>;
+	}
+	
+	/**
+	 * 
+	 * @param <T>
+	 * @param path
+	 * @return
+	 */
+	public static <T> T getObjectFromFileJson(String path) {
+		try {
+			String linesStr = StringUtils.EMPTY;
+			String[] lines = FileUtils.readAllLines(path);
+			for (String line : lines) {
+				linesStr = linesStr + line + System.lineSeparator();
+			}
+			return convertToClassModel(linesStr, new TypeToken<T>() {}.getType());
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
