@@ -108,5 +108,17 @@ public class DateTimeUtilsTest {
 		thrown = assertThrows(IllegalArgumentException.class
 				, () -> DateTimeUtils.string_yyyy_MM_dd_HH_mm_ss_DateTime("2021-03-33 11:00:00"));
 		assertTrue(thrown.getMessage().contains("Invalid day"));
+	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	void stringyyyy_MM_ddToLocalDateTest() {
+		assertNotNull(DateTimeUtils.string_yyyy_MM_dd_ToLocalDate("2022-02-01"));
+
+		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class
+				, () -> DateTimeUtils.string_yyyy_MM_dd_ToLocalDate(null));
+		assertTrue(thrown.getMessage().contains("Invalid date"));
 	}	
 }

@@ -126,6 +126,22 @@ public class DateTimeUtils {
 	}
 	
 	/**
+	 * Convert String format yyyy-MM-dd to LocalDate
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static LocalDate string_yyyy_MM_dd_ToLocalDate(String date) {
+		dateValidate(date);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		TemporalAccessor ta = formatter.parse(date);
+	    YearMonth ym = YearMonth.from(ta);
+		return LocalDate.of(ym.getYear(),  ym.getMonthValue(), 1);
+	}
+	
+	
+	/**
 	 * 
 	 * @param date
 	 */
