@@ -3,6 +3,7 @@ package br.com.sharedbox.common.utils;
 import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.text.Normalizer;
 import java.util.Random;
 import java.util.UUID;
 
@@ -286,5 +287,15 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 */
 	public static String upperCaseFirstChar(String value) {
 		return WordUtils.capitalize(value);
+	}
+	
+	/***
+	 * Replace accents from words
+	 * 
+	 * @param value
+	 * @return string without accents
+	 */
+	public static String replaceAccents(String value) {
+		return Normalizer.normalize(value, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");	
 	}
 }

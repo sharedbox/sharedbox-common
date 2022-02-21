@@ -109,4 +109,12 @@ public class StringUtilsTest {
 		assertNotNull(StringUtils.removeNumbers(""));
 		assertNotNull(StringUtils.removeNumbers("TEST 1234567890"));
 	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	public void replaceAccentsTest() {
+		assertEquals("AAAEEEIIIOOOOUUU", StringUtils.replaceAccents("ÁÀÃÉÉÊÍÌIÔÕÓÒÚÙU"));
+	}
 }
