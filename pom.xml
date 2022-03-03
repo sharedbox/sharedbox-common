@@ -30,20 +30,13 @@
     <fasterxml.jackson.version>2.12.3</fasterxml.jackson.version>
     <!-- Google -->
     <google.gson.version> 2.8.7</google.gson.version>
-    <!-- Hibernate -->
-    <hibernate.version>6.0.0.Alpha8</hibernate.version>
-    <hibernate.validator.version>7.0.1.Final</hibernate.validator.version>
     <!-- Javax -->
     <javax.servlet.api.version>4.0.1</javax.servlet.api.version>
     <javax.servlet.jsp.api.version>2.3.3</javax.servlet.jsp.api.version>
     <javax.servlet.jsp.jstl.api.version>1.2.2</javax.servlet.jsp.jstl.api.version>
     <javax.servlet.xml.soap.api>1.4.0</javax.servlet.xml.soap.api>
-    <!-- MySql -->
-    <mysql.connector.version>8.0.25</mysql.connector.version>
     <!-- Spring -->
     <spring.framework.version>5.3.8</spring.framework.version>
-    <srping.data.version>2.5.2</srping.data.version>
-    <spring.security.version>5.5.1</spring.security.version>
   </properties>
   
   <organization>
@@ -164,19 +157,6 @@
       <artifactId>javase</artifactId>
       <version>3.4.1</version>
     </dependency>
-
-    <!-- Hibernate -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.hibernate.validator</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>${hibernate.validator.version}</version>
-    </dependency>
     
     <!-- Javax -->
     <dependency>
@@ -226,80 +206,12 @@
       <version>3.11.2</version>
       <scope>test</scope>
     </dependency>
-
-    <!-- MySql -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>${mysql.connector.version}</version>
-    </dependency>
     
-    <!-- Spring -->    
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-      <version>${spring.framework.version}</version>
-    </dependency>
-        
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-      <version>${spring.framework.version}</version>
-    </dependency>
-            
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webflux</artifactId>
-      <version>${spring.framework.version}</version>
-    </dependency>
-    
+    <!-- Spring -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
       <version>${spring.framework.version}</version>
-    </dependency>
-   
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>${spring.framework.version}</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${spring.framework.version}</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <version>${spring.framework.version}</version>
-      <scope>test</scope>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-jpa</artifactId>
-      <version>${srping.data.version}</version>
-    </dependency>
-   
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-commons</artifactId>
-      <version>${srping.data.version}</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-aop</artifactId>
-      <version>5.3.9</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-autoconfigure</artifactId>
-      <version>2.4.5</version>
     </dependency>
   </dependencies>
   

@@ -10,7 +10,7 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import org.springframework.util.Base64Utils;
+import org.apache.commons.codec.binary.Base64;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -167,6 +167,6 @@ public class QRCode {
 	 * @throws Exception
 	 */
 	public String generateBase64(Extensions imageFormat) throws Exception {
-		return Base64Utils.encodeToString(generateByteArray(imageFormat));
+		return Base64.encodeBase64String(generateByteArray(imageFormat));
 	}
 }
