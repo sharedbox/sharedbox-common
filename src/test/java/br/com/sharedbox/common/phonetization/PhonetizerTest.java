@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.sharedbox.common.Language;
+import br.com.sharedbox.common.location.Languages;
 
 /**
  * 
@@ -60,6 +60,6 @@ class PhonetizerTest {
 
 		assertNotNull(Phonetizer.execute(PHRASE_TEST));
 		assertNotNull(Phonetizer.execute(null, PHRASE_TEST));
-		assertNotNull(Phonetizer.execute(Language.En, PHRASE_TEST));
+		assertNotNull(Phonetizer.execute(Languages.En, PHRASE_TEST));
 	}
 }

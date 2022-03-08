@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.sharedbox.common.Language;
+import br.com.sharedbox.common.location.Languages;
 import br.com.sharedbox.common.utils.DateTimeUtils;
 
 /**
@@ -37,13 +37,13 @@ public class DateTimeUtilsTest {
 		assertTrue(thrown.getMessage().contains("Invalid language"));
 		
 		thrown = assertThrows(IllegalArgumentException.class
-				, () -> DateTimeUtils.stringMMMMyyyyToLocalDate(null, Language.En));
+				, () -> DateTimeUtils.stringMMMMyyyyToLocalDate(null, Languages.En));
 		assertTrue(thrown.getMessage().contains("Invalid date"));
 
 		assertNotNull(DateTimeUtils.stringMMMMyyyyToLocalDate("Março 2021"));
-		assertNotNull(DateTimeUtils.stringMMMMyyyyToLocalDate("March 2021", Language.En));
-		assertNotNull(DateTimeUtils.stringMMMMyyyyToLocalDate("march 2021", Language.En));
-		assertNotNull(DateTimeUtils.stringMMMMyyyyToLocalDate("march/2021", Language.En));
+		assertNotNull(DateTimeUtils.stringMMMMyyyyToLocalDate("March 2021", Languages.En));
+		assertNotNull(DateTimeUtils.stringMMMMyyyyToLocalDate("march 2021", Languages.En));
+		assertNotNull(DateTimeUtils.stringMMMMyyyyToLocalDate("march/2021", Languages.En));
 	}
 
 	/**

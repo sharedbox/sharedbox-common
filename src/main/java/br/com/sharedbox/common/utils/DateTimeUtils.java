@@ -9,7 +9,7 @@ import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 import java.util.Locale;
 
-import br.com.sharedbox.common.Language;
+import br.com.sharedbox.common.location.Languages;
 
 /**
  * Utilities for dealing with date/times
@@ -28,7 +28,7 @@ public class DateTimeUtils {
 	 * @return
 	 */
 	public static LocalDate stringMMMMyyyyToLocalDate(String date) {
-		return stringMMMMyyyyToLocalDate(date, Language.Pt);
+		return stringMMMMyyyyToLocalDate(date, Languages.Pt);
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class DateTimeUtils {
 	 * @param lang
 	 * @return
 	 */
-	public static LocalDate stringMMMMyyyyToLocalDate(String date, Language lang) {
+	public static LocalDate stringMMMMyyyyToLocalDate(String date, Languages lang) {
 		if (lang == null) {
 			throw new IllegalArgumentException("Invalid language");
 		}
@@ -51,13 +51,13 @@ public class DateTimeUtils {
 			date = date.replace("/", " ");
 		}
 		
-		if (lang.equals(Language.Pt)) {
+		if (lang.equals(Languages.Pt)) {
 			date = date.toLowerCase();
 		} else {
 			date = StringUtils.upperCaseFirstChar(date);
 		}
 		
-		Locale locale = new Locale(lang.getCode());
+		Locale locale = new Locale(lang.getIso6391());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
 				.localizedBy(locale);
 		

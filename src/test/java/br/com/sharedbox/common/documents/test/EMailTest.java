@@ -23,7 +23,6 @@ public class EMailTest {
 		assertNotNull(new EMail());
 	}
 
-
 	/**
 	 * 
 	 * @return

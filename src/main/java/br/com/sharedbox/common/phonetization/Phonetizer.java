@@ -3,7 +3,7 @@ package br.com.sharedbox.common.phonetization;
 import java.text.Normalizer;
 import java.util.List;
 
-import br.com.sharedbox.common.Language;
+import br.com.sharedbox.common.location.Languages;
 import br.com.sharedbox.common.utils.StringUtils;
 
 /**
@@ -18,7 +18,7 @@ public class Phonetizer {
 	 * @return
 	 */
 	public static String execute(String phrase) throws IllegalArgumentException {
-		return execute(Language.Pt, phrase);
+		return execute(Languages.Pt, phrase);
 	}
 
 	/**
@@ -27,13 +27,13 @@ public class Phonetizer {
 	 * @param phrase
 	 * @return
 	 */
-	public static String execute(Language lang, String phrase) throws IllegalArgumentException {
+	public static String execute(Languages lang, String phrase) throws IllegalArgumentException {
 		if (StringUtils.isEmpty(phrase)) {
 			throw new IllegalArgumentException("Phoneticize error. The argument is null or empty");
 		}
 		
 		if(lang == null) {
-			lang = Language.Pt;
+			lang = Languages.Pt;
 		}
 
 		phrase = phrase.toUpperCase();
@@ -48,7 +48,7 @@ public class Phonetizer {
 		phrase = Normalizer.normalize(phrase, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 		phrase = StringUtils.removeSpecialCharacter(phrase).toUpperCase();
 
-		if (lang == Language.Pt) {
+		if (lang == Languages.Pt) {
 			return phoneticizePtBr(phrase);
 		}
 
