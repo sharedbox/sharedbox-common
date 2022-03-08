@@ -315,7 +315,6 @@ public enum Countries {
 				return NotFound;
 			}
 		}
-		
 		return getById(Byte.parseByte(id));
 	}
 	
@@ -332,7 +331,7 @@ public enum Countries {
 				}
 			}
 		}
-		
+	
 		return NotFound;
 	}
 

@@ -297,7 +297,6 @@ public enum Languages {
 				return NotFound;
 			}
 		}
-		
 		return getById(Byte.parseByte(id));
 	}
 	
@@ -314,7 +313,6 @@ public enum Languages {
 				}
 			}
 		}
-		
 		return NotFound;
 	}
 

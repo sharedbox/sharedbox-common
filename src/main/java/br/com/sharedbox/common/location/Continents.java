@@ -113,7 +113,6 @@ public enum Continents {
 				return NotFound;
 			}
 		}
-		
 		return getById(Byte.parseByte(id));
 	}
 		
@@ -128,7 +127,6 @@ public enum Continents {
 				return continent;
 			}
 		}
-		
 		return NotFound;
 	}
 

@@ -145,7 +145,6 @@ public enum Currencies {
 				return NotFound;
 			}
 		}
-		
 		return getById(Byte.parseByte(id));
 	}
 	
@@ -162,7 +161,6 @@ public enum Currencies {
 				}
 			}
 		}
-		
 		return NotFound;
 	}
 

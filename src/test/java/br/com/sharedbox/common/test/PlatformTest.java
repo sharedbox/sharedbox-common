@@ -1,5 +1,7 @@
 package br.com.sharedbox.common.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
@@ -19,9 +21,12 @@ public class PlatformTest {
 	 */
 	@Test
 	public void platformTest() {
-		Platform plat = Platform.Windows;
-
-		assertNotNull(plat);
-		assertNotNull(plat.getId());
+		assertNotNull(Platform.Windows.getId());
+		assertEquals(Platform.getById(Platform.Windows.getId() + ""), Platform.Windows);
+		assertNotEquals(Platform.getById(99), Platform.Windows);
+		assertEquals(Platform.getById(Long.MAX_VALUE + ""), Platform.NotFound);
+		assertEquals(Platform.getById(null), Platform.NotFound);
+		assertEquals(Platform.getById("AA"), Platform.NotFound);
+		assertEquals(Platform.getById("1"), Platform.Windows);
 	}
 }
