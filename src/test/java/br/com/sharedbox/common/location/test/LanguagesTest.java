@@ -37,6 +37,13 @@ public class LanguagesTest {
 		assertEquals(Languages.getById(Long.MAX_VALUE + ""), Languages.NotFound);
 		assertEquals(Languages.getById("0"), Languages.NotFound);
 		assertEquals(Languages.getById("42"), Languages.En);
+		assertEquals(Languages.getByCodeOrId("9"), Languages.Hy);
+		assertEquals(Languages.getByCodeOrId("hy"), Languages.Hy);
+		assertEquals(Languages.getByCodeOrId("arm"), Languages.Hy);
+		assertEquals(Languages.getByCodeOrId("hye"), Languages.Hy);
+		assertEquals(Languages.getByCodeOrId(null), Languages.NotFound);
+		assertEquals(Languages.getByCode(null), Languages.NotFound);
+		assertEquals(Languages.getByCode("XYZWW"), Languages.NotFound);
 
 		assertNotNull(Languages.toJsonList());
 		
