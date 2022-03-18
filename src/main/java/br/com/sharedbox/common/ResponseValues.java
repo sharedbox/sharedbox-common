@@ -1,5 +1,6 @@
 package br.com.sharedbox.common;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,12 @@ import br.com.sharedbox.common.messages.MessageType;
  * @version 1.0.0
  *
  */
-public class ResponseValues <T> {
+public class ResponseValues <T> implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * 
 	 */
