@@ -4,6 +4,7 @@ import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.text.Normalizer;
+import java.util.Base64;
 import java.util.Random;
 import java.util.UUID;
 
@@ -297,5 +298,23 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 */
 	public static String replaceAccents(String value) {
 		return Normalizer.normalize(value, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");	
+	}
+
+	/**
+	 * Convert byte array to base 64 String
+	 * @param flag
+	 * @return
+	 */
+	public static String byteArrayToBase64(byte[] bt) {
+		return Base64.getEncoder().encodeToString(bt);
+	}
+
+	/**
+	 * Convert byte array to base 64 String
+	 * @param flag
+	 * @return
+	 */
+	public static byte[] base64ToByteArray(String value) {
+		return Base64.getDecoder().decode(value.getBytes());
 	}
 }
