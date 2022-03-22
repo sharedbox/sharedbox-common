@@ -383,7 +383,7 @@ public enum Countries {
 			+ ", \"m49Code\": " + this.getM49Code()
 			+ ", \"wikiDataId\": \"" + this.getWikiDataId() + "\""
 			+ ", \"regionAmount\": " + this.getRegionAmount()
-			+ ", \"idContinent\": " + Continents.getById(this.idContinent).toJson() 
+			+ ", \"continent\": " + Continents.getById(this.idContinent).toJson() 
 			+ ", \"currencies\": " + currenciesStr 
 			+ ", \"languages\": " + languagesStr + " }";
 	}
