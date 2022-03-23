@@ -101,8 +101,7 @@ public class DateTimeUtils {
 	public static String dateTime_yyyy_MM_dd_HH_mm_ss_ToString(LocalDateTime date) {
 		dateValidate(date);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		date.format(formatter);
-		return date.toString();
+		return date.format(formatter);
 	}
 	
 	/**
