@@ -6,7 +6,7 @@ package br.com.sharedbox.common.utils;
  * @version 1.0.0
  * @since 03/25/2022 - Version 1.0.0
  */
-public interface ApiFiledsUtils {
+public interface EntityUtils {
 	/**
 	 * Utils to convert class to json
 	 */
