@@ -1,7 +1,14 @@
 package br.com.sharedbox.common.utils;
 
+/**
+ * 
+ * @author Rafael Costi
+ * @version 1.0.0
+ * @since 03/25/2022 - Version 1.0.0
+ */
 public interface ApiFiledsUtils {
 	/**
 	 * Utils to convert class to json
 	 */
+	String toJson();
 }
