@@ -91,6 +91,24 @@ public class DateTimeUtils {
 	}
 	
 	/**
+	 * Convert String format yyyy-MM-dd to LocalDate
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static LocalDate string_yyyy_MM_dd_ToLocalDate(String date) {
+		dateValidate(date);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		String[] dt = date.split("-");
+		monthValidate(Integer.parseInt(dt[1]));
+		dayValidate(Integer.parseInt(dt[2]));
+
+		LocalDate ld = LocalDate.parse(date, formatter);
+		return ld;
+	}
+	
+	/**
 	 * <p>
 	 * Convert LocalDate format yyyy-MM-dd HH:mm:ss to String
 	 * </p>
@@ -122,21 +140,6 @@ public class DateTimeUtils {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		LocalDateTime ld = LocalDateTime.parse(date, formatter);
 		return ld;
-	}
-	
-	/**
-	 * Convert String format yyyy-MM-dd to LocalDate
-	 * 
-	 * @param date
-	 * @return
-	 */
-	public static LocalDate string_yyyy_MM_dd_ToLocalDate(String date) {
-		dateValidate(date);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		
-		TemporalAccessor ta = formatter.parse(date);
-	    YearMonth ym = YearMonth.from(ta);
-		return LocalDate.of(ym.getYear(),  ym.getMonthValue(), 1);
 	}
 	
 	
