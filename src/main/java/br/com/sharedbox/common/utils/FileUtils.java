@@ -82,6 +82,23 @@ public class FileUtils extends org.apache.commons.io.IOUtils {
 	 * @throws IOException
 	 */
 	public static void write(String value, String path, Charset charset) throws IOException {
+		if (StringUtils.isEmpty(path)) {
+			throw new RuntimeException("Invalid path");
+		}
+				
+		String[] foldersPath = path.split("\\\\");
+		String folders = StringUtils.EMPTY;
+		
+		for (int i = 0 ; i < foldersPath.length; i++) {
+			if (i < (foldersPath.length - 1)) {
+				folders = folders + foldersPath[i] + "\\";
+			}
+		}
+		
+		File fl = new File(folders);
+		if (!fl.exists()) {
+			fl.mkdirs();
+		}
 		OutputStream ops = new FileOutputStream(path);
 		write(value, ops, charset);
 	}

@@ -2,6 +2,8 @@ package br.com.sharedbox.common.utils.test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -46,6 +48,11 @@ public class FileUtilsTest {
 	void writeTest() throws IOException{
 		String value = "testWrite";
 		assertDoesNotThrow(() -> FileUtils.write(value, path));
+
+		String pth = null;
+		RuntimeException thrown = assertThrows(RuntimeException.class
+				, () -> FileUtils.write(value, pth));
+		assertTrue(thrown.getMessage().contains("Invalid path"));
 	}
 	
 	/**
