@@ -11,4 +11,11 @@ public interface EntityUtils {
 	 * Utils to convert class to json
 	 */
 	String toJson();
+	
+	/**
+	 * Implements solution to format json string field 
+	 * @param value
+	 * @return formated value
+	 */
+	String getJsonValue(String value);
 }
