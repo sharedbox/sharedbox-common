@@ -18,7 +18,7 @@ import br.com.sharedbox.common.utils.FileUtils;
  *  
  * @author Rafael Costi [rafaelcosti@outlook.com]
  * @version 1.0.0
- * @since 08/04/2021
+ * @since 08/04/2021 - Version 1.0.0
  */
 public class FileUtilsTest {
 	private final String path = "D:\\SharedBox\\test\\testWrite.txt";

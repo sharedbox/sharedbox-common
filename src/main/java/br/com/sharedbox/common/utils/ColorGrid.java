@@ -5,7 +5,7 @@ package br.com.sharedbox.common.utils;
  * 
  * @author Z169131
  * @version 1.0.0
- * @since 06/14/2021
+ * @since 06/14/2021 - Version 1.0.0
  */
 public enum ColorGrid {
 	Aquamarine("7FFFD4", new int[]{127, 255, 212}),

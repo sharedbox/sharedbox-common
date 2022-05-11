@@ -16,7 +16,7 @@ import br.com.sharedbox.common.utils.DateTimeUtils;
  *  
  * @author Rafael Costi [rafaelcosti@outlook.com]
  * @version 1.0.0
- * @since 08/03/2021
+ * @since 08/03/2021 - Version 1.0.0
  */
 public class DateTimeUtilsTest {
 	/**

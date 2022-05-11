@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * 
  * @author Rafael Costi
  * @version 1.0.0
- * @since 08/02/2021
+ * @since 08/02/2021 - Version 1.0.0
  */
 public class Xlsx {	
 	/**
@@ -36,7 +37,7 @@ public class Xlsx {
 	 * Constructor
 	 * @param pathDoc
 	 */
-	public Xlsx(String pathDoc) throws IOException, IllegalArgumentException {
+	public Xlsx(String pathDoc) throws Exception, IOException, IllegalArgumentException {
 		this(new File(pathDoc));
 	}
 
@@ -44,7 +45,32 @@ public class Xlsx {
 	 * Constructor
 	 * @throws IOException 
 	 */
-	public Xlsx(File file) throws IOException, IllegalArgumentException{
+	public Xlsx(File file) throws Exception, IOException, IllegalArgumentException{
+		this(new FileInputStream(checkFile(file)));
+	}
+	
+	/**
+	 * 
+	 * @param is
+	 * @throws IOException
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException
+	 */
+	public Xlsx(FileInputStream fis) throws Exception, IOException, IllegalArgumentException { 
+		this.workbook = new XSSFWorkbook(fis);
+		Field field = fis.getClass().getDeclaredField("path");
+		field.setAccessible(true);
+		this.file = new File((String)field.get(fis));
+	}
+	
+	/**
+	 * 
+	 * @param file
+	 * @return
+	 */
+	private static File checkFile(File file) {
 		if (file == null) {
 			throw new IllegalArgumentException("Path is null"); 
 		}
@@ -56,9 +82,7 @@ public class Xlsx {
 		if (!file.getName().toUpperCase().endsWith("XLSX")) {
 			throw new IllegalArgumentException("Invalid file"); 
 		}
-		
-		this.file = file;
-		this.workbook = new XSSFWorkbook(new FileInputStream(this.file));
+		return file;
 	}
 
 	/**

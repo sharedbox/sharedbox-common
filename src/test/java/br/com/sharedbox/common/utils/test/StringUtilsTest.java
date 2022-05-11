@@ -14,7 +14,7 @@ import br.com.sharedbox.common.utils.StringUtils;
  * 
  * @author Rafael Costi [rafaelcosti@outlook.com]
  * @version 1.0.0
- * @since 07/14/2021
+ * @since 07/14/2021 - Version 1.0.0
  */
 public class StringUtilsTest {
 	/**

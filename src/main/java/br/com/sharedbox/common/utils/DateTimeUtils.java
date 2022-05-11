@@ -16,7 +16,7 @@ import br.com.sharedbox.common.location.Languages;
  * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
- * @since 05/01/2021
+ * @since 05/01/2021 - Version 1.0.0
  */
 public class DateTimeUtils {
 	/**

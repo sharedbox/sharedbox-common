@@ -40,7 +40,7 @@ public class QRCodeTest {
 				.content("https://www.instagram.com/sharedboxofficial")
 				.size(500)
 				.decorator(CodeColor.colorize(ColorGrid.Purple))
-				.decorator(ImageOverlay.addImageOverlay("D:\\SharedBox\\docs\\SBLogo.png", 1f, 0.20f))
+				.decorator(ImageOverlay.addImageOverlay(this.getClass().getResource("/logo.png").getFile()))
 				.generateBase64(Extensions.PNG);
 
 		assertNotNull(qrCode);
@@ -51,7 +51,8 @@ public class QRCodeTest {
 				.content("https://www.instagram.com/sharedboxofficial")
 				.size(500)
 				.decorator(CodeColor.colorize(ColorGrid.Purple))
-				.decorator(ImageOverlay.addImageOverlay(new File("D:\\SharedBox\\docs\\SBLogo.png"), 1f, 0.20f))
+				.decorator(ImageOverlay.addImageOverlay(new File(this.getClass().getResource("/logo.png").getFile())
+						, 1f, 0.20f))
 				.generateBase64(Extensions.PNG);
 
 		assertNotNull(qrCode);
@@ -62,7 +63,8 @@ public class QRCodeTest {
 				.content("https://www.instagram.com/sharedboxofficial")
 				.size(500)
 				.decorator(CodeColor.colorize(ColorGrid.Purple))
-				.decorator(ImageOverlay.addImageOverlay(ImageIO.read(FileUtils.getFile("D:\\SharedBox\\docs\\SBLogo.png")), 1f, 0.20f))
+				.decorator(ImageOverlay.addImageOverlay(ImageIO
+						.read(FileUtils.getFile(this.getClass().getResource("/logo.png").getFile())), 1f, 0.20f))
 				.generateBase64(Extensions.PNG);
 
 		assertNotNull(qrCode);
@@ -73,7 +75,7 @@ public class QRCodeTest {
 				.content("https://www.instagram.com/sharedboxofficial")
 				.size(500)
 				.decorator(CodeColor.colorize(ColorGrid.Purple))
-				.decorator(ImageOverlay.addImageOverlay("D:\\SharedBox\\docs\\SBLogo.png"))
+				.decorator(ImageOverlay.addImageOverlay(this.getClass().getResource("/logo.png").getFile()))
 				.generateBase64(Extensions.GIF);
 
 		assertNotNull(qrCode);
