@@ -7,7 +7,7 @@ package br.com.sharedbox.common.documents;
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
  */
-public interface IDocument {	
+public interface IDocument {
 	/**
 	 * Generate document
 	 * 

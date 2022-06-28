@@ -14,7 +14,7 @@ public class VehicleLicense extends DocumentBase implements IDocument {
 	/**
 	 * Constructor
 	 */
-	public VehicleLicense() {
+	private VehicleLicense() {
 		super();
 	}
 	
@@ -23,10 +23,29 @@ public class VehicleLicense extends DocumentBase implements IDocument {
 	 * 
 	 * @param number
 	 */
-	public VehicleLicense(String number) {
+	private VehicleLicense(String number) {
 		super(number);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public static VehicleLicense create() {
+		return new VehicleLicense();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static VehicleLicense create(String number) {
+		return new VehicleLicense(number);
+	}
+
+	/**
+	 * 
+	 */
 	@Override
 	public String generate() {
 		return super.getValue();
@@ -41,5 +60,4 @@ public class VehicleLicense extends DocumentBase implements IDocument {
 	public boolean validate() {
 		return false;
 	}
-
 }

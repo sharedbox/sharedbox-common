@@ -24,17 +24,17 @@ public class CpfTest {
 	 */
 	@Test
 	public void validateTest() {
-		assertNotNull(new Cpf());
-		assertFalse(new Cpf(null).validate());
-		assertFalse(new Cpf("").validate());
-		assertFalse(new Cpf("%#$%#$%#$%#$%").validate());
-		assertFalse(new Cpf("00000000000").validate());
-		assertTrue(new Cpf("00000000191").validate());
-		assertTrue(new Cpf("191").validate());
-		assertFalse(new Cpf("00000000198").validate());
-		assertFalse(new Cpf("000000001").validate());
-		assertFalse(new Cpf("00000000761").validate());
-		assertFalse(new Cpf("99999999999").validate());
-		assertFalse(new Cpf("00000009120").validate());
+		assertNotNull(Cpf.create().generate());
+		assertFalse(Cpf.create(null).validate());
+		assertFalse(Cpf.create("").validate());
+		assertFalse(Cpf.create("%#$%#$%#$%#$%").validate());
+		assertFalse(Cpf.create("00000000000").validate());
+		assertTrue(Cpf.create("00000000191").validate());
+		assertTrue(Cpf.create("191").validate());
+		assertFalse(Cpf.create("00000000198").validate());
+		assertFalse(Cpf.create("000000001").validate());
+		assertFalse(Cpf.create("00000000761").validate());
+		assertFalse(Cpf.create("99999999999").validate());
+		assertFalse(Cpf.create("00000009120").validate());
 	}
 }

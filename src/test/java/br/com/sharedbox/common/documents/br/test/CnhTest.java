@@ -16,25 +16,18 @@ import br.com.sharedbox.common.documents.br.Cnh;
  */
 public class CnhTest {
 	/**
-	 * Test constructor class
-	 */
-	@Test
-	void constructorTest() {
-		assertNotNull(new Cnh());
-	}
-
-	/**
 	 * 
 	 * @return
 	 */
 	@Test
 	public void validateTest() {
-		assertTrue(new Cnh("53369516746").validate());
-		assertFalse(new Cnh("11111111111").validate());
-		assertFalse(new Cnh("123123").validate());
-		assertFalse(new Cnh("").validate());
-		assertFalse(new Cnh("rtyrtyrty78789").validate());
-		assertFalse(new Cnh("rrrrrrrrrrr").validate());
+		assertTrue(Cnh.create("53369516746").validate());
+		assertFalse(Cnh.create("11111111111").validate());
+		assertFalse(Cnh.create("123123").validate());
+		assertFalse(Cnh.create("").validate());
+		assertFalse(Cnh.create("rtyrtyrty78789").validate());
+		assertFalse(Cnh.create("rrrrrrrrrrr").validate());
+		assertNotNull(Cnh.create("53369516746").generate());
+		assertNotNull(Cnh.create("53369516746").format());
 	}
-
 }

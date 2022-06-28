@@ -18,7 +18,7 @@ public class Cnpj extends DocumentBase implements IDocument {
 	/**
 	 * Constructor
 	 */
-	public Cnpj() {
+	private Cnpj() {
 		super();
 	}
 	
@@ -27,8 +27,24 @@ public class Cnpj extends DocumentBase implements IDocument {
 	 * 
 	 * @param number
 	 */
-	public Cnpj(String number) {
+	private Cnpj(String number) {
 		super(number);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static Cnpj create() {
+		return new Cnpj();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static Cnpj create(String number) {
+		return new Cnpj(number);
 	}
 	
 	/**
