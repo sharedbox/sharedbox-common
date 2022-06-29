@@ -38,12 +38,11 @@ public class RGBImageFilter extends java.awt.image.RGBImageFilter {
 			throw new RuntimeException("Not informed color");
 		}
 		
-		Color color = Color.decode(this.colorGrid.getHtmlHexadecimal());
-		
-		if(rgb == Color.black.getRGB()) {
-	        return color.getRGB();
+		if ((this.colorGrid != null && this.colorGrid == ColorGrid.Black)
+				|| (this.colorGrid == null && rgb == Color.black.getRGB())) {
+			return Color.black.getRGB();
 		}
-
-	    return rgb;
+		
+		return Color.decode(this.colorGrid.getHtmlHexadecimal()).getRGB();
 	}
 }

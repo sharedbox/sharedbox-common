@@ -25,7 +25,7 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
- * @since 06/08/2021
+ * @since 06/08/2021 - Version 1.0.0
  */
 public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 	/**

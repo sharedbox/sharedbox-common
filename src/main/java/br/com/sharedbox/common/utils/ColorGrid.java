@@ -5,12 +5,12 @@ package br.com.sharedbox.common.utils;
  * 
  * @author Z169131
  * @version 1.0.0
- * @since 06/14/2021
+ * @since 06/14/2021 - Version 1.0.0
  */
 public enum ColorGrid {
 	Aquamarine("7FFFD4", new int[]{127, 255, 212}),
 	AquaCyan("00FFFF", new int[]{0, 255, 255}),
-	Black("00FFFF ", new int[]{0, 0, 0}),
+	Black("000000 ", new int[]{0, 0, 0}),
 	Blue("0000FF", new int[]{0, 0, 255}),
 	Darkviolet("9400D3", new int[]{148, 0, 211}),
 	Fuchsia("FF00FF", new int[]{255, 0, 255}),

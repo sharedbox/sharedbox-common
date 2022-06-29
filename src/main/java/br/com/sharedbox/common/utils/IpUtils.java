@@ -7,7 +7,7 @@ import java.util.Random;
  * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
- * @since 06/15/2021
+ * @since 06/15/2021 - Version 1.0.0
  */
 public class IpUtils  {
 	/**
