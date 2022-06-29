@@ -1,7 +1,6 @@
 package br.com.sharedbox.common.documents.br.test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -17,23 +16,16 @@ import br.com.sharedbox.common.documents.br.Cnpj;
  */
 public class CnpjTest {
 	/**
-	 * Test constructor class
-	 */
-	@Test
-	void constructorTest() {
-		assertNotNull(new Cnpj());
-	}
-	/**
 	 * Validate test method
 	 */
 	@Test
 	void validateTest() {
-		assertFalse(new Cnpj(null).validate());
-		assertTrue(new Cnpj("00000000000191").validate());
-		assertFalse(new Cnpj("0000000000761").validate());
-		assertFalse(new Cnpj("761").validate());
-		assertTrue(new Cnpj("191").validate());
-		assertFalse(new Cnpj("00000A00000191").validate());
-		assertFalse(new Cnpj("%#$%#$%#$%#$%").validate());
+		assertFalse(Cnpj.create(null).validate());
+		assertTrue(Cnpj.create("00000000000191").validate());
+		assertFalse(Cnpj.create("0000000000761").validate());
+		assertFalse(Cnpj.create("761").validate());
+		assertTrue(Cnpj.create("191").validate());
+		assertFalse(Cnpj.create("00000A00000191").validate());
+		assertFalse(Cnpj.create("%#$%#$%#$%#$%").validate());
 	}
 }

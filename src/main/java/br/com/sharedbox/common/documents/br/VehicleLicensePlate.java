@@ -19,7 +19,7 @@ public class VehicleLicensePlate extends DocumentBase implements IDocument {
 	/**
 	 * Constructor
 	 */
-	public VehicleLicensePlate() {
+	private VehicleLicensePlate() {
 		super();
 	}
 	
@@ -28,8 +28,24 @@ public class VehicleLicensePlate extends DocumentBase implements IDocument {
 	 * 
 	 * @param number
 	 */
-	public VehicleLicensePlate(String number) {
+	private VehicleLicensePlate(String number) {
 		super(number);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static VehicleLicensePlate create() {
+		return new VehicleLicensePlate();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static VehicleLicensePlate create(String number) {
+		return new VehicleLicensePlate(number);
 	}
 	
 	/**

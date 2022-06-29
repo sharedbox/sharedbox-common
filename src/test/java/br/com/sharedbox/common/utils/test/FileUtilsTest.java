@@ -21,8 +21,6 @@ import br.com.sharedbox.common.utils.FileUtils;
  * @since 08/04/2021 - Version 1.0.0
  */
 public class FileUtilsTest {
-	private final String path = "D:\\SharedBox\\test\\testWrite.txt";
-	
 	/**
 	 * Test constructor class
 	 */
@@ -37,7 +35,7 @@ public class FileUtilsTest {
 	 */
 	@Test
 	void readAllLinesTest() throws IOException {
-		assertNotNull(FileUtils.readAllLines("D:\\SharedBox\\test\\test.txt"));
+		assertNotNull(FileUtils.readAllLines(this.getClass().getResource("/test/test.txt").getFile()));
 	}
 
 	/**
@@ -47,7 +45,7 @@ public class FileUtilsTest {
 	@Test
 	void writeTest() throws IOException{
 		String value = "testWrite";
-		assertDoesNotThrow(() -> FileUtils.write(value, path));
+		assertDoesNotThrow(() -> FileUtils.write(value, this.getClass().getResource("/test/testWrite.txt").getFile()));
 
 		String pth = null;
 		RuntimeException thrown = assertThrows(RuntimeException.class
@@ -63,7 +61,7 @@ public class FileUtilsTest {
 	 */
 	@Test
 	void getFileTest() throws FileNotFoundException {
-		assertNotNull(FileUtils.getFile(path));
+		assertNotNull(FileUtils.getFile(this.getClass().getResource("/test/testWrite.txt").getFile()));
 	}
 
 	/**

@@ -24,15 +24,15 @@ public class VehicleLicensePlateTest {
 	 */
 	@Test
 	public void validateTest() {
-		assertFalse(new VehicleLicensePlate(null).validate());
-		assertFalse(new VehicleLicensePlate("999-9999").validate());
-		assertFalse(new VehicleLicensePlate("999-AAAA").validate());
-		assertFalse(new VehicleLicensePlate("AAA-AAAA").validate());
+		assertFalse(VehicleLicensePlate.create(null).validate());
+		assertFalse(VehicleLicensePlate.create("999-9999").validate());
+		assertFalse(VehicleLicensePlate.create("999-AAAA").validate());
+		assertFalse(VehicleLicensePlate.create("AAA-AAAA").validate());
 
 		// Generate test
-		String plate = new VehicleLicensePlate().generate();
+		String plate = VehicleLicensePlate.create().generate();
 		assertNotNull(plate);
-		assertTrue(new VehicleLicensePlate(plate).validate());
+		assertTrue(VehicleLicensePlate.create(plate).validate());
 	}
 	
 	/**
@@ -41,11 +41,11 @@ public class VehicleLicensePlateTest {
 	 */
 	@Test
 	public void formatTest() throws Exception {
-		assertNotNull(new VehicleLicensePlate(null).format());
-		assertNotNull(new VehicleLicensePlate("AA9999").format());
+		assertNotNull(VehicleLicensePlate.create(null).format());
+		assertNotNull(VehicleLicensePlate.create("AA9999").format());
 		
-		String plate = new VehicleLicensePlate().generateMercosul();
+		String plate = VehicleLicensePlate.create().generateMercosul();
 		assertNotNull(plate);
-		assertNotNull(new VehicleLicensePlate(plate).format());
+		assertNotNull(VehicleLicensePlate.create(plate).format());
 	}
 }

@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.sharedbox.common.network.Network;
+import br.com.sharedbox.common.utils.StringUtils;
 
 /**
  * Validate e-mail
@@ -16,32 +17,74 @@ public class EMail extends DocumentBase implements IDocument {
 	/**
 	 * Constructor
 	 */
-	public EMail() {
+	private EMail() {
 		super();
 	}
 
 	/**
 	 * Constructor
+	 * 
 	 * @param eMail
 	 */
-	public EMail(String eMail) {
+	private EMail(String eMail) {
 		super(eMail);
 	}
 	
 	/**
 	 * 
+	 * @return
 	 */
-    private String eMailRegexValidator = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-
-	@Override
-	public String generate() {
-		// TODO Auto-generated method stub
-		return null;
+	public static EMail create() {
+		return new EMail();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static EMail create(String eMail) {
+		return new EMail(eMail);
 	}
 
+	/**
+	 * 
+	 */
+	private String eMailRegexValidator = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+
+	/**
+	 * 
+	 */
+	@Override
+	public String generate() {
+		return generate(StringUtils.strRandon(8));
+	}
+
+	/**
+	 * 
+	 */
+	public String generate(String domain) {
+		return generate(StringUtils.strRandon(20), null);
+	}
+
+	/**
+	 * 
+	 */
+	public String generate(String domain, String tldDomains) {
+		return generate(StringUtils.strRandon(20), domain, tldDomains);
+	}
+
+	/**
+	 * 
+	 */
+	public String generate(String mail, String domain, String tldDomains) {
+		return mail + "@" + domain + (StringUtils.isEmpty(tldDomains) ? "" : "." + tldDomains);
+	}
+
+	/**
+	 * 
+	 */
 	@Override
 	public String format() throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -52,9 +95,10 @@ public class EMail extends DocumentBase implements IDocument {
 	public boolean validate() {
 		return validate(false);
 	}
-	
+
 	/**
-	 * E-mail and domain validate 
+	 * E-mail and domain validate
+	 * 
 	 * @param domainValidate
 	 * @return
 	 */
@@ -63,19 +107,19 @@ public class EMail extends DocumentBase implements IDocument {
 			return false;
 		}
 
-        if (super.getValue().endsWith(".")) {
-            return false;
-        }
-        
+		if (super.getValue().endsWith(".")) {
+			return false;
+		}
+
 		Pattern pattern = Pattern.compile(this.eMailRegexValidator);
 		Matcher emailMatcher = pattern.matcher(super.getValue().toString());
 		boolean isValid = emailMatcher.matches();
-		
+
 		if (domainValidate) {
 			String domain = super.getValue().substring((super.getValue().indexOf("@") + 1), super.getValue().length());
 			return Network.exist(domain);
 		}
-		
+
 		return isValid;
 	}
 }

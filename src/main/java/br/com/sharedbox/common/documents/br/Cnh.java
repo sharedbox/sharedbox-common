@@ -14,7 +14,7 @@ public class Cnh extends DocumentBase implements IDocument {
 	/**
 	 * Constructor
 	 */
-	public Cnh() {
+	private Cnh() {
 		super();
 	}
 	
@@ -23,8 +23,24 @@ public class Cnh extends DocumentBase implements IDocument {
 	 * 
 	 * @param number
 	 */
-	public Cnh(String number) {
+	private Cnh(String number) {
 		super(number);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static Cnh create() {
+		return new Cnh();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static Cnh create(String number) {
+		return new Cnh(number);
 	}
 
 	@Override

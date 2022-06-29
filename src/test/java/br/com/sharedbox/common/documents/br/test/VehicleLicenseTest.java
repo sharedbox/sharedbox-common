@@ -1,6 +1,6 @@
 package br.com.sharedbox.common.documents.br.test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +19,6 @@ public class VehicleLicenseTest {
 	 */
 	@Test
 	void constructorTest() {
-		assertNotNull(new VehicleLicense());
+		assertFalse(VehicleLicense.create(VehicleLicense.create().generate()).validate());
 	}
 }

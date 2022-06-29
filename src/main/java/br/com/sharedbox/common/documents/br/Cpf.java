@@ -18,7 +18,7 @@ public class Cpf extends DocumentBase implements IDocument {
 	/**
 	 * Constructor
 	 */
-	public Cpf() {
+	private Cpf() {
 		super();
 	}
 	
@@ -27,8 +27,24 @@ public class Cpf extends DocumentBase implements IDocument {
 	 * 
 	 * @param number
 	 */
-	public Cpf(String number) {
+	private Cpf(String number) {
 		super(number);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static Cpf create() {
+		return new Cpf();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static Cpf create(String number) {
+		return new Cpf(number);
 	}
 	
 	/**

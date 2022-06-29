@@ -5,20 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.nio.charset.Charset;
-
-import javax.imageio.ImageIO;
 
 import org.junit.jupiter.api.Test;
 
 import br.com.sharedbox.common.exceptions.SizeException;
 import br.com.sharedbox.common.identify.CodeColor;
-import br.com.sharedbox.common.identify.ImageOverlay;
 import br.com.sharedbox.common.identify.QRCode;
+import br.com.sharedbox.common.image.ImageOverlay;
 import br.com.sharedbox.common.utils.ColorGrid;
 import br.com.sharedbox.common.utils.Extensions;
-import br.com.sharedbox.common.utils.FileUtils;
 
 /**
  * Call test of QRCode class
@@ -40,7 +36,21 @@ public class QRCodeTest {
 				.content("https://www.instagram.com/sharedboxofficial")
 				.size(500)
 				.decorator(CodeColor.colorize(ColorGrid.Purple))
-				.decorator(ImageOverlay.addImageOverlay(this.getClass().getResource("/logo.png").getFile()))
+				.decorator(ImageOverlay.addImageOverlay(
+						this.getClass().getResourceAsStream("/test/SBLogo.png"), 1f, 0.20f))
+				.generateBase64(Extensions.PNG);
+
+		assertNotNull(qrCode);
+		
+		qrCode = QRCode
+				.newQRCode()
+				.charset(Charset.forName("UTF-8"))
+				
+				.content("https://www.instagram.com/sharedboxofficial")
+				.size(500)
+				.decorator(CodeColor.colorize(ColorGrid.Purple))
+				.decorator(ImageOverlay.addImageOverlay(
+						this.getClass().getResourceAsStream("/test/SBLogo.png"), 1f, 0.20f))
 				.generateBase64(Extensions.PNG);
 
 		assertNotNull(qrCode);
@@ -51,8 +61,8 @@ public class QRCodeTest {
 				.content("https://www.instagram.com/sharedboxofficial")
 				.size(500)
 				.decorator(CodeColor.colorize(ColorGrid.Purple))
-				.decorator(ImageOverlay.addImageOverlay(new File(this.getClass().getResource("/logo.png").getFile())
-						, 1f, 0.20f))
+				.decorator(ImageOverlay.addImageOverlay(
+						this.getClass().getResourceAsStream("/test/SBLogo.png"), 1f, 0.20f))
 				.generateBase64(Extensions.PNG);
 
 		assertNotNull(qrCode);
@@ -63,19 +73,8 @@ public class QRCodeTest {
 				.content("https://www.instagram.com/sharedboxofficial")
 				.size(500)
 				.decorator(CodeColor.colorize(ColorGrid.Purple))
-				.decorator(ImageOverlay.addImageOverlay(ImageIO
-						.read(FileUtils.getFile(this.getClass().getResource("/logo.png").getFile())), 1f, 0.20f))
-				.generateBase64(Extensions.PNG);
-
-		assertNotNull(qrCode);
-		
-		qrCode = QRCode
-				.newQRCode()
-				.charset(Charset.forName("UTF-8"))
-				.content("https://www.instagram.com/sharedboxofficial")
-				.size(500)
-				.decorator(CodeColor.colorize(ColorGrid.Purple))
-				.decorator(ImageOverlay.addImageOverlay(this.getClass().getResource("/logo.png").getFile()))
+				.decorator(ImageOverlay.addImageOverlay(
+						this.getClass().getResourceAsStream("/test/SBLogo.png"), 1f, 0.20f))
 				.generateBase64(Extensions.GIF);
 
 		assertNotNull(qrCode);

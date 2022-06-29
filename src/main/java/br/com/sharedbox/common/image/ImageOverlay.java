@@ -1,4 +1,4 @@
-package br.com.sharedbox.common.identify;
+package br.com.sharedbox.common.image;
 
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
@@ -8,6 +8,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import br.com.sharedbox.common.identify.CodeDecorator;
 import br.com.sharedbox.common.utils.FileUtils;
 
 /**
