@@ -28,7 +28,7 @@ import br.com.sharedbox.common.http.Proxy;
  * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
- * @since 06/08/2021
+ * @since 06/08/2021 - Version 1.0.0
  */
 public class RestUtils {
 	/**

@@ -16,7 +16,7 @@ import br.com.sharedbox.common.location.Languages;
  * 
  * @author Rafael Costi <rafaelcosti@outlook.com>
  * @version 1.0.0
- * @since 05/01/2021
+ * @since 05/01/2021 - Version 1.0.0
  */
 public class DateTimeUtils {
 	/**
@@ -66,6 +66,53 @@ public class DateTimeUtils {
 		return LocalDate.of(ym.getYear(),  ym.getMonthValue(), 1);
 	}
 
+	/**
+	 * <p>
+	 * Convert String format MMMM/yyyy to LocalDate
+	 * </p>
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static LocalDateTime stringMMMMyyyyToLocalDateTime(String date) {
+		return stringMMMMyyyyToLocalDateTime(date, Languages.Pt);
+	}
+
+	/**
+	 * <p>
+	 * Convert String format MMMM/yyyy to LocalDate
+	 * </p>
+	 * 
+	 * @param date
+	 * @param lang
+	 * @return
+	 */
+	public static LocalDateTime stringMMMMyyyyToLocalDateTime(String date, Languages lang) {
+		if (lang == null) {
+			throw new IllegalArgumentException("Invalid language");
+		}
+		
+		dateValidate(date);
+		
+		if (date.contains("/")) {
+			date = date.replace("/", " ");
+		}
+		
+		if (lang.equals(Languages.Pt)) {
+			date = date.toLowerCase();
+		} else {
+			date = StringUtils.upperCaseFirstChar(date);
+		}
+		
+		Locale locale = new Locale(lang.getIso6391());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
+				.localizedBy(locale);
+		
+		TemporalAccessor ta = formatter.localizedBy(locale).parse(date);
+	    YearMonth ym = YearMonth.from(ta);
+		return LocalDateTime.of(ym.getYear(),  ym.getMonthValue(), 1, 0, 0);
+	}
+	
 	/**
 	 * <p>
 	 * Convert String format MM/dd/yyyy to LocalDate
