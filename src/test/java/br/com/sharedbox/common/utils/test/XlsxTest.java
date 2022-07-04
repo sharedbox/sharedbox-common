@@ -29,10 +29,11 @@ public class XlsxTest {
 	 * @throws IllegalArgumentException 
 	 */
 	@Test
-	void constructorTest() throws IllegalArgumentException, IOException {
+	void constructorTest() throws Exception {
 		assertNotNull(new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile()));
 
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Xlsx("D:\\SharedBoxtest"));
+		IllegalArgumentException thrown = 
+				assertThrows(IllegalArgumentException.class, () -> new Xlsx("\\test\\2"));
 		assertTrue(thrown.getMessage().contains("File is not exist"));
 		
 		thrown = assertThrows(IllegalArgumentException.class, () -> new Xlsx("D:\\SharedBox"));
@@ -45,12 +46,13 @@ public class XlsxTest {
 	
 	/**
 	 * Test reader worksheet
+	 * @throws Exception 
 	 * @throws IOException 
 	 * @throws IllegalArgumentException 
 	 */
 	@Test
 
-	void readerWorksheetTest() throws IllegalArgumentException, IOException {
+	void readerWorksheetTest() throws Exception {
 		Xlsx xlsx = new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile());
 		assertNotNull(xlsx.readerWorksheet("WorksheetTest"));
 		assertDoesNotThrow(() -> xlsx.close());
@@ -60,7 +62,7 @@ public class XlsxTest {
 	 * 
 	 */
 	@Test
-	void writeWorksheetTest() throws IllegalArgumentException, IOException {
+	void writeWorksheetTest() throws Exception {
 		Xlsx xlsx = new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile());
 		
 		List<String[]> rows = new ArrayList<String[]>();
