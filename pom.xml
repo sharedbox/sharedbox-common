@@ -198,7 +198,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.8.0-M1</version>
+      <version>5.9.0-M1</version>
       <scope>test</scope>
     </dependency>
     
@@ -206,7 +206,7 @@
     <dependency>
     <groupId>org.mockito</groupId>
       <artifactId>mockito-junit-jupiter</artifactId>
-      <version>4.5.1</version>
+      <version>4.6.1</version>
       <scope>test</scope>
     </dependency>
     
@@ -267,7 +267,7 @@
                     <limit>
                       <counter>COMPLEXITY</counter>
                       <value>COVEREDRATIO</value>
-                      <minimum>0.89</minimum>
+                      <minimum>0.85</minimum>
                     </limit>
                   </limits>
                 </rule>
