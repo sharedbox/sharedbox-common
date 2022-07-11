@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 import br.com.sharedbox.common.location.Currencies;
+import br.com.sharedbox.common.location.Languages;
 
 /**
  * Call test of currencies enum
@@ -23,9 +24,9 @@ public class CurrenciesTest {
 		Currencies currency = Currencies.RealBrasileiro;
 		assertNotNull(currency);
 		assertNotNull(currency.getId());
-		assertNotNull(currency.getNameEn());
-		assertNotNull(currency.getNameEs());
-		assertNotNull(currency.getNamePt());
+		assertNotNull(currency.getName(Languages.En));
+		assertNotNull(currency.getName(Languages.Es));
+		assertNotNull(currency.getName(Languages.Pt));
 		assertNotNull(currency.getSymbol());
 
 		assertEquals(Currencies.getById(null), Currencies.NotFound);

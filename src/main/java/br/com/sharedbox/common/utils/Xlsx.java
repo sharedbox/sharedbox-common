@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,23 +45,8 @@ public class Xlsx {
 	 * @throws IOException 
 	 */
 	public Xlsx(File file) throws Exception, IOException, IllegalArgumentException{
-		this(new FileInputStream(checkFile(file)));
-	}
-	
-	/**
-	 * 
-	 * @param is
-	 * @throws IOException
-	 * @throws SecurityException 
-	 * @throws NoSuchFieldException 
-	 * @throws IllegalAccessException 
-	 * @throws IllegalArgumentException
-	 */
-	public Xlsx(FileInputStream fis) throws Exception, IOException, IllegalArgumentException { 
-		this.workbook = new XSSFWorkbook(fis);
-		Field field = fis.getClass().getDeclaredField("path");
-		field.setAccessible(true);
-		this.file = new File((String)field.get(fis));
+		this.workbook = new XSSFWorkbook(new FileInputStream(checkFile(file)));
+		this.file = file;
 	}
 	
 	/**

@@ -29,15 +29,18 @@ public class XlsxTest {
 	 * @throws IllegalArgumentException 
 	 */
 	@Test
-	void constructorTest() throws IllegalArgumentException, IOException {
-		assertNotNull(new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile()));
+	void test() throws Exception {
+		assertNotNull(new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile().substring(1)));
 
-		IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Xlsx("D:\\SharedBoxtest"));
+		IllegalArgumentException thrown = null;
+		
+		thrown = assertThrows(IllegalArgumentException.class, () -> new Xlsx("/test/2"));
 		assertTrue(thrown.getMessage().contains("File is not exist"));
-		
-		thrown = assertThrows(IllegalArgumentException.class, () -> new Xlsx("D:\\SharedBox"));
+
+		thrown = assertThrows(IllegalArgumentException.class
+				, () -> new Xlsx(this.getClass().getResource("/test/SBLogo.png").getFile().substring(1)));
 		assertTrue(thrown.getMessage().contains("Invalid file"));
-		
+
 		File file = null;
 		thrown = assertThrows(IllegalArgumentException.class, () -> new Xlsx(file));
 		assertTrue(thrown.getMessage().contains("Path is null"));
@@ -45,13 +48,13 @@ public class XlsxTest {
 	
 	/**
 	 * Test reader worksheet
+	 * @throws Exception 
 	 * @throws IOException 
 	 * @throws IllegalArgumentException 
 	 */
 	@Test
-
-	void readerWorksheetTest() throws IllegalArgumentException, IOException {
-		Xlsx xlsx = new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile());
+	void readerWorksheetTest() throws Exception {
+		Xlsx xlsx = new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile().substring(1));
 		assertNotNull(xlsx.readerWorksheet("WorksheetTest"));
 		assertDoesNotThrow(() -> xlsx.close());
 	}
@@ -60,8 +63,8 @@ public class XlsxTest {
 	 * 
 	 */
 	@Test
-	void writeWorksheetTest() throws IllegalArgumentException, IOException {
-		Xlsx xlsx = new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile());
+	void writeWorksheetTest() throws Exception {
+		Xlsx xlsx = new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile().substring(1));
 		
 		List<String[]> rows = new ArrayList<String[]>();
 		
