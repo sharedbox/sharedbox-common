@@ -16,7 +16,7 @@ public enum Currencies {
 	AlgerianDinar(12, "Dinar argelino", "Algerian Dinar", "dinar argelino", "DZD", "د.ج"),
 	AndorranPeseta(20, "Peseta Andorrana", "Andorran Peseta", "Peseta Andorrana", "ADP", null),
 	ArgentinePeso(32, "Peso Argentino", "Argentine Peso", "Peso Argentino", "ARS", "$"),
-	ArmenianDram(51, "Dram arménio", "Armenian Dram", "Dram armenio", "AMD", ""),
+	ArmenianDram(51, "Dram arménio", "Armenian Dram", "Dram armenio", "AMD", null),
 	ArubanGuilder(533, "Florim arubano", "Aruban Guilder", "Florín de Aruba", "AWG", "ƒ"),
 	AustralianDollar(36, "Dólar Australiano", "Australian Dollar", "Dólar Australiano", "AUD", "$"),
 	AzerbaijanianManat(31, "Manat azerbaijano", "Azerbaijanian Manat", "manat azerbaiyano", "AZN", null),
