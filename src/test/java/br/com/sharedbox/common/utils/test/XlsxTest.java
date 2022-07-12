@@ -68,7 +68,7 @@ public class XlsxTest {
 		
 		List<String[]> rows = new ArrayList<String[]>();
 		
-		String worksheetName = "WSN_" + StringUtils.strRandon(2, false, true, false, false);
+		String worksheetName = "WSN_" + StringUtils.strRandom(2, false, true, false, false);
 		String[] row = new String[2];
 		row[0] = "Test A 1";
 		row[1] = "Test B 1";

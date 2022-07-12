@@ -318,7 +318,7 @@ public enum Currencies {
 			+ ", \"nameEn\": \"" + this.getName(Languages.En) + "\""
 			+ ", \"nameEs\": \"" + this.getName(Languages.Es) + "\""
 			+ ", \"code\": \"" + this.getCode() + "\""
-			+ ", \"symbol\": " + JsonUtils.getJsonValue(this.getSymbol()) + " }";
+			+ ", \"symbol\": " + JsonUtils.createJsonValue(this.getSymbol()) + " }";
 	}
 	
 	/**

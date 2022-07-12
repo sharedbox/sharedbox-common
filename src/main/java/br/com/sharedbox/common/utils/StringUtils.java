@@ -1,6 +1,5 @@
 package br.com.sharedbox.common.utils;
 
-import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.text.Normalizer;
@@ -113,15 +112,15 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * Create a new uuid from string
 	 * @return
 	 */
-	public static String newUUIDByString(String str) {
-		return UUID.fromString(str).toString();
+	public static String newUUID(String str) {
+		return newUUID(str.getBytes());
 	}
 
 	/**
 	 * Create a new uuid by bytes
 	 * @return
 	 */
-	public static String newUUIDFromBytes(byte[] bt) {
+	public static String newUUID(byte[] bt) {
 		return UUID.nameUUIDFromBytes(bt).toString();
 	}
 	
@@ -167,29 +166,13 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	}
 
 	/**
-	 * Convert JSON String to Object
-	 * @return
-	 */
-	public static <T> T  convertToObject(String obj, Class<T> to) {
-		return ObjectUtils.convertToClassModel(obj, to);
-	}
-
-	/**
-	 * Convert JSON String to Object
-	 * @return
-	 */
-	public static <T> T  convertToObject(String obj, Type to) {
-		return ObjectUtils.convertToClassModel(obj, to);
-	} 
-
-	/**
 	 * Generate random string 
 	 * 
 	 * @param amount character
 	 * @return
 	 */
-	public static String strRandon(int amountChar) {
-		return strRandon(amountChar, false, false, false, false);
+	public static String strRandom(int amountChar) {
+		return strRandom(amountChar, false, false, false, false);
 	}
 
 	/**
@@ -199,8 +182,8 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param whith upper
 	 * @return
 	 */
-	public static String strRandon(int amountChar, boolean upper) {
-		return strRandon(amountChar, upper, false, false, false);
+	public static String strRandom(int amountChar, boolean upper) {
+		return strRandom(amountChar, upper, false, false, false);
 	}
 
 	/**
@@ -211,8 +194,8 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param whith lower
 	 * @return
 	 */
-	public static String strRandon(int amountChar, boolean upper, boolean lower) {
-		return strRandon(amountChar, upper, lower, false, false);
+	public static String strRandom(int amountChar, boolean upper, boolean lower) {
+		return strRandom(amountChar, upper, lower, false, false);
 	}
 
 	/**
@@ -224,8 +207,8 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param whith number
 	 * @return
 	 */
-	public static String strRandon(int amountChar, boolean upper, boolean lower, boolean number) {
-		return strRandon(amountChar, upper, lower, number, false);
+	public static String strRandom(int amountChar, boolean upper, boolean lower, boolean number) {
+		return strRandom(amountChar, upper, lower, number, false);
 	}
 	
 	/**
@@ -238,7 +221,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * @param whith specialChar
 	 * @return
 	 */
-	public static String strRandon(int amountChar, boolean upper, boolean lower, boolean number, boolean specialChar) {
+	public static String strRandom(int amountChar, boolean upper, boolean lower, boolean number, boolean specialChar) {
 		String alpha = "abcdefghijklmnopqrstuvwxyz";
 		String numbers = "0123456789";
 		String special = "!@#$%&?£";

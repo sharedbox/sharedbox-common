@@ -56,21 +56,21 @@ public class EMail extends DocumentBase implements IDocument {
 	 */
 	@Override
 	public String generate() {
-		return generate(StringUtils.strRandon(8));
+		return generate(StringUtils.strRandom(8));
 	}
 
 	/**
 	 * 
 	 */
 	public String generate(String domain) {
-		return generate(StringUtils.strRandon(20), null);
+		return generate(StringUtils.strRandom(20), null);
 	}
 
 	/**
 	 * 
 	 */
 	public String generate(String domain, String tldDomains) {
-		return generate(StringUtils.strRandon(20), domain, tldDomains);
+		return generate(StringUtils.strRandom(20), domain, tldDomains);
 	}
 
 	/**

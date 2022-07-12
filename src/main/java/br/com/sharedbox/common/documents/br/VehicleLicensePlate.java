@@ -60,7 +60,7 @@ public class VehicleLicensePlate extends DocumentBase implements IDocument {
      */
 	public String generateMercosul() {
 		char[] plate = generate().toCharArray(); 
-		plate[4] = StringUtils.strRandon(1, true).charAt(0);
+		plate[4] = StringUtils.strRandom(1, true).charAt(0);
 		return new StringBuilder().append(plate).toString();
 	}
 
@@ -71,7 +71,7 @@ public class VehicleLicensePlate extends DocumentBase implements IDocument {
      */
 	@Override
 	public String generate() {
-		return "" + StringUtils.strRandon(3, true)
+		return "" + StringUtils.strRandom(3, true)
 				+ StringUtils.leftPad("0", 4, Integer.toString(new Random().nextInt(9999)));
 	}
 

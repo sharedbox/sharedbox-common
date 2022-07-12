@@ -8,12 +8,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
-
-import com.google.gson.internal.LinkedTreeMap;
-import com.google.gson.reflect.TypeToken;
 
 import br.com.sharedbox.common.utils.DateTimeUtils;
 import br.com.sharedbox.common.utils.ObjectUtils;
@@ -32,41 +28,6 @@ public class ObjectUtilsTest {
 	@Test
 	void constructorTest() {
 		assertNotNull(new ObjectUtils());
-	}
-
-	/**
-	 * 
-	 */
-	@Test
-	void convertToClassModelTest() {
-		String json = "{ \"value1\": 10, \"value2\": \"Test value\"}";
-		assertNotNull(ObjectUtils.convertToClassModel(json, ClassTestObject.class));
-		
-		LinkedTreeMap<String, Object> map = new LinkedTreeMap<String, Object>();
-		map.put("value1", 10);
-		map.put("value2", "Test value");
-		assertNotNull(ObjectUtils.convertToClassModel(map, ClassTestObject.class));
-		
-		json = "[{ \"value1\": 10, \"value2\": \"Test value 2\"},"
-				+ "{ \"value1\": 20, \"value2\": \"Test value 2\"}]";
-		assertNotNull(ObjectUtils.convertToClassModel(json, new TypeToken<List<ClassTestObject>>(){}.getType()));
-	}
-
-	/**
-	 * 
-	 */
-	@Test
-	void convertStringToJsonTest() {
-		String json = "{ \"value1\": 10, \"value2\": \"Test value\"}";
-		assertNotNull(ObjectUtils.convertStringToJson(json));
-	}
-	
-	/**
-	 * 
-	 */
-	@Test
-	void convertObjectToMapTest() {
-		assertNotNull(ObjectUtils.convertObjectToMap(null));
 	}
 
 	/**
@@ -122,14 +83,4 @@ public class ObjectUtilsTest {
 		assertTrue(ObjectUtils.isLocalDateTime(LocalDateTime.now()));
 		assertFalse(ObjectUtils.isLocalDateTime("teste"));	
 	}
-}
-
-/**
- * Class for ObjectUtilsTest
- * @author Rafael Costi
- *
- */
-class ClassTestObject {
-	int value1;
-	String value2;
 }
