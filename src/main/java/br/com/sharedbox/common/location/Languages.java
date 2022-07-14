@@ -144,7 +144,7 @@ public enum Languages {
 	Ru("Russian", "русский", "ru", "rus", "rus"),
 	Sm("Samoan", "gagana fa'a Samoa", "sm", "smo", "smo"),
 	Sg("Sango", "yângâ tî sängö", "sg", "sag", "sag"),
-	Sa("Sanskrit", "संस्कृतम्, 𑌸𑌂𑌸𑍍𑌕𑍃𑌤𑌮𑍍", "sa", "san", "san"),
+	Sa("Sanskrit", "संस्कृत [s̪ɐ̃s̪kr̩t̪ɐm]", "sa", "san", "san"),
 	Sc("Sardinian", "sardu", "sc", "srd", "srd"),
 	Sr("Serbian", "српски језик", "sr", "srp", "srp"),
 	Sn("Shona", "chiShona", "sn", "sna", "sna"),
