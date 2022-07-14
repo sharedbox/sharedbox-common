@@ -1,7 +1,6 @@
 package br.com.sharedbox.common.location.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
@@ -21,17 +20,14 @@ public class ContinentsTest {
 	 */
 	@Test
 	public void test() {
-		assertEquals(Continents.America.getId(), 1);
-		assertEquals(Continents.America.getContinentCode(), "AM");
+		assertEquals(Continents.America.getCode(), "AM");
 		assertEquals(Continents.America.getNamePt(), "América");
 		assertEquals(Continents.America.getNameEs(), "America");
 		assertEquals(Continents.America.getNameEn(), "America");
-		assertEquals(Continents.getById(Continents.America.getId()), Continents.America);
-		assertNotEquals(Continents.getById((byte)99), Continents.America);
-		assertNotEquals(Continents.getById("999"), Continents.America);
-		assertEquals(Continents.getById(null), Continents.NotFound);
-		assertEquals(Continents.getById("AA"), Continents.NotFound);
-		assertEquals(Continents.getById("1"), Continents.America);
+		assertEquals(Continents.getByCode(Continents.America.getCode()), Continents.America);
+		assertEquals(Continents.getByCode(null), Continents.NotFound);
+		assertEquals(Continents.getByCode("AA"), Continents.NotFound);
+		assertEquals(Continents.getByCode("AM"), Continents.America);
 		
 		String json = Continents.America.toJson();
 		assertNotNull(json);

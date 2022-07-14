@@ -121,7 +121,6 @@ public enum Currencies {
 	NuevoSol(604, "Novo Som", "Nuevo Sol", "Nuevo Sol", "PEN", "S/."),
 	Paanga(776, "Paʻanga tonganesa", "Pa´anga", "Pa´anga", "TOP", "T$"),
 	PakistanRupee(586, "Rupia paquistanesa", "Pakistan Rupee", "Rupia de Pakistán", "PKR", "₨"),
-	PesoUruguayo(858, "Peso uruguaio", "Peso Uruguayo", "peso uruguayo", "UYU", "$"),
 	Pataca(446, "Pataca macaense", "Pataca", "pataca", "MOP", "P"),
 	PhilippinePeso(608, "Peso filipino", "Philippine Peso", "peso filipino", "PHP", "₱"),
 	PoundSterling(826, "Libra Esterlina", "Pound Sterling", "Libra Esterlina", "GBP", "£"),

@@ -10,13 +10,13 @@ import br.com.sharedbox.common.utils.StringUtils;
  * @since 03/03/2022 - Version 1.0.0
  */
 public enum Continents {
-	NotFound((byte)0, null, null, null, null),
-	America((byte)1, "América", "America", "America", "AM"),
-	Asia((byte)2, "Ásia", "Asia", "Asia", "AS"),
-	Europe((byte)3, "Europa", "Europe", "Europa", "EU"),
-	Africa((byte)4, "África", "Africa", "África", "AF"),
-	Oceania((byte)5, "Oceania", "Oceania", "Oceanía", "OC"),
-	Antarctica((byte)6, "Antártida", "Antarctica", "Antártida", "AN");
+	NotFound(null, null, null, null),
+	America("América", "America", "America", "AM"),
+	Asia("Ásia", "Asia", "Asia", "AS"),
+	Europe("Europa", "Europe", "Europa", "EU"),
+	Africa("África", "Africa", "África", "AF"),
+	Oceania("Oceania", "Oceania", "Oceanía", "OC"),
+	Antarctica("Antártida", "Antarctica", "Antártida", "AN");
 	
 	/**
 	 * 
@@ -36,12 +36,7 @@ public enum Continents {
 	/**
 	 * 
 	 */
-	private String continentCode;
-	
-	/**
-	 * 
-	 */
-	private byte id;
+	private String code;
 	
 	/**
 	 * Constructor
@@ -51,19 +46,11 @@ public enum Continents {
 	 * @param nameEs
 	 * @param continentCode
 	 */
-	private Continents(byte id, String namePt, String nameEn, String nameEs, String continentCode){
-		this.id = id;
+	private Continents(String namePt, String nameEn, String nameEs, String code){
 		this.namePt = namePt;
 		this.nameEn = nameEn;
 		this.nameEs = nameEs;
-		this.continentCode = continentCode;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public byte getId() {
-		return this.id;
+		this.code = code;
 	}
 
 	/**
@@ -88,32 +75,10 @@ public enum Continents {
 	}
 
 	/**
-	 * @return the continentCode
+	 * @return the code
 	 */
-	public String getContinentCode() {
-		return this.continentCode;
-	}
-	
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public static Continents getById(String id) {
-		if (StringUtils.isEmpty(id)) {
-			return NotFound;
-		}
-		
-		if (!StringUtils.isNumeric(id)) {
-			return NotFound;
-		} else {
-			long value = Long.parseLong(id);
-			
-			if (value > Byte.MAX_VALUE) {
-				return NotFound;
-			}
-		}
-		return getById(Byte.parseByte(id));
+	public String getCode() {
+		return this.code;
 	}
 		
 	/**
@@ -121,9 +86,13 @@ public enum Continents {
 	 * @param id
 	 * @return
 	 */
-	public static Continents getById(byte id) {
+	public static Continents getByCode(String code) {
+		if (StringUtils.isEmpty(code)) {
+			return NotFound;
+		}
+		
 		for (Continents continent : values()) {
-			if (continent.getId() == id) {
+			if (continent.getCode() == code) {
 				return continent;
 			}
 		}
@@ -135,11 +104,10 @@ public enum Continents {
 	 * @return
 	 */
 	public String toJson() {
-		return "{ \"id\": " + this.getId()
-			+ ", \"namePt\": \"" + this.getNamePt() + "\""
+		return "{\"namePt\": \"" + this.getNamePt() + "\""
 			+ ", \"nameEn\": \"" + this.getNameEn() + "\""
 			+ ", \"nameEs\": \"" + this.getNameEs() + "\""
-			+ ", \"continentCode\": \"" + this.getContinentCode() + "\" }";
+			+ ", \"code\": \"" + this.getCode() + "\" }";
 	}
 	
 	/**

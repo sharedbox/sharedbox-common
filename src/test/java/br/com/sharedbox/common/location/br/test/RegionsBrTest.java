@@ -1,7 +1,6 @@
 package br.com.sharedbox.common.location.br.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
@@ -21,17 +20,15 @@ public class RegionsBrTest {
 	 */
 	@Test
 	public void test() {
-		assertEquals(RegionsBr.SaoPaulo.getId(), 1);
 		assertEquals(RegionsBr.SaoPaulo.getCode(), "SP");
 		assertEquals(RegionsBr.SaoPaulo.getName(), "São Paulo");
 		assertEquals(RegionsBr.SaoPaulo.getName(), "São Paulo");
 		assertEquals(RegionsBr.SaoPaulo.getName(), "São Paulo");
-		assertEquals(RegionsBr.getById(RegionsBr.SaoPaulo.getId()), RegionsBr.SaoPaulo);
-		assertNotEquals(RegionsBr.getById(99), RegionsBr.SaoPaulo);
-		assertEquals(RegionsBr.getById(Long.MAX_VALUE + ""), RegionsBr.NotFound);
-		assertEquals(RegionsBr.getById(null), RegionsBr.NotFound);
-		assertEquals(RegionsBr.getById("AA"), RegionsBr.NotFound);
-		assertEquals(RegionsBr.getById("1"), RegionsBr.SaoPaulo);
+		assertEquals(RegionsBr.getByCode(RegionsBr.SaoPaulo.getCode()), RegionsBr.SaoPaulo);
+		assertEquals(RegionsBr.getByCode("ZZ"), RegionsBr.NotFound);
+		assertEquals(RegionsBr.getByCode(null), RegionsBr.NotFound);
+		assertEquals(RegionsBr.getByCode("AA"), RegionsBr.NotFound);
+		assertEquals(RegionsBr.getByCode("1"), RegionsBr.NotFound);
 		
 		String json = RegionsBr.SaoPaulo.toJson();
 		assertNotNull(json);

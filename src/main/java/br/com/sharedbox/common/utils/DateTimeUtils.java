@@ -57,7 +57,7 @@ public class DateTimeUtils {
 			date = StringUtils.upperCaseFirstChar(date);
 		}
 		
-		Locale locale = new Locale(lang.getIso6391());
+		Locale locale = new Locale(lang.getCode());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
 				.localizedBy(locale);
 		
@@ -104,7 +104,7 @@ public class DateTimeUtils {
 			date = StringUtils.upperCaseFirstChar(date);
 		}
 		
-		Locale locale = new Locale(lang.getIso6391());
+		Locale locale = new Locale(lang.getCode());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
 				.localizedBy(locale);
 		

@@ -24,28 +24,20 @@ public class LanguagesTest {
 	@Test
 	public void languageTest() {
 		assertNotNull(Languages.En);
-		assertNotNull(Languages.En.getId());
-		assertNotNull(Languages.En.getIso6391());
+		assertNotNull(Languages.En.getCode());
 		assertNotNull(Languages.En.getIso6392B());
 		assertNotNull(Languages.En.getIso6392T());
 		assertNotNull(Languages.En.getName());
 		assertNotNull(Languages.En.getNativeName());
 		
 		assertNotNull(Languages.En.toJson());
-		assertEquals(Languages.getById(null), Languages.NotFound);
-		assertEquals(Languages.getById("AA"), Languages.NotFound);
-		assertEquals(Languages.getById(Long.MAX_VALUE + ""), Languages.NotFound);
-		assertEquals(Languages.getById("0"), Languages.NotFound);
-		assertEquals(Languages.getById("42"), Languages.En);
-		assertEquals(Languages.getByCodeOrId("9"), Languages.Hy);
-		assertEquals(Languages.getByCodeOrId("hy"), Languages.Hy);
-		assertEquals(Languages.getByCodeOrId("arm"), Languages.Hy);
-		assertEquals(Languages.getByCodeOrId("hye"), Languages.Hy);
-		assertEquals(Languages.getByCodeOrId(null), Languages.NotFound);
 		assertEquals(Languages.getByCode(null), Languages.NotFound);
+		assertEquals(Languages.getByCode(""), Languages.NotFound);
+		assertEquals(Languages.getByCode("hy"), Languages.Hy);
+		assertEquals(Languages.getByCode("arm"), Languages.Hy);
+		assertEquals(Languages.getByCode("hye"), Languages.Hy);
 		assertEquals(Languages.getByCode("XYZWW"), Languages.NotFound);
 
 		assertNotNull(Languages.toJsonList());
-		
 	}
 }

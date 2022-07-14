@@ -1,6 +1,5 @@
 package br.com.sharedbox.common.location.br;
 
-import br.com.sharedbox.common.location.Countries;
 import br.com.sharedbox.common.utils.StringUtils;
 
 /**
@@ -11,39 +10,34 @@ import br.com.sharedbox.common.utils.StringUtils;
  * @since 05/31/2021
  */
 public enum RegionsBr {
-	NotFound(0, null, 0, null, 0, null, null, 0),
-	SaoPaulo(1, "São Paulo", 1, "SP", 35, "27", "Q175", 645),
-	Acre(2, "Acre", 1, "AC", 12, "01", "Q40780", 22),
-	Amazonas(3, "Amazonas", 1, "AM", 13, "04", "Q40040", 62),
-	Roraima(4, "Roraima", 1, "RR", 14, "25", "Q42508", 15),
-	Para(5, "Pará", 1, "PA", 15, "16", "Q39517", 144),
-	Amapa(6, "Amapá", 1, "AP", 16, "03", "Q40130", 16),
-	Tocantins(7, "Tocantins", 1, "TO", 17, "31", "Q43695", 139),
-	Maranhao(8, "Maranhão", 1, "MA", 21, "13", "Q42362", 217),
-	Piaui(9, "Piauí", 1, "PI", 22, "20", "Q42722", 224),
-	Ceara(10, "Ceará", 1, "CE", 23, "06", "Q40123", 184),
-	RioGrandeDoNorte(11, "Rio Grande do Norte", 1, "RN", 24, "22", "Q43255", 167),
-	Paraiba(12, "Paraíba", 1, "PB", 25, "17", "Q38088", 223),
-	Pernambuco(13, "Pernambuco", 1, "PE", 26, "30", "Q40942", 185),
-	Alagoas(14, "Alagoas", 1, "AL", 27, "02", "Q40885", 102),
-	Sergipe(15, "Sergipe", 1, "SE", 28, "28", "Q43783", 75),
-	Bahia(16, "Bahia", 1, "BA", 29, "05", "Q40430", 417),
-	MinasGerais(17, "Minas Gerais", 1, "MG", 31, "15", "Q39109", 853),
-	EspiritoSanto(18, "Espírito Santo", 1, "ES", 32, "08", "Q43233", 78),
-	RioDeJaneiro(19, "Rio de Janeiro", 1, "RJ", 33, "21", "Q41428", 92),
-	Rondonia(20, "Rondônia", 1, "RO", 11, "24", "Q43235", 52),
-	Parana(21, "Paraná", 1, "PR", 41, "18", "Q15499", 399),
-	SantaCatarina(22, "Santa Catarina", 1, "SC", 42, "26", "Q41115", 295),
-	RioGrandeDoSul(23, "Rio Grande do Sul", 1, "RS", 43, "23", "Q40030", 497),
-	MatoGrossoDoSul(24, "Mato Grosso do Sul", 1, "MS", 50, "11", "Q43319", 79),
-	MatoGrosso(25, "Mato Grosso", 1, "MT", 51, "14", "Q42824", 141),
-	Goias(26, "Goiás", 1, "GO", 52, "29", "Q41587", 246),
-	DistritoFederal(27, "Distrito Federal", 1, "DF", 53, "07", "Q119158", 1);
-
-	/**
-	 * 
-	 */
-	private int id;
+	NotFound(null, "", null, 0, null, null, 0),
+	SaoPaulo("São Paulo", "BR", "SP", 35, "27", "Q175", 645),
+	Acre("Acre", "BR", "AC", 12, "01", "Q40780", 22),
+	Amazonas("Amazonas", "BR", "AM", 13, "04", "Q40040", 62),
+	Roraima("Roraima", "BR", "RR", 14, "25", "Q42508", 15),
+	Para("Pará", "BR", "PA", 15, "16", "Q39517", 144),
+	Amapa("Amapá", "BR", "AP", 16, "03", "Q40130", 16),
+	Tocantins("Tocantins", "BR", "TO", 17, "31", "Q43695", 139),
+	Maranhao("Maranhão", "BR", "MA", 21, "13", "Q42362", 217),
+	Piaui("Piauí", "BR", "PI", 22, "20", "Q42722", 224),
+	Ceara("Ceará", "BR", "CE", 23, "06", "Q40123", 184),
+	RioGrandeDoNorte("Rio Grande do Norte", "BR", "RN", 24, "22", "Q43255", 167),
+	Paraiba("Paraíba", "BR", "PB", 25, "17", "Q38088", 223),
+	Pernambuco("Pernambuco", "BR", "PE", 26, "30", "Q40942", 185),
+	Alagoas("Alagoas", "BR", "AL", 27, "02", "Q40885", 102),
+	Sergipe("Sergipe", "BR", "SE", 28, "28", "Q43783", 75),
+	Bahia("Bahia", "BR", "BA", 29, "05", "Q40430", 417),
+	MinasGerais("Minas Gerais", "BR", "MG", 31, "15", "Q39109", 853),
+	EspiritoSanto("Espírito Santo", "BR", "ES", 32, "08", "Q43233", 78),
+	RioDeJaneiro("Rio de Janeiro", "BR", "RJ", 33, "21", "Q41428", 92),
+	Rondonia("Rondônia", "BR", "RO", 11, "24", "Q43235", 52),
+	Parana("Paraná", "BR", "PR", 41, "18", "Q15499", 399),
+	SantaCatarina("Santa Catarina", "BR", "SC", 42, "26", "Q41115", 295),
+	RioGrandeDoSul("Rio Grande do Sul", "BR", "RS", 43, "23", "Q40030", 497),
+	MatoGrossoDoSul("Mato Grosso do Sul", "BR", "MS", 50, "11", "Q43319", 79),
+	MatoGrosso("Mato Grosso", "BR", "MT", 51, "14", "Q42824", 141),
+	Goias("Goiás", "BR", "GO", 52, "29", "Q41587", 246),
+	DistritoFederal("Distrito Federal", "BR", "DF", 53, "07", "Q119158", 1);
 
 	/**
 	 * 
@@ -53,7 +47,7 @@ public enum RegionsBr {
 	/**
 	 * 
 	 */
-	private int country;
+	private String country;
 
 	/**
 	 * 
@@ -92,8 +86,7 @@ public enum RegionsBr {
 	 * @param wikiDataId
 	 * @param cityAmount
 	 */
-	private RegionsBr(int id, String name, int country, String code, int ibgeId, String fipsCode, String wikiDataId, int cityAmount) {
-		this.id  = id;
+	private RegionsBr(String name, String country, String code, int ibgeId, String fipsCode, String wikiDataId, int cityAmount) {
 		this.name = name;
 		this.country = country;
 		this.code = code;
@@ -101,13 +94,6 @@ public enum RegionsBr {
 		this.fipsCode = fipsCode;
 		this.wikiDataId = wikiDataId;
 		this.cityAmount = cityAmount;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
 	}
 
 	/**
@@ -120,7 +106,7 @@ public enum RegionsBr {
 	/**
 	 * @return the country
 	 */
-	public int getCountry() {
+	public String getCountry() {
 		return country;
 	}
 
@@ -161,36 +147,17 @@ public enum RegionsBr {
 
 	/**
 	 * 
-	 * @param id
+	 * @param code
 	 * @return
 	 */
-	public static RegionsBr getById(String id) {
-		if (StringUtils.isEmpty(id)) {
+	public static RegionsBr getByCode(String code) {
+		if (StringUtils.isEmpty(code)) {
 			return NotFound;
 		}
 		
-		if (!StringUtils.isNumeric(id)) {
-			return NotFound;
-		} else {
-			long value = Long.parseLong(id);
-			
-			if (value > Byte.MAX_VALUE) {
-				return NotFound;
-			}
-		}
-		
-		return getById(Byte.parseByte(id));
-	}
-	
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public static RegionsBr getById(int id) {
 		for (RegionsBr region : values()) {
 			if (region != NotFound) {
-				if (region.getId() == id) {
+				if (region.getCode() == code) {
 					return region;
 				}
 			}
@@ -204,10 +171,9 @@ public enum RegionsBr {
 	 * @return
 	 */
 	public String toJson() {
-		return "{ \"id\": " + this.getId()
-			+ ", \"name\": \"" + this.getName() + "\""
+		return "{ \"name\": \"" + this.getName() + "\""
 			+ ", \"code\": \"" + this.getCode() + "\""
-			+ ", \"country\": " + Countries.getById(this.getCountry()) .toJson()
+			+ ", \"country\": \"" + this.getCountry() + "\"" 
 			+ ", \"ibgeId\": " + this.getIbgeId()
 			+ ", \"fipsCode\": \"" + this.getFipsCode() + "\""
 			+ ", \"wikiDataId\": \"" + this.getWikiDataId() + "\""
