@@ -1,5 +1,6 @@
 package br.com.sharedbox.common.location;
 
+import br.com.sharedbox.common.utils.JsonUtils;
 import br.com.sharedbox.common.utils.StringUtils;
 
 /**
@@ -20,8 +21,8 @@ public enum Countries {
 	Argentina("AR", "Argentina", "Argentina", "54", "063", "0639", "ARG", "032", true, false, "Q414", 32, "AM", new String[] { "ARS" }, new String[] { "es" }),
 	Austria("AT", "Austria", "Österreich", "43", "072", "0728", "AUT", "040", false, true, "Q40", 40, "EU", new String[] { "EUR" }, new String[] { "de" }),
 	Australia("AU", "Australia", "Australia", "61", "069", "0698", "AUS", "036", false, false, "Q408", 36, "OC", new String[] { "AUD" }, new String[] { "en" }),
-	Azerbaijan("AZ", "Azerbaijan", "Azərbaycan", "994", "null", "null", "AZE", "031", false, false, "Q227", 31, "AS", new String[] { "AZN" }, new String[] { "az" }),
-	BosniaAndHerzegovina("BA", "Bosnia and Herzegovina", "Bosna i Hercegovina", "387", "null", "null", "BIH", "070", false, false, "Q225", 70, "EU", new String[] { "BAM" }, new String[] { "bs", "hr", "sr" }),
+	Azerbaijan("AZ", "Azerbaijan", "Azərbaycan", "994", null, null, "AZE", "031", false, false, "Q227", 31, "AS", new String[] { "AZN" }, new String[] { "az" }),
+	BosniaAndHerzegovina("BA", "Bosnia and Herzegovina", "Bosna i Hercegovina", "387", null, null, "BIH", "070", false, false, "Q225", 70, "EU", new String[] { "BAM" }, new String[] { "bs", "hr", "sr" }),
 	Barbados("BB", "Barbados", "Barbados", "1 246", "083", "0833", "BRB", "052", false, false, "Q244", 52, "AM", new String[] { "BBD" }, new String[] { "en" }),
 	Bangladesh("BD", "Bangladesh", "বাংলাদেশ", "880", "081", "0817", "BGD", "050", false, false, "Q902", 50, "AS", new String[] { "BDT" }, new String[] { "bn" }),
 	Belgium("BE", "Belgium", "België", "32", "087", "0876", "BEL", "056", false, true, "Q31", 56, "EU", new String[] { "EUR" }, new String[] { "fr", "de", "nl", "fr" }),
@@ -33,14 +34,14 @@ public enum Countries {
 	Brunei("BN", "Brunei", "Brunei", "673", "108", "1082", "BRN", "096", false, false, "Q921", 96, "AS", new String[] { "BND" }, new String[] { "ms" }),
 	Bolivia("BO", "Bolivia", "Bolivia", "591", "097", "0973", "BOL", "068", false, false, "Q750", 68, "AM", new String[] { "BOB" }, new String[] { "gn", "ay", "es", "qu" }),
 	Brazil("BR", "Brazil", "Brasil", "55", "105", "1058", "BRA", "076", true, false, "Q155", 76, "AM", new String[] { "BRL" }, new String[] { "pt" }),
-	TheBahamas("BS", "The Bahamas", "The Bahamas", "1 242", "null", "null", "BHS", "044", false, false, "Q778", 44, "AM", new String[] { "BSD" }, new String[] { "en" }),
+	Bahamas("BS", "The Bahamas", "The Bahamas", "1 242", null, null, "BHS", "044", false, false, "Q778", 44, "AM", new String[] { "BSD" }, new String[] { "en" }),
 	Bhutan("BT", "Bhutan", "Bhutan", "975", "119", "1198", "BTN", "064", false, false, "Q917", 64, "AS", new String[] { "BTN" }, new String[] { "dz" }),
 	Botswana("BW", "Botswana", "Botswana", "267", "101", "1015", "BWA", "072", false, false, "Q963", 72, "AF", new String[] { "BWP" }, new String[] { "en", "tn" }),
 	Belarus("BY", "Belarus", "Беларусь", "375", "085", "0850", "BLR", "112", false, false, "Q184", 112, "EU", new String[] { "BYN" }, new String[] { "be", "ru" }),
 	Belize("BZ", "Belize", "Belize", "501", "088", "0884", "BLZ", "084", false, false, "Q242", 84, "AM", new String[] { "BZD" }, new String[] { "en" }),
 	Canada("CA", "Canada", "Canada", "1", "149", "1490", "CAN", "124", false, false, "Q16", 124, "AM", new String[] { "CAD" }, new String[] { "en", "fr" }),
 	DemocraticRepublicOfTheCongo("CD", "Democratic Republic of the Congo", "République Démocratique du Congo", "243", "888", "8885", "COD", "180", false, false, "Q974", 180, "AF", new String[] { "CDF" }, new String[] { "fr" }),
-	CentralAfricanRepublic("CF", "Central African Republic", "République centrafricaine", "236", "null", "null", "CAF", "140", false, false, "Q929", 140, "AF", new String[] { "XAF" }, new String[] { "sg", "fr" }),
+	CentralAfricanRepublic("CF", "Central African Republic", "République centrafricaine", "236", null, null, "CAF", "140", false, false, "Q929", 140, "AF", new String[] { "XAF" }, new String[] { "sg", "fr" }),
 	RepublicOfTheCongo("CG", "Republic of the Congo", "République du Congo", "242", "177", "1775", "COG", "178", false, false, "Q971", 178, "AF", new String[] { "XAF" }, new String[] { "fr" }),
 	Switzerland("CH", "Switzerland", "Schweiz", "41", "767", "7676", "CHE", "756", false, false, "Q39", 756, "EU", new String[] { "CHF" }, new String[] { "fr", "it", "rm", "de" }),
 	CtedIvoire("CI", "Côte d'Ivoire", "Côte d'Ivoire", "225", "193", "1937", "CIV", "384", false, false, "Q1008", 384, "AF", new String[] { "XOF" }, new String[] { "fr" }),
@@ -63,7 +64,7 @@ public enum Countries {
 	Estonia("EE", "Estonia", "Eesti", "372", "251", "2518", "EST", "233", false, false, "Q191", 233, "EU", new String[] { "EUR" }, new String[] { "et" }),
 	Egypt("EG", "Egypt", "مصر", "20", "240", "2402", "EGY", "818", false, false, "Q79", 818, "AF", new String[] { "EGP" }, new String[] { "ar" }),
 	Eritrea("ER", "Eritrea", "Eritrea", "291", "243", "2437", "ERI", "232", false, false, "Q986", 232, "AF", new String[] { "ERN" }, new String[] { "ti", "ar", "en" }),
-	Spain("ES", "Spain", "España", "34", "245", "2453", "ESP", "724", false, true, "Q29", 724, "EU", new String[] { "EUR" }, new String[] { "ast", "ca", "es", "eu", "gl" }),
+	Spain("ES", "Spain", "España", "34", "245", "2453", "ESP", "724", false, true, "Q29", 724, "EU", new String[] { "EUR" }, new String[] { "ca", "es", "eu", "gl" }),
 	Ethiopia("ET", "Ethiopia", "ኢትዮጵያ", "251", "253", "2534", "ETH", "231", false, false, "Q115", 231, "AF", new String[] { "ETB" }, new String[] { "am", "om" }),
 	Finland("FI", "Finland", "Suomi", "358", "271", "2712", "FIN", "246", false, true, "Q33", 246, "EU", new String[] { "EUR" }, new String[] { "fi", "sv", "se" }),
 	Fiji("FJ", "Fiji", "Fiji", "679", "870", "8702", "FJI", "242", false, false, "Q712", 242, "OC", new String[] { "FJD" }, new String[] { "en" }),
@@ -76,7 +77,7 @@ public enum Countries {
 	Ghana("GH", "Ghana", "Ghana", "233", "289", "2895", "GHA", "288", false, false, "Q117", 288, "AF", new String[] { "GHS" }, new String[] { "en" }),
 	TheGambia("GM", "The Gambia", "The Gambia", "220", "285", "2852", "GMB", "270", false, false, "Q1005", 270, "AF", new String[] { "GMD" }, new String[] { "en" }),
 	Guinea("GN", "Guinea", "Guinée", "224", "329", "3298", "GIN", "324", false, false, "Q1006", 324, "AF", new String[] { "GNF" }, new String[] { "fr" }),
-	EquatorialGuinea("GQ", "Equatorial Guinea", "Guinea Ecuatorial", "240", "null", "null", "GNQ", "226", false, false, "Q983", 226, "AF", new String[] { "XAF" }, new String[] { "fr", "pt", "es" }),
+	EquatorialGuinea("GQ", "Equatorial Guinea", "Guinea Ecuatorial", "240", null, null, "GNQ", "226", false, false, "Q983", 226, "AF", new String[] { "XAF" }, new String[] { "fr", "pt", "es" }),
 	Greece("GR", "Greece", "Ελλάδα", "30", "301", "3018", "GRC", "300", false, true, "Q41", 300, "EU", new String[] { "EUR" }, new String[] { "el" }),
 	Guatemala("GT", "Guatemala", "Guatemala", "502", "317", "3174", "GTM", "320", false, false, "Q774", 320, "AM", new String[] { "GTQ" }, new String[] { "es" }),
 	GuineaBissau("GW", "Guinea-Bissau", "Guiné-Bissau", "245", "334", "3344", "GNB", "624", false, false, "Q1007", 624, "AF", new String[] { "XOF" }, new String[] { "pt" }),
@@ -102,9 +103,9 @@ public enum Countries {
 	Kiribati("KI", "Kiribati", "Kiribati", "686", "411", "4111", "KIR", "296", false, false, "Q710", 296, "OC", new String[] { "AUD" }, new String[] { "en" }),
 	Comoros("KM", "Comoros", "Comores", "269", "173", "1732", "COM", "174", false, false, "Q970", 174, "AF", new String[] { "KMF" }, new String[] { "fr", "sw", "ar" }),
 	SaintKittsAndNevis("KN", "Saint Kitts and Nevis", "Saint Kitts and Nevis", "1 869", "695", "6955", "KNA", "659", false, false, "Q763", 659, "AM", new String[] { "XCD" }, new String[] { "en" }),
-	NorthKorea("KP", "North Korea", "북한", "850", "null", "null", "PRK", "408", false, false, "Q423", 408, "AS", new String[] { "KPW" }, new String[] { "ko" }),
-	SouthKorea("KR", "South Korea", "대한민국", "82", "null", "null", "KOR", "410", false, false, "Q884", 410, "AS", new String[] { "KRW" }, new String[] { "ko" }),
-	Kuwait("KW", "Kuwait", "الكويت", "965", "null", "null", "KWT", "414", false, false, "Q817", 414, "AS", new String[] { "KWD" }, new String[] { "ar" }),
+	NorthKorea("KP", "North Korea", "북한", "850", null, null, "PRK", "408", false, false, "Q423", 408, "AS", new String[] { "KPW" }, new String[] { "ko" }),
+	SouthKorea("KR", "South Korea", "대한민국", "82", null, null, "KOR", "410", false, false, "Q884", 410, "AS", new String[] { "KRW" }, new String[] { "ko" }),
+	Kuwait("KW", "Kuwait", "الكويت", "965", null, null, "KWT", "414", false, false, "Q817", 414, "AS", new String[] { "KWD" }, new String[] { "ar" }),
 	Kazakhstan("KZ", "Kazakhstan", "Қазақстан", "7", "153", "1538", "KAZ", "398", false, false, "Q232", 398, "AS", new String[] { "KZT" }, new String[] { "kk", "ru" }),
 	Laos("LA", "Laos", "ປະເທດລາວ", "856", "420", "4200", "LAO", "418", false, false, "Q819", 418, "AS", new String[] { "LAK" }, new String[] { "lo" }),
 	Lebanon("LB", "Lebanon", "لبنان", "961", "431", "4316", "LBN", "422", false, false, "Q822", 422, "AS", new String[] { "LBP" }, new String[] { "ar", "fr" }),
@@ -117,29 +118,29 @@ public enum Countries {
 	Luxembourg("LU", "Luxembourg", "Lëtzebuerg", "352", "445", "4456", "LUX", "442", false, true, "Q32", 442, "EU", new String[] { "EUR" }, new String[] { "fr", "de", "lb" }),
 	Latvia("LV", "Latvia", "Latvija", "371", "427", "4278", "LVA", "428", false, false, "Q211", 428, "EU", new String[] { "EUR" }, new String[] { "lv" }),
 	Libya("LY", "Libya", "ليبيا", "218", "438", "4383", "LBY", "434", false, false, "Q1016", 434, "AF", new String[] { "LYD" }, new String[] { "ar" }),
-	Morocco("MA", "Morocco", "المغرب", "212", "474", "4740", "MAR", "504", false, false, "Q1028", 504, "AF", new String[] { "MAD" }, new String[] { "fr", "zgh", "ar" }),
+	Morocco("MA", "Morocco", "المغرب", "212", "474", "4740", "MAR", "504", false, false, "Q1028", 504, "AF", new String[] { "MAD" }, new String[] { "fr", "ar" }),
 	Monaco("MC", "Monaco", "Monaco", "377", "495", "4952", "MCO", "492", false, false, "Q235", 492, "EU", new String[] { "EUR" }, new String[] { "fr" }),
 	Moldova("MD", "Moldova", "Moldova", "373", "494", "4944", "MDA", "498", false, false, "Q217", 498, "EU", new String[] { "MDL" }, new String[] { "ro", "ru", "uk" }),
-	Montenegro("ME", "Montenegro", "Montenegro", "382", "498", "4985", "MNE", "499", false, false, "Q236", 499, "EU", new String[] { "EUR" }, new String[] { "srp", "sr", "hr", "bs", "sq" }),
+	Montenegro("ME", "Montenegro", "Montenegro", "382", "498", "4985", "MNE", "499", false, false, "Q236", 499, "EU", new String[] { "EUR" }, new String[] { "sr", "hr", "bs", "sq" }),
 	Madagascar("MG", "Madagascar", "Madagaskar", "261", "450", "4502", "MDG", "450", false, false, "Q1019", 450, "AF", new String[] { "MGA" }, new String[] { "mg", "fr" }),
-	MarshallIslands("MH", "Marshall Islands", "Marshall Islands", "692", "null", "null", "MHL", "584", false, false, "Q709", 584, "OC", new String[] { "USD" }, new String[] { "en", "mh" }),
-	NorthMacedonia("MK", "North Macedonia", "Северна Македонија", "389", "null", "null", "MKD", "807", false, false, "Q221", 807, "EU", new String[] { "MKD" }, new String[] { "mk" }),
+	MarshallIslands("MH", "Marshall Islands", "Marshall Islands", "692", null, null, "MHL", "584", false, false, "Q709", 584, "OC", new String[] { "USD" }, new String[] { "en", "mh" }),
+	NorthMacedonia("MK", "North Macedonia", "Северна Македонија", "389", null, null, "MKD", "807", false, false, "Q221", 807, "EU", new String[] { "MKD" }, new String[] { "mk" }),
 	Mali("ML", "Mali", "Mali", "223", "464", "4642", "MLI", "466", false, false, "Q912", 466, "AF", new String[] { "XOF" }, new String[] { "fr" }),
 	Myanmar("MM", "Myanmar", "မြန်မာ", "95", "093", "0930", "MMR", "104", false, false, "Q836", 104, "AS", new String[] { "MMK" }, new String[] { "my" }),
 	Mongolia("MN", "Mongolia", "Монгол", "976", "497", "4979", "MNG", "496", false, false, "Q711", 496, "AS", new String[] { "MNT" }, new String[] { "mn" }),
 	Mauritania("MR", "Mauritania", "موريتانيا", "222", "488", "4880", "MRT", "478", false, false, "Q1025", 478, "AF", new String[] { "MRO" }, new String[] { "ar", "fr" }),
 	Malta("MT", "Malta", "Malta", "356", "467", "4677", "MLT", "470", false, true, "Q233", 470, "EU", new String[] { "EUR" }, new String[] { "mt", "en" }),
-	Mauritius("MU", "Mauritius", "Mauritius", "230", "485", "4855", "MUS", "480", false, false, "Q1027", 480, "AF", new String[] { "MUR" }, new String[] { "en", "mfe", "fr" }),
+	Mauritius("MU", "Mauritius", "Mauritius", "230", "485", "4855", "MUS", "480", false, false, "Q1027", 480, "AF", new String[] { "MUR" }, new String[] { "en", "fr" }),
 	Maldives("MV", "Maldives", "މޯލްޑިވްސް އެވެ", "960", "461", "4618", "MDV", "462", false, false, "Q826", 462, "AS", new String[] { "MVR" }, new String[] { "dv" }),
-	Malawi("MW", "Malawi", "Malawi", "265", "null", "null", "MWI", "454", false, false, "Q1020", 454, "AF", new String[] { "MWK" }, new String[] { "en", "ny" }),
+	Malawi("MW", "Malawi", "Malawi", "265", null, null, "MWI", "454", false, false, "Q1020", 454, "AF", new String[] { "MWK" }, new String[] { "en", "ny" }),
 	Mexico("MX", "Mexico", "México", "52", "493", "4936", "MEX", "484", false, false, "Q96", 484, "AM", new String[] { "MXN" }, new String[] { "es" }),
 	Malaysia("MY", "Malaysia", "Malaysia", "60", "455", "4553", "MYS", "458", false, false, "Q833", 458, "AS", new String[] { "MYR" }, new String[] { "ms" }),
 	Mozambique("MZ", "Mozambique", "Moçambique", "258", "505", "5053", "MOZ", "508", false, false, "Q1029", 508, "AF", new String[] { "MZN" }, new String[] { "pt" }),
-	Namibia("NA", "Namibia", "Namibia", "264", "507", "5070", "NAM", "516", false, false, "Q1030", 516, "AF", new String[] { "NAD" }, new String[] { "en", "sf", "de" }),
+	Namibia("NA", "Namibia", "Namibia", "264", "507", "5070", "NAM", "516", false, false, "Q1030", 516, "AF", new String[] { "NAD" }, new String[] { "en", "de" }),
 	Niger("NE", "Niger", "Niger", "227", "525", "5258", "NER", "562", false, false, "Q1032", 562, "AF", new String[] { "XOF" }, new String[] { "fr" }),
 	Nigeria("NG", "Nigeria", "Nigeria", "234", "528", "5282", "NGA", "566", false, false, "Q1033", 566, "AF", new String[] { "NGN" }, new String[] { "en" }),
 	Nicaragua("NI", "Nicaragua", "Nicaragua", "505", "521", "5215", "NIC", "558", false, false, "Q811", 558, "AM", new String[] { "NIO" }, new String[] { "es" }),
-	Netherlands("NL", "Netherlands", "Nederland", "31", "null", "null", "NLD", "528", false, false, "Q55", 528, "EU", new String[] { "EUR" }, new String[] { "nl" }),
+	Netherlands("NL", "Netherlands", "Nederland", "31", null, null, "NLD", "528", false, false, "Q55", 528, "EU", new String[] { "EUR" }, new String[] { "nl" }),
 	Norway("NO", "Norway", "Norge", "47", "538", "5380", "NOR", "578", false, false, "Q20", 578, "EU", new String[] { "NOK" }, new String[] { "nb", "nn", "no", "se" }),
 	Nepal("NP", "Nepal", "नेपाल", "977", "517", "5177", "NPL", "524", false, false, "Q837", 524, "AS", new String[] { "NPR" }, new String[] { "ne" }),
 	Nauru("NR", "Nauru", "Nauru", "674", "508", "5088", "NRU", "520", false, false, "Q697", 520, "OC", new String[] { "AUD" }, new String[] { "na", "en" }),
@@ -147,7 +148,7 @@ public enum Countries {
 	Oman("OM", "Oman", "سلطنة عمان", "968", "556", "5568", "OMN", "512", false, false, "Q842", 512, "AS", new String[] { "OMR" }, new String[] { "ar" }),
 	Panama("PA", "Panama", "Panamá", "507", "580", "5800", "PAN", "591", false, false, "Q804", 591, "AM", new String[] { "PAB", "USD" }, new String[] { "es" }),
 	Peru("PE", "Peru", "Perú", "51", "589", "5894", "PER", "604", true, false, "Q419", 604, "AM", new String[] { "PEN" }, new String[] { "es" }),
-	PapuaNewGuinea("PG", "Papua New Guinea", "Papua New Guinea", "675", "545", "5452", "PNG", "598", false, false, "Q691", 598, "OC", new String[] { "PGK" }, new String[] { "en", "tpi", "ho" }),
+	PapuaNewGuinea("PG", "Papua New Guinea", "Papua New Guinea", "675", "545", "5452", "PNG", "598", false, false, "Q691", 598, "OC", new String[] { "PGK" }, new String[] { "en", "ho" }),
 	Philippines("PH", "Philippines", "Philippines", "63", "267", "2674", "PHL", "608", false, false, "Q928", 608, "AS", new String[] { "PHP" }, new String[] { "en", "tl" }),
 	Pakistan("PK", "Pakistan", "Pakistan", "92", "576", "5762", "PAK", "586", false, false, "Q843", 586, "AS", new String[] { "PKR" }, new String[] { "en", "ur" }),
 	Poland("PL", "Poland", "Polska", "48", "603", "6033", "POL", "616", false, false, "Q36", 616, "EU", new String[] { "PLN" }, new String[] { "pl" }),
@@ -157,10 +158,10 @@ public enum Countries {
 	Qatar("QA", "Qatar", "دولة قطر", "974", "154", "1546", "QAT", "634", false, false, "Q846", 634, "AS", new String[] { "QAR" }, new String[] { "ar" }),
 	Romania("RO", "Romania", "România", "40", "670", "6700", "ROU", "642", false, false, "Q218", 642, "EU", new String[] { "RON" }, new String[] { "ro" }),
 	Serbia("RS", "Serbia", "Србија", "381", "737", "7370", "SRB", "688", false, false, "Q403", 688, "EU", new String[] { "RSD" }, new String[] { "sr" }),
-	Russia("RU", "Russia", "Россия", "7", "null", "null", "RUS", "643", false, false, "Q159", 643, "EU", new String[] { "RUB" }, new String[] { "ru" }),
+	Russia("RU", "Russia", "Россия", "7", null, null, "RUS", "643", false, false, "Q159", 643, "EU", new String[] { "RUB" }, new String[] { "ru" }),
 	Rwanda("RW", "Rwanda", "Rwanda", "250", "675", "6750", "RWA", "646", false, false, "Q1037", 646, "AF", new String[] { "RWF" }, new String[] { "rw", "fr", "en" }),
 	SaudiArabia("SA", "Saudi Arabia", "المملكة العربية السعودية", "966", "053", "0531", "SAU", "682", false, false, "Q851", 682, "AS", new String[] { "SAR" }, new String[] { "ar" }),
-	SolomonIslands("SB", "Solomon Islands", "Solomon Islands", "677", "null", "null", "SLB", "090", false, false, "Q685", 90, "OC", new String[] { "SBD" }, new String[] { "en" }),
+	SolomonIslands("SB", "Solomon Islands", "Solomon Islands", "677", null, null, "SLB", "090", false, false, "Q685", 90, "OC", new String[] { "SBD" }, new String[] { "en" }),
 	Seychelles("SC", "Seychelles", "Les Seychelles", "248", "731", "7315", "SYC", "690", false, false, "Q1042", 690, "AF", new String[] { "SCR" }, new String[] { "fr", "en" }),
 	Sudan("SD", "Sudan", "السودان", "249", "759", "7595", "SDN", "729", false, false, "Q1049", 729, "AF", new String[] { "SDG" }, new String[] { "ar", "en" }),
 	Sweden("SE", "Sweden", "Sverige", "46", "764", "7641", "SWE", "752", false, false, "Q34", 752, "EU", new String[] { "SEK" }, new String[] { "sv" }),
@@ -172,11 +173,11 @@ public enum Countries {
 	Senegal("SN", "Senegal", "Sénégal", "221", "728", "7285", "SEN", "686", false, false, "Q1041", 686, "AF", new String[] { "XOF" }, new String[] { "fr" }),
 	Somalia("SO", "Somalia", "Soomaaliya", "252", "748", "7480", "SOM", "706", false, false, "Q1045", 706, "AF", new String[] { "SOS" }, new String[] { "so", "ar" }),
 	Suriname("SR", "Suriname", "Suriname", "597", "770", "7706", "SUR", "740", true, false, "Q730", 740, "AM", new String[] { "SRD" }, new String[] { "nl" }),
-	SouthSudan("SS", "South Sudan", "South Sudan", "null", "760", "7600", "SSD", "728", false, false, "Q958", 728, "AF", new String[] { "SSP" }, new String[] { "en" }),
-	SoTomAndPrncipe("ST", "São Tomé and Príncipe", "São Tomé e Príncipe", "239", "720", "7200", "STP", "678", false, false, "Q1039", 678, "AF", new String[] { "STN" }, new String[] { "pt" }),
+	SouthSudan("SS", "South Sudan", "South Sudan", null, "760", "7600", "SSD", "728", false, false, "Q958", 728, "AF", new String[] { "SSP" }, new String[] { "en" }),
+	SaoTomeAndPrncipe("ST", "São Tomé and Príncipe", "São Tomé e Príncipe", "239", "720", "7200", "STP", "678", false, false, "Q1039", 678, "AF", new String[] { "STN" }, new String[] { "pt" }),
 	ElSalvador("SV", "El Salvador", "El Salvador", "503", "687", "6874", "SLV", "222", false, false, "Q792", 222, "AM", new String[] { "USD" }, new String[] { "es" }),
 	Syria("SY", "Syria", "سوريا", "963", "744", "7447", "SYR", "760", false, false, "Q858", 760, "AS", new String[] { "SYP" }, new String[] { "ku", "ar" }),
-	Eswatini("SZ", "Eswatini", "Eswatini", "268", "null", "null", "SWZ", "748", false, false, "Q1050", 748, "AF", new String[] { "SZL" }, new String[] { "en", "ss" }),
+	Eswatini("SZ", "Eswatini", "Eswatini", "268", null, null, "SWZ", "748", false, false, "Q1050", 748, "AF", new String[] { "SZL" }, new String[] { "en", "ss" }),
 	Chad("TD", "Chad", "تشاد", "235", "788", "7889", "TCD", "148", false, false, "Q657", 148, "AF", new String[] { "XAF" }, new String[] { "ar", "fr" }),
 	Togo("TG", "Togo", "Aller", "228", "800", "8001", "TGO", "768", false, false, "Q945", 768, "AF", new String[] { "XOF" }, new String[] { "fr" }),
 	Thailand("TH", "Thailand", "ประเทศไทย", "66", "776", "7765", "THA", "764", false, false, "Q869", 764, "AS", new String[] { "THB" }, new String[] { "th" }),
@@ -191,9 +192,9 @@ public enum Countries {
 	Tanzania("TZ", "Tanzania", "Tanzania", "255", "780", "7803", "TZA", "834", false, false, "Q924", 834, "AF", new String[] { "TZS" }, new String[] { "sw", "en" }),
 	Ukraine("UA", "Ukraine", "Україна", "380", "831", "8311", "UKR", "804", false, false, "Q212", 804, "EU", new String[] { "UAH" }, new String[] { "uk" }),
 	Uganda("UG", "Uganda", "Uganda", "256", "833", "8338", "UGA", "800", false, false, "Q1036", 800, "AF", new String[] { "UGX" }, new String[] { "en", "sw" }),
-	UnitedStatesOfAmerica("US", "United States of America", "United States of America", "1", "null", "null", "USA", "840", false, false, "Q30", 840, "AM", new String[] { "USD" }, new String[] { "en" }),
+	UnitedStatesOfAmerica("US", "United States of America", "United States of America", "1", null, null, "USA", "840", false, false, "Q30", 840, "AM", new String[] { "USD" }, new String[] { "en" }),
 	Uruguay("UY", "Uruguay", "Uruguay", "598", "845", "8451", "URY", "858", true, false, "Q77", 858, "AM", new String[] { "UYU" }, new String[] { "es" }),
-	Uzbekistan("UZ", "Uzbekistan", "Uzbekistan", "998", "847", "8478", "UZB", "860", false, false, "Q265", 860, "AS", new String[] { "UZS" }, new String[] { "uz", "kaa" }),
+	Uzbekistan("UZ", "Uzbekistan", "Uzbekistan", "998", "847", "8478", "UZB", "860", false, false, "Q265", 860, "AS", new String[] { "UZS" }, new String[] { "uz" }),
 	SaintVincentAndTheGrenadines("VC", "Saint Vincent and the Grenadines", "Saint Vincent and the Grenadines", "1 784", "705", "7056", "VCT", "670", false, false, "Q757", 670, "AM", new String[] { "XCD" }, new String[] { "en" }),
 	Venezuela("VE", "Venezuela", "Venezuela", "58", "850", "8508", "VEN", "862", true, false, "Q717", 862, "AM", new String[] { "VES" }, new String[] { "es" }),
 	Vietnam("VN", "Vietnam", "Việt Nam", "84", "858", "8583", "VNM", "704", false, false, "Q881", 704, "AS", new String[] { "VND" }, new String[] { "vi" }),
@@ -453,7 +454,7 @@ public enum Countries {
 		// Currencies
 		String currenciesStr = StringUtils.EMPTY;
 		if (this.getCurrencies() == null) {
-			currenciesStr = "null";
+			currenciesStr = null;
 		} else {
 			currenciesStr = "[";
 			for (String currency : this.getCurrencies()) {
@@ -467,7 +468,7 @@ public enum Countries {
 		// Languages
 		String languagesStr = StringUtils.EMPTY;
 		if (this.getLanguages() == null) {
-			languagesStr = "null";
+			languagesStr = null;
 		} else {
 			languagesStr = "[";
 			for (String language : this.getLanguages()) {
@@ -478,19 +479,19 @@ public enum Countries {
 			languagesStr = languagesStr + "]";
 		}
 		
-		return  "{ \"code\": \"" + this.getCode() + "\""
-		 + ", \"name\": \"" + this.getName() + "\""
-		 + ", \"nativeName\": \"" + this.getNativeName() + "\""
-		 + ", \"prefixPhone\": \"" + this.getPrefixPhone() + "\""
-		 + ", \"siscomexCode\": \"" + this.getSiscomexCode() + "\""
-		 + ", \"spedCode\": \"" + this.getSpedCode() + "\""
-		 + ", \"isoCode31663\": \"" + this.getIsoCode31663() + "\""
-		 + ", \"isoCodeNum\": \"" + this.getIsoCodeNum() + "\""
+		return  "{ \"code\": " + JsonUtils.createJsonValue(this.getCode())
+		 + ", \"name\": " +JsonUtils.createJsonValue(this.getName())
+		 + ", \"nativeName\": " + JsonUtils.createJsonValue(this.getNativeName())
+		 + ", \"prefixPhone\": " + JsonUtils.createJsonValue(this.getPrefixPhone())
+		 + ", \"siscomexCode\": " + JsonUtils.createJsonValue(this.getSiscomexCode())
+		 + ", \"spedCode\": " + JsonUtils.createJsonValue(this.getSpedCode())
+		 + ", \"isoCode31663\": " + JsonUtils.createJsonValue(this.getIsoCode31663())
+		 + ", \"isoCodeNum\": " + JsonUtils.createJsonValue(this.getIsoCodeNum())
 		 + ", \"mercosul\": " + this.isMercosul()
 		 + ", \"euroZone\": " + this.isEuroZone()
-		 + ", \"wikiDataId\": \"" + this.getWikiDataId() + "\""
+		 + ", \"wikiDataId\": " + JsonUtils.createJsonValue(this.getWikiDataId())
 		 + ", \"m49Code\": " + this.getM49Code()
-		 + ", \"continent\": \"" + this.getContinent() + "\""
+		 + ", \"continent\": " + JsonUtils.createJsonValue(this.getContinent())
 		 + ", \"currencies\": " + currenciesStr
 		 + ", \"languages\": " + languagesStr + " }";
 	}
