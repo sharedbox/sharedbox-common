@@ -4,8 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
 
 import br.com.sharedbox.common.utils.JsonUtils;
 
@@ -18,13 +24,49 @@ import br.com.sharedbox.common.utils.JsonUtils;
  */
 public class JsonUtilsTest {
 	/**
+	 * @throws JsonProcessingException 
+	 * @throws JsonMappingException 
 	 * 
 	 */
 	@Test
-	public void test() {
-		assertNotNull(JsonUtils.getJsonValue(LocalDateTime.now()));
-		assertNotNull(JsonUtils.getJsonValue("TEST"));
-		assertEquals(JsonUtils.getJsonValueDateTime(null), "null");
-		assertEquals(JsonUtils.getJsonValueString(null), "null");
+	public void test() throws JsonMappingException, JsonProcessingException {
+		assertNotNull(new JsonUtils());
+		assertNotNull(JsonUtils.createJsonValue(LocalDateTime.now()));
+		assertNotNull(JsonUtils.createJsonValue("TEST"));
+		assertEquals(JsonUtils.createJsonValueDateTime(null), "null");
+		assertEquals(JsonUtils.createJsonValueString(null), "null");
+
+		assertNotNull(JsonUtils.getObjectFromFileJson(this.getClass().getResource("/test/test.json").getFile().substring(1)
+				, new TypeToken<ClassTestObject>() {}));
+		
+		assertNotNull(JsonUtils.getObjectFromFileJson(this.getClass().getResource("/test/test.json").getFile().substring(1)
+				, ClassTestObject.class));
+		
+		Object json = "{ \"value1\": 10, \"value2\": \"Test value 2\", \"date\": \"10-10-2022\", \"datetime\": \"10-10-2022 12:00:00\"}";
+		assertNotNull(JsonUtils.convertToClassModel(json, ClassTestObject.class));
+		assertNotNull(JsonUtils.convertToObject(json.toString(), ClassTestObject.class));
+		assertNotNull(JsonUtils.convertToObject(json.toString(), new TypeToken<ClassTestObject>(){}.getType()));
+		
+		LinkedTreeMap<String, Object> map = new LinkedTreeMap<String, Object>();
+		map.put("value1", 10);
+		map.put("value2", "Test value");
+		map.put("date", "10-10-2022");
+		map.put("datetime", "10-10-2022 12:00:00");
+		assertNotNull(JsonUtils.convertToClassModel(map, ClassTestObject.class));
+		assertNotNull(JsonUtils.convertToClassModel(map, new TypeToken<ClassTestObject>(){}.getType()));
+		
+		json = "[{ \"value1\": 10, \"value2\": \"Test value 2\", \"date\": \"10-10-2022\", \"datetime\": \"10-10-2022 12:00:00\"},"
+				+ "{ \"value1\": 10, \"value2\": \"Test value 2\", \"date\": \"10-10-2022\", \"datetime\": \"10-10-2022 12:00:00\"}]";
+		assertNotNull(JsonUtils.convertToClassModel(json, new TypeToken<List<ClassTestObject>>(){}.getType()));
+		
+		json = "{ \"value1\": 10, \"value2\": \"Test value 2\", \"date\": null, \"datetime\": null}";
+		assertNotNull(JsonUtils.convertToClassModel(json, ClassTestObject.class));
+		
+		assertNotNull(JsonUtils.convertStringToJson(json.toString()));
+
+		assertNotNull(JsonUtils.convertObjectToMap(null));
+
+		assertNotNull(JsonUtils.convertToClassModelObjMapper(json, ClassTestObject.class));
+		assertNotNull(JsonUtils.convertToClassModelListObjMapper("[" + json + "]"));
 	}
 }

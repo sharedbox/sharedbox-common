@@ -11,6 +11,7 @@ import com.auth0.jwt.JWTCreator.Builder;
 import com.auth0.jwt.interfaces.Claim;
 
 import br.com.sharedbox.common.utils.DateTimeUtils;
+import br.com.sharedbox.common.utils.JsonUtils;
 import br.com.sharedbox.common.utils.ObjectUtils;
 
 /**
@@ -103,7 +104,7 @@ public class Jwt {
 					}
 
 					if (ObjectUtils.isMap(claims.get(key))) {
-						builder = builder.withClaim(key, ObjectUtils.convertObjectToMap(claims.get(key)));
+						builder = builder.withClaim(key, JsonUtils.convertObjectToMap(claims.get(key)));
 					}
 				} else {
 					builder = builder.withClaim(key, "");

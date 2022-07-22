@@ -16,7 +16,7 @@ public enum Currencies {
 	AlgerianDinar(12, "Dinar argelino", "Algerian Dinar", "dinar argelino", "DZD", "د.ج"),
 	AndorranPeseta(20, "Peseta Andorrana", "Andorran Peseta", "Peseta Andorrana", "ADP", null),
 	ArgentinePeso(32, "Peso Argentino", "Argentine Peso", "Peso Argentino", "ARS", "$"),
-	ArmenianDram(51, "Dram arménio", "Armenian Dram", "Dram armenio", "AMD", ""),
+	ArmenianDram(51, "Dram arménio", "Armenian Dram", "Dram armenio", "AMD", null),
 	ArubanGuilder(533, "Florim arubano", "Aruban Guilder", "Florín de Aruba", "AWG", "ƒ"),
 	AustralianDollar(36, "Dólar Australiano", "Australian Dollar", "Dólar Australiano", "AUD", "$"),
 	AzerbaijanianManat(31, "Manat azerbaijano", "Azerbaijanian Manat", "manat azerbaiyano", "AZN", null),
@@ -121,7 +121,6 @@ public enum Currencies {
 	NuevoSol(604, "Novo Som", "Nuevo Sol", "Nuevo Sol", "PEN", "S/."),
 	Paanga(776, "Paʻanga tonganesa", "Pa´anga", "Pa´anga", "TOP", "T$"),
 	PakistanRupee(586, "Rupia paquistanesa", "Pakistan Rupee", "Rupia de Pakistán", "PKR", "₨"),
-	PesoUruguayo(858, "Peso uruguaio", "Peso Uruguayo", "peso uruguayo", "UYU", "$"),
 	Pataca(446, "Pataca macaense", "Pataca", "pataca", "MOP", "P"),
 	PhilippinePeso(608, "Peso filipino", "Philippine Peso", "peso filipino", "PHP", "₱"),
 	PoundSterling(826, "Libra Esterlina", "Pound Sterling", "Libra Esterlina", "GBP", "£"),
@@ -318,7 +317,7 @@ public enum Currencies {
 			+ ", \"nameEn\": \"" + this.getName(Languages.En) + "\""
 			+ ", \"nameEs\": \"" + this.getName(Languages.Es) + "\""
 			+ ", \"code\": \"" + this.getCode() + "\""
-			+ ", \"symbol\": " + JsonUtils.getJsonValue(this.getSymbol()) + " }";
+			+ ", \"symbol\": " + JsonUtils.createJsonValue(this.getSymbol()) + " }";
 	}
 	
 	/**
