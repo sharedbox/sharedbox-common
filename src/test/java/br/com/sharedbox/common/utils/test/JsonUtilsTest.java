@@ -36,11 +36,14 @@ public class JsonUtilsTest {
 		assertEquals(JsonUtils.createJsonValueDateTime(null), "null");
 		assertEquals(JsonUtils.createJsonValueString(null), "null");
 
-		assertNotNull(JsonUtils.getObjectFromFileJson(this.getClass().getResource("/test/test.json").getFile().substring(1)
-				, new TypeToken<ClassTestObject>() {}));
+		String os = System.getProperty("os.name");
+		String jsonFilePath = this.getClass().getResource("/test/test.json").getFile();
+		if (!os.toUpperCase().contains("LINUX")) {
+			jsonFilePath = jsonFilePath.substring(1);
+		}
 		
-		assertNotNull(JsonUtils.getObjectFromFileJson(this.getClass().getResource("/test/test.json").getFile().substring(1)
-				, ClassTestObject.class));
+		assertNotNull(JsonUtils.getObjectFromFileJson(jsonFilePath, new TypeToken<ClassTestObject>() {}));
+		assertNotNull(JsonUtils.getObjectFromFileJson(jsonFilePath, ClassTestObject.class));
 		
 		Object json = "{ \"value1\": 10, \"value2\": \"Test value 2\", \"date\": \"10-10-2022\", \"datetime\": \"10-10-2022 12:00:00\"}";
 		assertNotNull(JsonUtils.convertToClassModel(json, ClassTestObject.class));

@@ -30,15 +30,26 @@ public class XlsxTest {
 	 */
 	@Test
 	void test() throws Exception {
-		assertNotNull(new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile().substring(1)));
+		String os = System.getProperty("os.name");
+		String xlsxFilePath = this.getClass().getResource("/test/sb_test.xlsx").getFile();
+		if (!os.toUpperCase().contains("LINUX")) {
+			xlsxFilePath = xlsxFilePath.substring(1);
+		}
+		
+		Xlsx xlsx = new Xlsx(xlsxFilePath);
+		assertNotNull(xlsx);
 
 		IllegalArgumentException thrown = null;
 		
 		thrown = assertThrows(IllegalArgumentException.class, () -> new Xlsx("/test/2"));
 		assertTrue(thrown.getMessage().contains("File is not exist"));
 
+		final String sbLogoPath = os.toUpperCase().contains("LINUX")
+				? this.getClass().getResource("/test/SBLogo.png").getFile()
+						: this.getClass().getResource("/test/SBLogo.png").getFile().substring(1);
+	
 		thrown = assertThrows(IllegalArgumentException.class
-				, () -> new Xlsx(this.getClass().getResource("/test/SBLogo.png").getFile().substring(1)));
+				, () -> new Xlsx(sbLogoPath));
 		assertTrue(thrown.getMessage().contains("Invalid file"));
 
 		File file = null;
@@ -54,7 +65,13 @@ public class XlsxTest {
 	 */
 	@Test
 	void readerWorksheetTest() throws Exception {
-		Xlsx xlsx = new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile().substring(1));
+		String os = System.getProperty("os.name");
+		String xlsxFilePath = this.getClass().getResource("/test/sb_test.xlsx").getFile();
+		if (!os.toUpperCase().contains("LINUX")) {
+			xlsxFilePath = xlsxFilePath.substring(1);
+		}
+		
+		Xlsx xlsx = new Xlsx(xlsxFilePath);
 		assertNotNull(xlsx.readerWorksheet("WorksheetTest"));
 		assertDoesNotThrow(() -> xlsx.close());
 	}
@@ -64,7 +81,13 @@ public class XlsxTest {
 	 */
 	@Test
 	void writeWorksheetTest() throws Exception {
-		Xlsx xlsx = new Xlsx(this.getClass().getResource("/test/sb_test.xlsx").getFile().substring(1));
+		String os = System.getProperty("os.name");
+		String xlsxFilePath = this.getClass().getResource("/test/sb_test.xlsx").getFile();
+		if (!os.toUpperCase().contains("LINUX")) {
+			xlsxFilePath = xlsxFilePath.substring(1);
+		}
+		
+		Xlsx xlsx = new Xlsx(xlsxFilePath);
 		
 		List<String[]> rows = new ArrayList<String[]>();
 		
