@@ -1,0 +1,28 @@
+[{ "id": 1, "name": "Rondônia", "active": false, "idCountry": 1, "code": "RO", "ibgeId": 11, "fipsCode": "24", "wikiDataId": "Q43235", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 2, "name": "Acre", "active": false, "idCountry": 1, "code": "AC", "ibgeId": 12, "fipsCode": "01", "wikiDataId": "Q40780", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 3, "name": "Amazonas", "active": false, "idCountry": 1, "code": "AM", "ibgeId": 13, "fipsCode": "04", "wikiDataId": "Q40040", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 4, "name": "Roraima", "active": false, "idCountry": 1, "code": "RR", "ibgeId": 14, "fipsCode": "25", "wikiDataId": "Q42508", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 5, "name": "Pará", "active": false, "idCountry": 1, "code": "PA", "ibgeId": 15, "fipsCode": "16", "wikiDataId": "Q39517", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 6, "name": "Amapá", "active": false, "idCountry": 1, "code": "AP", "ibgeId": 16, "fipsCode": "03", "wikiDataId": "Q40130", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 7, "name": "Tocantins", "active": false, "idCountry": 1, "code": "TO", "ibgeId": 17, "fipsCode": "31", "wikiDataId": "Q43695", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 8, "name": "Maranhão", "active": false, "idCountry": 1, "code": "MA", "ibgeId": 21, "fipsCode": "13", "wikiDataId": "Q42362", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 9, "name": "Piauí", "active": false, "idCountry": 1, "code": "PI", "ibgeId": 22, "fipsCode": "20", "wikiDataId": "Q42722", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 10, "name": "Ceará", "active": false, "idCountry": 1, "code": "CE", "ibgeId": 23, "fipsCode": "06", "wikiDataId": "Q40123", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 11, "name": "Rio Grande do Norte", "active": false, "idCountry": 1, "code": "RN", "ibgeId": 24, "fipsCode": "22", "wikiDataId": "Q43255", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 12, "name": "Paraíba", "active": false, "idCountry": 1, "code": "PB", "ibgeId": 25, "fipsCode": "17", "wikiDataId": "Q38088", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 13, "name": "Pernambuco", "active": false, "idCountry": 1, "code": "PE", "ibgeId": 26, "fipsCode": "30", "wikiDataId": "Q40942", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 14, "name": "Alagoas", "active": false, "idCountry": 1, "code": "AL", "ibgeId": 27, "fipsCode": "02", "wikiDataId": "Q40885", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 15, "name": "Sergipe", "active": false, "idCountry": 1, "code": "SE", "ibgeId": 28, "fipsCode": "28", "wikiDataId": "Q43783", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 16, "name": "Bahia", "active": false, "idCountry": 1, "code": "BA", "ibgeId": 29, "fipsCode": "05", "wikiDataId": "Q40430", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 17, "name": "Minas Gerais", "active": false, "idCountry": 1, "code": "MG", "ibgeId": 31, "fipsCode": "15", "wikiDataId": "Q39109", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 18, "name": "Espírito Santo", "active": false, "idCountry": 1, "code": "ES", "ibgeId": 32, "fipsCode": "08", "wikiDataId": "Q43233", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 19, "name": "Rio de Janeiro", "active": false, "idCountry": 1, "code": "RJ", "ibgeId": 33, "fipsCode": "21", "wikiDataId": "Q41428", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 20, "name": "São Paulo", "active": false, "idCountry": 1, "code": "SP", "ibgeId": 35, "fipsCode": "27", "wikiDataId": "Q175", "included": true, "cityAmount": 0, "includeCities": true }
+, { "id": 21, "name": "Paraná", "active": false, "idCountry": 1, "code": "PR", "ibgeId": 41, "fipsCode": "18", "wikiDataId": "Q15499", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 22, "name": "Santa Catarina", "active": false, "idCountry": 1, "code": "SC", "ibgeId": 42, "fipsCode": "26", "wikiDataId": "Q41115", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 23, "name": "Rio Grande do Sul", "active": false, "idCountry": 1, "code": "RS", "ibgeId": 43, "fipsCode": "23", "wikiDataId": "Q40030", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 24, "name": "Mato Grosso do Sul", "active": false, "idCountry": 1, "code": "MS", "ibgeId": 50, "fipsCode": "11", "wikiDataId": "Q43319", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 25, "name": "Mato Grosso", "active": false, "idCountry": 1, "code": "MT", "ibgeId": 51, "fipsCode": "14", "wikiDataId": "Q42824", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 26, "name": "Goiás", "active": false, "idCountry": 1, "code": "GO", "ibgeId": 52, "fipsCode": "29", "wikiDataId": "Q41587", "included": true, "cityAmount": 0, "includeCities": false }
+, { "id": 27, "name": "Distrito Federal", "active": false, "idCountry": 1, "code": "DF", "ibgeId": 53, "fipsCode": "07", "wikiDataId": "Q119158", "included": true, "cityAmount": 0, "includeCities": false }
+]

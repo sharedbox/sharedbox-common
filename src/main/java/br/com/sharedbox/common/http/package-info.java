@@ -1,1 +1,0 @@
-package br.com.sharedbox.common.http;
